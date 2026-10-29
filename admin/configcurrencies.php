@@ -16,6 +16,11 @@ $aInt->helplink = "Currencies";
 $aInt->requireAuthConfirmation();
 $aInt->requiredFiles(array("currencyfunctions"));
 $infobox = "";
+require_once ROOTDIR.'/includes/cloudytek/currency.php';
+if(\Cloudytek\Currency::enabled()) {
+    $ctkFx=\Cloudytek\Currency::cache();
+    $infobox='<div class="alert alert-info">Tiền tệ gốc: <strong>VND</strong>. Tỷ giá tự động: <strong>1 USD = '.htmlspecialchars(number_format(isset($ctkFx['usd_vnd'])?$ctkFx['usd_vnd']:0,2,',','.'),ENT_QUOTES,'UTF-8').' VND</strong>. Giá USD được tính từ giá gốc VND; giá VND và số dư không đổi khi cập nhật tỷ giá. <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a></div>';
+}
 if ($action == "add") {
     check_token("WHMCS.admin.default");
     $prefix = strip_tags(WHMCS\Input\Sanitize::decode($prefix));
@@ -39,6 +44,11 @@ if ($action == "add") {
 }
 if ($action == "save") {
     check_token("WHMCS.admin.default");
+    require_once ROOTDIR.'/includes/cloudytek/currency.php';
+    if (\Cloudytek\Currency::enabled() && in_array((int)$id,array(1,2),true)) {
+        $code=(int)$id===1?'VND':'USD';$prefix=(int)$id===1?'':'$';$suffix=(int)$id===1?' ₫':' USD';$format=(int)$id===1?4:2;
+        $fx=\Cloudytek\Currency::cache();$rate=(int)$id===1?1:number_format(1/$fx['usd_vnd'],12,'.','');
+    }
     if ($id == 1) {
         $rate = 1;
     }
@@ -54,6 +64,10 @@ if ($action == "save") {
 }
 if ($action == "delete") {
     check_token("WHMCS.admin.default");
+    require_once ROOTDIR.'/includes/cloudytek/currency.php';
+    if (\Cloudytek\Currency::enabled() && in_array((int)$id,array(1,2),true)) {
+        $aInt->gracefulExit('VND and USD are required by automatic currency synchronization.');exit;
+    }
     $result = select_query("tblclients", "COUNT(*)", array("currency" => $id));
     $data = mysql_fetch_array($result);
     $inuse = $data[0];
@@ -247,7 +261,7 @@ if (!$action) {
         echo "</td><td class=\"fieldarea\"><input type=\"text\" name=\"rate\" class=\"form-control input-150\" value=\"";
         echo $rate;
         echo "\"";
-        if ($id == 1) {
+        if ($id == 1 || (\Cloudytek\Currency::enabled() && (int)$id===2)) {
             echo " readonly=true disabled";
         }
         echo "> ";

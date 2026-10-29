@@ -10,7 +10,7 @@ namespace WHMCS\Utility;
 
 class Captcha
 {
-    public static $defaultFormSettings = NULL;
+    public static $defaultFormSettings = array();
     private $enabled = false;
     private $forms = array();
     public $recaptcha = NULL;
@@ -25,7 +25,7 @@ class Captcha
     public function __construct()
     {
         $isEnabled = $this->isSystemEnabledRuntime();
-        $this->captchaType = \WHMCS\Config\Setting::getValue("CaptchaType");
+        $this->captchaType = (string) \WHMCS\Config\Setting::getValue("CaptchaType");
         $this->setEnabled($isEnabled);
         $storedForms = $this->getStoredFormSettings();
         $defaultForms = static::getDefaultFormSettings();

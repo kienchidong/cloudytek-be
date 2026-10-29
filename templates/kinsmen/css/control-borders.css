@@ -1,0 +1,15 @@
+/* One control edge: replace the border color instead of stacking a glow and outline. */
+body.admin-layout :is(a,button,input,select,textarea,.btn){transition-property:background-color,color,border-color,opacity,transform!important}
+body.admin-layout :is(#main-body,.modal,.popover) :is(.form-control,input,select,textarea,.btn,button){box-shadow:none!important}
+body.admin-layout :is(#main-body,.modal,.popover) :is(input,select,textarea,.form-control):focus{outline:none!important;box-shadow:none!important;border-color:#1475bd!important}
+body.admin-layout :is(a,button,input,select,textarea,[tabindex]):focus{outline:none!important;box-shadow:none!important}
+/* A single inset edge replaces the existing border on keyboard-focused actions. */
+body.admin-layout :is(a,button,[tabindex],input[type=submit],input[type=button],input[type=checkbox],input[type=radio]):focus-visible,
+body.admin-layout :is(#main-body,.modal,.popover) :is(a,button,[tabindex],input[type=submit],input[type=button],input[type=checkbox],input[type=radio]):focus-visible{outline:2px solid #1475bd!important;outline-offset:-2px!important;border-color:transparent!important;box-shadow:none!important}
+body.admin-layout .portal-input-field{border:0!important;outline:0!important;box-shadow:none!important}
+body.admin-layout :is(.catalog-group.selected,.catalog-plan.featured){box-shadow:none!important}
+body.admin-layout :is(.catalog-group,.catalog-plan):focus-within{box-shadow:none!important}
+/* Joined controls share an edge rather than drawing two adjacent borders. */
+body.admin-layout .input-group .form-control:focus{z-index:3}
+body.admin-layout .input-group-btn>.btn{box-shadow:none!important}
+@media(forced-colors:active){body.admin-layout :is(input,select,textarea,.form-control):focus{border-color:Highlight!important}body.admin-layout :is(a,button,[tabindex],input[type=submit],input[type=button],input[type=checkbox],input[type=radio]):focus-visible{outline-color:Highlight!important}}

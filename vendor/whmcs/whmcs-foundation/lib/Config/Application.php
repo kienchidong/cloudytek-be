@@ -56,9 +56,9 @@ class Application extends AbstractConfig implements DatabaseInterface
             $data = array();
             foreach ($validVars as $var) {
                 if ($var == "outbound_http_ssl_verifyhost" || $var == "outbound_http_ssl_verifypeer") {
-                    $data[$var] = isset($var) ? (bool) ${$var} : false;
+                    $data[$var] = isset(${$var}) ? (bool) ${$var} : false;
                 } else {
-                    $data[$var] = isset($var) ? ${$var} : null;
+                    $data[$var] = isset(${$var}) ? ${$var} : null;
                 }
             }
             if (isset($data["db_host"])) {

@@ -65,7 +65,11 @@ class Application extends AbstractBootstrap
         }, "license" => function () {
             $app = \DI::make("app");
             $config = $app->getApplicationConfig();
-            $license = (new \WHMCS\License())->checkFile("a896faf2c31f2acd47b0eda0b3fd6070958f1161")->setSalt($app->get_config("Version"), $app->get_hash())->setLicenseKey($app->get_license_key())->setLocalKey($app->get_config("License"));
+            $localDemo = defined("WHMCS_LOCAL_DEMO") && WHMCS_LOCAL_DEMO
+                && PHP_SAPI === "cli-server"
+                && in_array(isset($_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : "", array("127.0.0.1", "::1"), true);
+            $licenseInstance = $localDemo ? new \WHMCS\LocalDemoLicense() : new \WHMCS\License();
+            $license = $licenseInstance->checkFile("a896faf2c31f2acd47b0eda0b3fd6070958f1161")->setSalt($app->get_config("Version"), $app->get_hash())->setLicenseKey($app->get_license_key())->setLocalKey($app->get_config("License"));
             if ($config["use_internal_licensing_validation"]) {
                 $license->useInternalValidationMirror();
             }

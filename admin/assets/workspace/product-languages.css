@@ -1,0 +1,6 @@
+.product-language-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;width:100%;margin:0 0 8px}
+.product-language-grid>label{display:flex;flex-direction:column;gap:8px;margin:0!important;font-size:13px;font-weight:600;color:#34465b}
+.product-language-grid input.form-control,.product-language-grid textarea.form-control{display:block!important;width:100%!important;max-width:none!important;margin:0;font-size:14px;font-weight:400;color:#34465b}
+.product-language-grid textarea{min-height:220px;resize:vertical;line-height:1.65}
+.product-language-hint{font-size:12px!important;line-height:1.6;color:#64748b;margin:8px 0}
+@media(max-width:767px){.product-language-grid{grid-template-columns:1fr}}

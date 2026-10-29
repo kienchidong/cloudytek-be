@@ -579,10 +579,17 @@ function createInvoicesProcess($data, $noemails = "", $nocredit = "")
         } else {
             logActivity("Credit Applied at Client Request on Checkout - Invoice ID: " . $invoiceid . " - Amount: " . $credit, $userid);
         }
-        insert_query("tblcredit", array("clientid" => $userid, "date" => "now()", "description" => "Credit Applied to Invoice #" . $invoiceid, "amount" => $credit * -1));
-        update_query("tblclients", array("credit" => $creditleft), array("id" => $userid));
-        update_query("tblinvoices", array("credit" => $credit), array("id" => $invoiceid));
-        updateInvoiceTotal($invoiceid);
+        require_once ROOTDIR . '/includes/cloudytek/wallet.php';
+        if (\Cloudytek\Wallet::installed()) {
+            \Cloudytek\Wallet::spend($invoiceid, $userid, (string)$credit, true);
+            $walletInvoice = WHMCS\Billing\Invoice::find($invoiceid);
+            $doprocesspaid = $walletInvoice && $walletInvoice->balance <= 0;
+        } else {
+            insert_query("tblcredit", array("clientid" => $userid, "date" => "now()", "description" => "Credit Applied to Invoice #" . $invoiceid, "amount" => $credit * -1));
+            update_query("tblclients", array("credit" => $creditleft), array("id" => $userid));
+            update_query("tblinvoices", array("credit" => $credit), array("id" => $invoiceid));
+            updateInvoiceTotal($invoiceid);
+        }
     }
     $invoice = WHMCS\Billing\Invoice::find($invoiceid);
     $invoice->save();

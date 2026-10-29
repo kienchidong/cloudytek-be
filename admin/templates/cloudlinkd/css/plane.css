@@ -1,0 +1,87 @@
+/* Native WHMCS pages follow the same compact workspace surfaces. */
+html.cloudytek-workspace-frame body.cloudytek-admin,html.cloudytek-workspace-frame .contentarea,html.cloudytek-standalone body.cloudytek-admin,html.cloudytek-standalone .contentarea{background:#fff!important;color:#4c5668!important}
+html.cloudytek-workspace-frame .panel,html.cloudytek-workspace-frame .tablebg,html.cloudytek-workspace-frame .well{border:1px solid #e6e8ef!important;border-radius:6px!important;background:#fff!important;box-shadow:none!important}
+html.cloudytek-workspace-frame .panel-heading,html.cloudytek-workspace-frame #contentarea table th,html.cloudytek-standalone #contentarea table th{background:#f8f9fc!important;color:#778297!important;font-size:11px!important;font-weight:500!important;border-color:#e9edf4!important}
+html.cloudytek-workspace-frame #contentarea table td,html.cloudytek-standalone #contentarea table td{color:#616d80!important;font-size:12px!important;border-color:#eef0f6!important;padding-top:11px!important;padding-bottom:11px!important}
+html.cloudytek-workspace-frame #contentarea table td a,html.cloudytek-standalone #contentarea table td a{color:#5781d8!important}
+html.cloudytek-workspace-frame .btn-primary,html.cloudytek-standalone .btn-primary{background:#3f76ff!important;border-color:#3f76ff!important;border-radius:5px!important;box-shadow:none!important}
+html.cloudytek-workspace-frame .form-control,html.cloudytek-standalone .form-control{border:1px solid #e0e5ef!important;border-radius:5px!important;box-shadow:none!important;background:#fff!important;color:#5c6880!important;font-size:12px!important}
+html.cloudytek-workspace-frame .nav-tabs>li.active>a{border-top-color:#3f76ff!important;color:#3f76ff!important}
+html.cloudytek-workspace-frame #sidebar,html.cloudytek-standalone .standalone-tools #sidebar{background:#f7f8fb!important;border:1px solid #e6eaf2!important;color:#707e95!important}
+html.cloudytek-workspace-frame #sidebar a,html.cloudytek-workspace-frame #sidebar span.header,html.cloudytek-standalone .standalone-tools #sidebar a,html.cloudytek-standalone .standalone-tools #sidebar span.header{color:#6b7892!important}
+html.cloudytek-standalone .navigation,html.cloudytek-standalone .header .logo{background:#f7f7f8!important;border-color:#e6e8ef!important}
+html.cloudytek-standalone #menu>li>a{color:#657084!important;font-size:12px!important;padding:10px 30px 10px 13px!important}
+html.cloudytek-standalone #menu>li>a:hover{background:#e9efff!important;color:#3f76ff!important}
+html.cloudytek-standalone #menu li ul{background:#f1f3f9!important}html.cloudytek-standalone #menu li ul a{color:#7b88a1!important;font-size:11px!important}
+html.cloudytek-standalone .standalone-expand{background:#eef0f6!important;color:#8b99b5!important}
+html.cloudytek-standalone .standalone-settings{margin-top:26px!important;border-top:1px solid #e3e6ed!important;padding-top:12px!important}
+html.cloudytek-standalone .cloudlinkd-mark{background:#3f76ff!important}html.cloudytek-standalone .topbar{background:#fff!important;border-color:#e8eaf0!important}html.cloudytek-standalone .topbar a{color:#7f8ba1!important}
+html.cloudytek-workspace-frame .ctk-linode{--ctk-primary:#3f76ff}
+/* Remove duplicate native title/search spacing inside the workspace. */
+html.cloudytek-workspace-frame .intelligent-search-container,html.cloudytek-workspace-frame #intelligentSearchResults{display:none!important}
+html.cloudytek-workspace-frame .contentarea{padding:12px 8px 18px!important;margin:0 10px!important;min-height:0!important}
+html.cloudytek-workspace-frame .global-admin-warning{margin:8px 18px 12px!important;font-size:11px}
+html.cloudytek-workspace-frame.workspace-context-open .contentarea{margin-left:245px!important}
+@media(max-width:767px){html.cloudytek-workspace-frame .contentarea{margin:0 4px!important;padding:10px 4px!important}html.cloudytek-workspace-frame.workspace-context-open .contentarea{margin-left:4px!important}}
+html.cloudytek-workspace-frame input.form-control,html.cloudytek-workspace-frame select.form-control{height:32px!important;min-height:32px!important;padding:5px 9px!important;font-size:12px!important}
+html.cloudytek-workspace-frame .btn{border-radius:5px!important;font-size:12px!important;padding:6px 10px!important;font-weight:500!important}
+html.cloudytek-workspace-frame .panel-heading{padding:10px 13px!important}.cloudytek-workspace-frame .panel-body{padding:13px!important}
+html.cloudytek-workspace-frame .search-bar{background:#fff!important;border:1px solid #e7ebf3!important;border-radius:5px!important;padding:12px!important;margin-bottom:14px!important}
+html.cloudytek-workspace-frame .search-bar .search-icon{display:none!important}html.cloudytek-workspace-frame .search-bar .search-fields{margin-left:0!important;padding-left:0!important;width:100%!important}
+html.cloudytek-workspace-frame .search-bar .form-group{margin-bottom:8px!important}html.cloudytek-workspace-frame .search-bar label{font-size:11px!important;font-weight:500!important;color:#7e8da7!important}
+html.cloudytek-workspace-frame.workspace-context-open .intelligent-search-container{display:block!important;position:fixed!important;top:12px!important;left:20px!important;right:auto!important;width:200px!important;z-index:1500!important}
+html.cloudytek-workspace-frame.workspace-context-open #intelligentSearchResults{display:block!important;position:fixed!important;left:20px!important;right:auto!important;top:50px!important;max-width:calc(100vw - 40px)!important;z-index:1501!important}
+/* Neutral links and tabs; no persistent mouse-focus ring. */
+html[data-focus-mode="pointer"] body.cloudytek-admin :is(a,button,input,select,textarea,[tabindex]):focus{outline:none!important;box-shadow:none!important}
+html[data-focus-mode="keyboard"] body.cloudytek-admin :is(a,button,input,select,textarea,[tabindex]):focus-visible{outline:1px solid #9ca3af!important;outline-offset:2px!important;box-shadow:none!important}
+body.cloudytek-admin a,body.cloudytek-admin a:hover,body.cloudytek-admin a:focus{text-decoration:none!important}
+body.cloudytek-admin a{color:#647084}
+body.cloudytek-admin a:is(:hover,:focus){color:#374151}
+body.cloudytek-admin .nav-tabs>li>a,body.cloudytek-admin #tabs a{color:#747e8e!important;text-decoration:none!important;font-weight:500!important}
+body.cloudytek-admin .nav-tabs>li.active>a,body.cloudytek-admin #tabs a.active{color:#4b5563!important;border-top-color:#d8dde5!important;border-bottom-color:transparent!important;background:#f4f5f7!important}
+html.cloudytek-workspace-frame #contentarea table td a,html.cloudytek-standalone #contentarea table td a{color:#647084!important}
+html.cloudytek-workspace-frame .btn-primary,html.cloudytek-standalone .btn-primary{background:#4b5563!important;border-color:#4b5563!important;color:#fff!important}
+html.cloudytek-workspace-frame .btn-primary:hover,html.cloudytek-standalone .btn-primary:hover{background:#374151!important;border-color:#374151!important}
+html.cloudytek-workspace-frame .nav-tabs>li.active>a{color:#4b5563!important;border-top-color:#d8dde5!important}
+body.cloudytek-admin .form-control:focus,body.cloudytek-admin select:focus{border-color:#aeb7c6!important;box-shadow:none!important}
+body.cloudytek-admin a.btn-success,body.cloudytek-admin a.btn-danger,body.cloudytek-admin a.btn-info,body.cloudytek-admin a.btn-warning{color:#fff!important}
+/* Match native switches, inputs and pagination controls to the workspace toolbar. */
+body.cloudytek-admin{--control-height:34px;font-weight:500}
+body.cloudytek-admin .btn{height:var(--control-height)!important;min-height:var(--control-height)!important;box-sizing:border-box!important;line-height:20px!important;padding-top:6px!important;padding-bottom:6px!important;font-weight:550!important;vertical-align:middle!important}
+html.cloudytek-workspace-frame input.form-control,html.cloudytek-workspace-frame select.form-control,body.cloudytek-admin input.form-control,body.cloudytek-admin select.form-control{height:var(--control-height)!important;min-height:var(--control-height)!important;box-sizing:border-box!important;padding-top:6px!important;padding-bottom:6px!important;font-weight:500!important}
+body.cloudytek-admin label,body.cloudytek-admin .fieldlabel{font-weight:550!important}
+html.cloudytek-workspace-frame #contentarea table th,html.cloudytek-standalone #contentarea table th{font-weight:600!important}
+html.cloudytek-workspace-frame #contentarea table td,html.cloudytek-standalone #contentarea table td{font-weight:500!important}
+body.cloudytek-admin .bootstrap-switch{height:var(--control-height)!important;min-height:var(--control-height)!important;max-height:var(--control-height)!important;border:1px solid #d8dde5!important;box-sizing:border-box!important;border-radius:6px!important;vertical-align:middle!important;line-height:normal!important}
+body.cloudytek-admin .bootstrap-switch .bootstrap-switch-container{height:32px!important;white-space:nowrap!important}
+body.cloudytek-admin .bootstrap-switch :is(.bootstrap-switch-handle-on,.bootstrap-switch-handle-off,.bootstrap-switch-label){height:32px!important;min-height:32px!important;box-sizing:border-box!important;line-height:32px!important;padding-top:0!important;padding-bottom:0!important;vertical-align:top!important;font-size:12px!important;font-weight:500!important}
+body.cloudytek-admin .bootstrap-switch .bootstrap-switch-handle-on{background:#687482!important;color:#fff!important}
+body.cloudytek-admin .bootstrap-switch .bootstrap-switch-handle-off{background:#eef0f4!important;color:#788292!important}
+body.cloudytek-admin .bootstrap-switch .bootstrap-switch-label{background:#fff!important;color:#657183!important}
+body.cloudytek-admin .paging-dropdown{vertical-align:middle!important;margin-left:8px!important}
+body.cloudytek-admin .paging-dropdown>.btn{height:var(--control-height)!important;min-height:var(--control-height)!important;margin-top:0!important;margin-bottom:0!important}
+body.cloudytek-admin .workspace-list-controls{margin-bottom:12px}
+body.cloudytek-admin .workspace-list-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 0;margin-top:10px;border-top:1px solid #eceef2}
+body.cloudytek-admin .workspace-record-summary{font-size:12px;font-weight:500;color:#7d8898;line-height:1.6}
+body.cloudytek-admin .workspace-list-footer .pagination{margin:0!important}
+body.cloudytek-admin .workspace-list-footer>.text-center{margin-left:auto}
+@media(max-width:767px){body.cloudytek-admin .workspace-list-footer{gap:12px}body.cloudytek-admin .workspace-record-summary{font-size:11px}body.cloudytek-admin .workspace-list-footer>.text-center{max-width:100%;overflow-x:auto}}
+/* Controls own their text colors, including links inside native tables. */
+body.cloudytek-admin #contentarea :is(.btn-primary,.btn-success,.btn-danger,.btn-info){color:#fff!important}
+body.cloudytek-admin #contentarea .btn-primary{background:#4b5563!important;border-color:#4b5563!important}
+body.cloudytek-admin #contentarea .btn-primary:is(:hover,:focus,:active,.active){background:#374151!important;border-color:#374151!important;color:#fff!important}
+body.cloudytek-admin #contentarea .btn-success{background:#237744!important;border-color:#237744!important}
+body.cloudytek-admin #contentarea .btn-success:is(:hover,:focus,:active,.active){background:#195d33!important;border-color:#195d33!important;color:#fff!important}
+body.cloudytek-admin #contentarea .btn-danger{background:#b73535!important;border-color:#b73535!important}
+body.cloudytek-admin #contentarea .btn-danger:is(:hover,:focus,:active,.active){background:#962929!important;border-color:#962929!important;color:#fff!important}
+body.cloudytek-admin #contentarea .btn-info{background:#176780!important;border-color:#176780!important}
+body.cloudytek-admin #contentarea .btn-info:is(:hover,:focus,:active,.active){background:#105268!important;border-color:#105268!important;color:#fff!important}
+body.cloudytek-admin #contentarea .btn-warning{background:#fff0c2!important;border-color:#e3c66f!important;color:#734b0b!important}
+body.cloudytek-admin #contentarea .btn-warning:is(:hover,:focus,:active,.active){background:#ffe6a0!important;border-color:#cfad4f!important;color:#5e3b07!important}
+body.cloudytek-admin #contentarea .btn-default{background:#fff!important;border-color:#d5dbe3!important;color:#4b5563!important}
+body.cloudytek-admin #contentarea .btn-default:is(:hover,:focus,:active,.active){background:#eef1f5!important;border-color:#b9c2ce!important;color:#303b4b!important}
+body.cloudytek-admin #contentarea .btn:is(:disabled,.disabled){opacity:1!important;background:#edf0f4!important;border-color:#dce1e8!important;color:#687485!important;cursor:not-allowed}
+body.cloudytek-admin .ctk-linode{--ctk-accent:#4b5563}
+body.cloudytek-admin #contentarea :not(.btn-group,.btn-group-vertical,.input-group-btn,.input-group,.btn-toolbar)>.btn+.btn{margin-left:8px!important}
+body.cloudytek-admin #contentarea .btn-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-left:0}
+body.cloudytek-admin #contentarea .btn-toolbar>:is(.btn,.btn-group){margin-left:0!important}

@@ -579,10 +579,15 @@ if ($action == "") {
             if ($credit < $removecredit) {
                 redir("action=edit&id=" . $id . "&creditremove=exceedtotal");
             } else {
-                update_query("tblinvoices", array("credit" => "-=" . $removecredit), array("id" => (int) $id));
-                updateInvoiceTotal($id);
-                update_query("tblclients", array("credit" => "+=" . $removecredit), array("id" => (int) $userid));
-                insert_query("tblcredit", array("clientid" => $userid, "date" => "now()", "description" => "Credit Removed from Invoice #" . $id, "amount" => $removecredit));
+                require_once ROOTDIR.'/includes/cloudytek/wallet.php';
+                if (\Cloudytek\Wallet::installed()) {
+                    \Cloudytek\Wallet::refundInvoice($id, 'Wallet credit removed from invoice #'.$id, (string)$removecredit);
+                } else {
+                    update_query("tblinvoices", array("credit" => "-=" . $removecredit), array("id" => (int) $id));
+                    updateInvoiceTotal($id);
+                    update_query("tblclients", array("credit" => "+=" . $removecredit), array("id" => (int) $userid));
+                    insert_query("tblcredit", array("clientid" => $userid, "date" => "now()", "description" => "Credit Removed from Invoice #" . $id, "amount" => $removecredit));
+                }
                 logActivity("Credit Removed - Amount: " . $removecredit . " - Invoice ID: " . $id, $userid);
                 if ($status == "Paid") {
                     update_query("tblinvoices", array("status" => "Refunded"), array("id" => $id));

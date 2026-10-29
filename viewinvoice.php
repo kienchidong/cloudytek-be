@@ -62,6 +62,10 @@ $creditbal = get_query_val("tblclients", "credit", array("id" => $invoice->getDa
 if ($invoice->getData("status") == "Unpaid" && 0 < $creditbal && !$invoice->isAddFundsInvoice()) {
     $balance = $invoice->getData("balance");
     $creditamount = $whmcs->get_req_var("creditamount");
+    if($creditamount && \Cloudytek\Currency::enabled()) {
+        if(!is_numeric($creditamount) || (float)$creditamount<=0){http_response_code(400);exit('Invalid credit amount.');}
+        $creditamount=\Cloudytek\Currency::convert($creditamount,\Cloudytek\Currency::displayCurrency(),getCurrency($invoice->getData('userid')));
+    }
     if ($whmcs->get_req_var("applycredit") && 0 < $creditamount) {
         check_token();
         if ($creditbal < $creditamount) {

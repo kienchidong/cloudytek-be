@@ -1,0 +1,15 @@
+/* Frame the supplied logo, keeping its original image unchanged. */
+.ctk-logo{display:inline-block;position:relative;flex:none;width:160px;height:70px;overflow:hidden;vertical-align:middle;background:transparent;border-radius:4px;line-height:0}
+.ctk-logo>img{display:block;position:absolute;left:-6.214%;top:-31.696%;width:115.34%!important;max-width:none!important;height:auto!important;margin:0!important;padding:0!important;border:0!important}
+.portal-login-brand .ctk-logo,.member-brand .ctk-logo{width:112px;height:49px}
+.portal-welcome-brand .ctk-logo,.registration-welcome-brand .ctk-logo{width:132px;height:58px}
+.cloudlinkd-brand .ctk-logo{width:138px;height:60px}
+.cloudlinkd-brand{gap:10px}
+.global-brand .ctk-logo{width:96px;height:42px}
+.ctk-admin-login-logo .ctk-logo{width:230px;height:100px}
+.ctk-admin-login-logo{height:auto!important;background:none!important;text-align:center}
+@media(max-width:767px){
+ .portal-login-brand .ctk-logo,.member-brand .ctk-logo{width:96px;height:42px}
+ .global-brand .ctk-logo{width:85px;height:37px}
+ .cloudlinkd-brand .ctk-logo{width:110px;height:48px}
+}

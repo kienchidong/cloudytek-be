@@ -1,0 +1,31 @@
+/* Shared by the client theme and native administration pages. */
+body.admin-layout{--ctk-phone-height:40px}body.portal-register-page{--ctk-phone-height:45px}body.cloudytek-admin{--ctk-phone-height:34px}
+:is(body.admin-layout,body.cloudytek-admin) .intl-tel-input{display:block;position:relative;width:100%;height:var(--ctk-phone-height);min-width:0;box-sizing:border-box;vertical-align:middle}
+body :is(#registration,#contentarea,#main-body) .intl-tel-input input[type=tel]{display:block;width:100%;height:var(--ctk-phone-height)!important;min-height:var(--ctk-phone-height)!important;margin:0!important;padding-left:108px!important;box-sizing:border-box!important}
+:is(body.admin-layout,body.cloudytek-admin) .intl-tel-input .flag-container{position:absolute;top:1px!important;bottom:1px!important;left:1px!important;right:auto;padding:0!important;height:auto!important;box-sizing:border-box;z-index:2}
+body :is(#registration,#contentarea,#main-body) .intl-tel-input .selected-flag{position:relative;display:flex!important;align-items:center;gap:7px;width:96px!important;height:100%!important;min-height:0!important;padding:0 9px!important;box-sizing:border-box!important;border:0!important;border-right:1px solid #dce3ec!important;border-radius:6px 0 0 6px!important;background:#f3f6fa!important;outline:none;line-height:normal;color:#53647a}
+:is(body.admin-layout,body.cloudytek-admin) .intl-tel-input .selected-flag .iti-flag{position:static!important;flex:none;margin:0!important}
+:is(body.admin-layout,body.cloudytek-admin) .intl-tel-input .selected-dial-code{padding:0!important;margin:0!important;font-size:12px;line-height:1;white-space:nowrap}
+:is(body.admin-layout,body.cloudytek-admin) .intl-tel-input .iti-arrow{position:static!important;margin:0 0 0 auto!important;flex:none}
+:is(body.admin-layout,body.cloudytek-admin) .intl-tel-input .country-list{max-width:min(380px,calc(100vw - 42px));border:1px solid #d7e0eb;border-radius:8px;box-shadow:0 6px 18px #273e5c18;z-index:1010;text-align:left}
+/* Retain the plugin's input, sizing, slide animation and change events. */
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch{height:34px!important;min-height:34px!important;max-height:34px!important;box-sizing:border-box!important;border:1px solid #cad4e1!important;border-radius:999px!important;overflow:hidden!important;box-shadow:none!important;vertical-align:middle!important;isolation:isolate}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch .bootstrap-switch-container{height:32px!important;white-space:nowrap!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch :is(.bootstrap-switch-handle-on,.bootstrap-switch-handle-off,.bootstrap-switch-label){height:32px!important;min-height:32px!important;line-height:32px!important;padding-top:0!important;padding-bottom:0!important;box-sizing:border-box!important;border:0!important;border-radius:0!important;font:550 12px/32px 'Segoe UI',Arial,sans-serif!important;box-shadow:none!important;vertical-align:top!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch .bootstrap-switch-handle-on{background:#237744!important;color:#fff!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch .bootstrap-switch-handle-off{background:#e4eaf1!important;color:#4f6075!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch .bootstrap-switch-label{background:#fff!important;color:#4f6075!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle.bootstrap-switch-on{background:#237744!important;border-color:#237744!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle.bootstrap-switch-off{background:#e4eaf1!important;border-color:#cad4e1!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle .bootstrap-switch-label{position:relative;background:transparent!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle .bootstrap-switch-label:after{content:'';position:absolute;top:4px;left:50%;transform:translateX(-50%);width:24px;height:24px;box-sizing:border-box;background:#fff;border:1px solid #d0dae5;border-radius:50%;pointer-events:none;box-shadow:0 1px 2px #243c5e14}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle .bootstrap-switch-handle-on,body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle .bootstrap-switch-handle-off{background:transparent!important}
+body.cloudytek-admin .bootstrap-switch.ui-toggle.bootstrap-switch-on{background:#4b5563!important;border-color:#4b5563!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch:focus-within{border-color:#1475bd!important;box-shadow:none!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch:is(.bootstrap-switch-disabled,.bootstrap-switch-readonly){opacity:.6;cursor:not-allowed}
+@media(prefers-reduced-motion:reduce){body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch .bootstrap-switch-container{transition:none!important}}
+/* A compact 48 x 26 track for switches without a descriptive middle label. */
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle{height:26px!important;min-height:26px!important;max-height:26px!important;border-radius:13px!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle .bootstrap-switch-container{height:24px!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle :is(.bootstrap-switch-handle-on,.bootstrap-switch-handle-off,.bootstrap-switch-label){height:24px!important;min-height:24px!important;line-height:24px!important;padding:0!important;font-size:0!important;color:transparent!important}
+body:is(.admin-layout,.cloudytek-admin) .bootstrap-switch.ui-toggle .bootstrap-switch-label:after{top:2px;width:20px;height:20px;border:0;box-shadow:0 1px 2px #132d4a26}

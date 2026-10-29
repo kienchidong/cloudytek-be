@@ -1,0 +1,3243 @@
+{
+    "api_version": "4.229.1",
+    "checks": 1155,
+    "operations": 539,
+    "resource_families": 14,
+    "live_verified": false,
+    "coverage": {
+        "get-account": {
+            "method": "GET",
+            "path": "/{apiVersion}/account",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-account": {
+            "method": "PUT",
+            "path": "/{apiVersion}/account",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-account-agreements": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/agreements",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-account-agreements": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/agreements",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-availability": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/availability",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-account-availability": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/availability/{regionId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-beta-program": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/betas",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-enrolled-beta-programs": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/betas",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-enrolled-beta-program": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/betas/{betaId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-cancel-account": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/cancel",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-child-accounts": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/child-accounts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-child-account": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/child-accounts/{euuId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-child-account-token": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/child-accounts/{euuId}/token",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-credit-card": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/credit-card",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-entity-transfer": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/entity-transfers",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-entity-transfers": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/entity-transfers",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-entity-transfer": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/entity-transfers/{token}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-entity-transfer": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/account/entity-transfers/{token}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-accept-entity-transfer": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/entity-transfers/{token}/accept",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-events": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/events",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-event": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/events/{eventId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-event-seen": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/events/{eventId}/seen",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-invoices": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/invoices",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-invoice": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/invoices/{invoiceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-invoice-items": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/invoices/{invoiceId}/items",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-account-logins": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/logins",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-account-login": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/logins/{loginId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-maintenance": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/maintenance",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-notifications": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/notifications",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-client": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/oauth-clients",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-clients": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/oauth-clients",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-client": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/oauth-clients/{clientId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-client": {
+            "method": "PUT",
+            "path": "/{apiVersion}/account/oauth-clients/{clientId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-client": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/account/oauth-clients/{clientId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-reset-client-secret": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/oauth-clients/{clientId}/reset-secret",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-client-thumbnail": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/oauth-clients/{clientId}/thumbnail",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-client-thumbnail": {
+            "method": "PUT",
+            "path": "/{apiVersion}/account/oauth-clients/{clientId}/thumbnail",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-payment-method": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/payment-methods",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-payment-methods": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/payment-methods",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-payment-method": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/payment-methods/{paymentMethodId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-payment-method": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/account/payment-methods/{paymentMethodId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-make-payment-method-default": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/payment-methods/{paymentMethodId}/make-default",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-payment": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/payments",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-payments": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/payments",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-pay-pal-payment": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/payments/paypal",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-execute-pay-pal-payment": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/payments/paypal/execute",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-payment": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/payments/{paymentId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-promo-credit": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/promo-codes",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-service-transfer": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/service-transfers",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-service-transfers": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/service-transfers",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-service-transfer": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/service-transfers/{token}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-service-transfer": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/account/service-transfers/{token}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-accept-service-transfer": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/service-transfers/{token}/accept",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-account-settings": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/settings",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-account-settings": {
+            "method": "PUT",
+            "path": "/{apiVersion}/account/settings",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-enable-account-managed": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/settings/managed-enable",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-tfa-optional-users": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/tfa-optional-users",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-tfa-optional-users": {
+            "method": "PUT",
+            "path": "/{apiVersion}/account/tfa-optional-users",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-transfer": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/transfer",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-user": {
+            "method": "POST",
+            "path": "/{apiVersion}/account/users",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-users": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/users",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-user": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/users/{username}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-user": {
+            "method": "PUT",
+            "path": "/{apiVersion}/account/users/{username}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-user": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/account/users/{username}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-user-grants": {
+            "method": "GET",
+            "path": "/{apiVersion}/account/users/{username}/grants",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-user-grants": {
+            "method": "PUT",
+            "path": "/{apiVersion}/account/users/{username}/grants",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-beta-programs": {
+            "method": "GET",
+            "path": "/{apiVersion}/betas",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-beta-program": {
+            "method": "GET",
+            "path": "/{apiVersion}/betas/{betaId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-engines": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/engines",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-engine": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/engines/{engineId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-instances": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-mysql-config": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/mysql/config",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-mysql-instances": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/mysql/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-mysql-instances": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/mysql/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-mysql-instance": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-databases-mysql-instance": {
+            "method": "PUT",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-databases-mysql-instance": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-mysql-instance-credentials": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}/credentials",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-mysql-instance-credentials-reset": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}/credentials/reset",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-mysql-instance-patch": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}/patch",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "resume-databases-mysql-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}/resume",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-mysql-instance-ssl": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}/ssl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "suspend-databases-mysql-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/mysql/instances/{mysqlInstanceId}/suspend",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-postgresql-config": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/postgresql/config",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-postgre-sql-instances": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/postgresql/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-postgre-sql-instances": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/postgresql/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-postgre-sql-instance": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-databases-postgre-sql-instance": {
+            "method": "PUT",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-databases-postgre-sql-instance": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-postgre-sql-conn-pools": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/connection-pools",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-postgre-sql-conn-pools": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/connection-pools",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-postgre-sql-conn-pool": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/connection-pools/{poolName}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-databases-postgre-sql-conn-pool": {
+            "method": "PUT",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/connection-pools/{poolName}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-databases-postgre-sql-conn-pool": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/connection-pools/{poolName}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-postgre-sql-instance-credentials": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/credentials",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-postgre-sql-instance-credentials-reset": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/credentials/reset",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-postgre-sql-instance-patch": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/patch",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "resume-databases-postgre-sql-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/resume",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-postgresql-instance-ssl": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/ssl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "suspend-databases-postgre-sql-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/postgresql/instances/{postgresqlInstanceId}/suspend",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-types": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/types",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-type": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/types/{typeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-valkey-config": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/valkey/config",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-valkey-instances": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/valkey/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-valkey-instances": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/valkey/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-valkey-instance": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-databases-valkey-instance": {
+            "method": "PUT",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-databases-valkey-instance": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-valkey-instance-credentials": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}/credentials",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-valkey-instance-credentials-reset": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}/credentials/reset",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-databases-valkey-instance-patch": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}/patch",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "resume-databases-valkey-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}/resume",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-databases-valkey-instance-ssl": {
+            "method": "GET",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}/ssl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "suspend-databases-valkey-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/databases/valkey/instances/{valkeyInstanceId}/suspend",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-domain": {
+            "method": "POST",
+            "path": "/{apiVersion}/domains",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-domains": {
+            "method": "GET",
+            "path": "/{apiVersion}/domains",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-import-domain": {
+            "method": "POST",
+            "path": "/{apiVersion}/domains/import",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-domain": {
+            "method": "GET",
+            "path": "/{apiVersion}/domains/{domainId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-domain": {
+            "method": "PUT",
+            "path": "/{apiVersion}/domains/{domainId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-domain": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/domains/{domainId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-clone-domain": {
+            "method": "POST",
+            "path": "/{apiVersion}/domains/{domainId}/clone",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-domain-record": {
+            "method": "POST",
+            "path": "/{apiVersion}/domains/{domainId}/records",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-domain-records": {
+            "method": "GET",
+            "path": "/{apiVersion}/domains/{domainId}/records",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-domain-record": {
+            "method": "GET",
+            "path": "/{apiVersion}/domains/{domainId}/records/{recordId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-domain-record": {
+            "method": "PUT",
+            "path": "/{apiVersion}/domains/{domainId}/records/{recordId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-domain-record": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/domains/{domainId}/records/{recordId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-domain-zone": {
+            "method": "GET",
+            "path": "/{apiVersion}/domains/{domainId}/zone-file",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-entities": {
+            "method": "GET",
+            "path": "/{apiVersion}/entities",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-iam-delegation-all-child-accounts": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/delegation/child-accounts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-iam-delegation-child-account-users": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/delegation/child-accounts/{euuid}/users",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-iam-delegation-child-account-users": {
+            "method": "PUT",
+            "path": "/{apiVersion}/iam/delegation/child-accounts/{euuid}/users",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-iam-delegation-default-role-permissions": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/delegation/default-role-permissions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-iam-delegation-default-role-permissions": {
+            "method": "PUT",
+            "path": "/{apiVersion}/iam/delegation/default-role-permissions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-iam-delegation-profile-child-account": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/delegation/profile/child-accounts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-delegation-profile-child-account": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/delegation/profile/child-accounts/{euuid}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-iam-delegation-profile-child-account-token": {
+            "method": "POST",
+            "path": "/{apiVersion}/iam/delegation/profile/child-accounts/{euuid}/token",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-iam-delegation-user-child-accounts": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/delegation/users/{username}/child-accounts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-idp-config": {
+            "method": "POST",
+            "path": "/{apiVersion}/iam/idp-configs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-idp-configs": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/idp-configs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-idp-config": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-idp-config": {
+            "method": "PUT",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-idp-config": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-idp-config-certificate": {
+            "method": "POST",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}/certificates",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-idp-config-certificates": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}/certificates",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-idp-config-certificate": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}/certificates/{certificateId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-idp-config-users-excluded": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}/users-excluded",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-idp-config-users-excluded": {
+            "method": "PUT",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}/users-excluded",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-idp-config-users-included": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}/users-included",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-idp-config-users-included": {
+            "method": "PUT",
+            "path": "/{apiVersion}/iam/idp-configs/{idpConfigId}/users-included",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-role-permissions": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/role-permissions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-iam-users-role-permissions": {
+            "method": "GET",
+            "path": "/{apiVersion}/iam/users/{username}/role-permissions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-iam-users-role-permissions": {
+            "method": "PUT",
+            "path": "/{apiVersion}/iam/users/{username}/role-permissions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-image": {
+            "method": "POST",
+            "path": "/{apiVersion}/images",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-images": {
+            "method": "GET",
+            "path": "/{apiVersion}/images",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-sharegroups": {
+            "method": "POST",
+            "path": "/{apiVersion}/images/sharegroups",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-sharegroups": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-sharegroup-tokens": {
+            "method": "POST",
+            "path": "/{apiVersion}/images/sharegroups/tokens",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-user-tokens": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups/tokens",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-sharegroup-token": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups/tokens/{tokenUuid}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-sharegroup-token": {
+            "method": "PUT",
+            "path": "/{apiVersion}/images/sharegroups/tokens/{tokenUuid}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-sharegroup-token": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/images/sharegroups/tokens/{tokenUuid}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-sharegroup-by-token": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups/tokens/{tokenUuid}/sharegroup",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-sharegroup-images-by-token": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups/tokens/{tokenUuid}/sharegroup/images",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-sharegroup": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-sharegroup": {
+            "method": "PUT",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-sharegroup": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-sharegroup-images": {
+            "method": "POST",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/images",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-sharegroup-images": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/images",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-sharegroup-imageshare": {
+            "method": "PUT",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/images/{imageId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-sharegroup-imageshare": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/images/{imageId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-sharegroup-members": {
+            "method": "POST",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/members",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-sharegroup-members": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/members",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-sharegroup-member-token": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-sharegroup-member-token": {
+            "method": "PUT",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-sharegroup-member-token": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-upload-image": {
+            "method": "POST",
+            "path": "/{apiVersion}/images/upload",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-image": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/{imageId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-image": {
+            "method": "PUT",
+            "path": "/{apiVersion}/images/{imageId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-image": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/images/{imageId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-replicate-image": {
+            "method": "POST",
+            "path": "/{apiVersion}/images/{imageId}/regions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-images-sharegroups-image": {
+            "method": "GET",
+            "path": "/{apiVersion}/images/{imageId}/sharegroups",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-instances": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-instance": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-linode-instance": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/instances/{linodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-linode-instance": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/linode/instances/{linodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-snapshot": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/backups",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-backups": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/backups",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-cancel-backups": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/backups/cancel",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-enable-backups": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/backups/enable",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-backup": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/backups/{backupId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-restore-backup": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/backups/{backupId}/restore",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-boot-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/boot",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-clone-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/clone",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-add-linode-config": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-configs": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-config": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-linode-config": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-linode-config": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-linode-config-interface": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-config-interfaces": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-linode-config-interfaces": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces/order",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-config-interface": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-linode-config-interface": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-linode-config-interface": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-add-linode-disk": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/disks",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-disks": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/disks",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-disk": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/disks/{diskId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-disk": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/disks/{diskId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-disk": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/disks/{diskId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-clone-linode-disk": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/disks/{diskId}/clone",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-reset-disk-password": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/disks/{diskId}/password",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-resize-disk": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/disks/{diskId}/resize",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-firewalls": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/firewalls",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-linode-firewalls": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/firewalls",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-apply-firewalls": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/firewalls/apply",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-linode-interface": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-interfaces": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-interface-history": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces/history",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-interface-settings": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces/settings",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-linode-interface-settings": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces/settings",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-interface": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces/{interfaceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-linode-interface": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces/{interfaceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-linode-interface": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces/{interfaceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-interface-firewalls": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/interfaces/{interfaceId}/firewalls",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-add-linode-ip": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/ips",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-ips": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/ips",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-ip": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/ips/{address}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-linode-ip": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/ips/{address}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-linode-ip": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/ips/{address}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-migrate-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/migrate",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-mutate-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/mutate",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-node-balancers": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/nodebalancers",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-reset-linode-password": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/password",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-reboot-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/reboot",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-rebuild-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/rebuild",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-rescue-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/rescue",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-resize-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/resize",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-shutdown-linode-instance": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/shutdown",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-stats": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/stats",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-stats-by-year-month": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/stats/{year}/{month}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-transfer": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/transfer",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-transfer-by-year-month": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/transfer/{year}/{month}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-upgrade-linode-interfaces": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/upgrade-interfaces",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-volumes": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/instances/{linodeId}/volumes",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-kernels": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/kernels",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-kernel": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/kernels/{kernelId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-add-stack-script": {
+            "method": "POST",
+            "path": "/{apiVersion}/linode/stackscripts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-stack-scripts": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/stackscripts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-stack-script": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/stackscripts/{stackscriptId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-stack-script": {
+            "method": "PUT",
+            "path": "/{apiVersion}/linode/stackscripts/{stackscriptId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-stack-script": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/linode/stackscripts/{stackscriptId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-types": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/types",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-linode-type": {
+            "method": "GET",
+            "path": "/{apiVersion}/linode/types/{typeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-lke-cluster": {
+            "method": "POST",
+            "path": "/{apiVersion}/lke/clusters",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-clusters": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-cluster": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-lke-cluster": {
+            "method": "PUT",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-lke-cluster": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-cluster-api-endpoints": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/api-endpoints",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-cluster-acl": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/control_plane_acl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-lke-cluster-acl": {
+            "method": "PUT",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/control_plane_acl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-lke-cluster-acl": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/control_plane_acl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-cluster-dashboard": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/dashboard",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-cluster-kubeconfig": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/kubeconfig",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-lke-cluster-kubeconfig": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/kubeconfig",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-cluster-node": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/nodes/{nodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-lke-cluster-node": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/nodes/{nodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-lke-cluster-node-recycle": {
+            "method": "POST",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/nodes/{nodeId}/recycle",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-lke-cluster-pools": {
+            "method": "POST",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/pools",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-cluster-pools": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/pools",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-node-pool": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/pools/{poolId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-lke-node-pool": {
+            "method": "PUT",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/pools/{poolId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-lke-node-pool": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/pools/{poolId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-lke-cluster-pool-recycle": {
+            "method": "POST",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/pools/{poolId}/recycle",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-lke-cluster-recycle": {
+            "method": "POST",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/recycle",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-lke-cluster-regenerate": {
+            "method": "POST",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/regenerate",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-lke-service-token": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/lke/clusters/{clusterId}/servicetoken",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-tiers-versions": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/tiers/{tier}/versions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-tiers-version": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/tiers/{tier}/versions/{version}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-types": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/types",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-versions": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/versions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-lke-version": {
+            "method": "GET",
+            "path": "/{apiVersion}/lke/versions/{version}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-resource-lock": {
+            "method": "POST",
+            "path": "/{apiVersion}/locks",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-resource-locks": {
+            "method": "GET",
+            "path": "/{apiVersion}/locks",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-resource-lock": {
+            "method": "GET",
+            "path": "/{apiVersion}/locks/{resourceLockId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-resource-lock": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/locks/{resourceLockId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-longview-client": {
+            "method": "POST",
+            "path": "/{apiVersion}/longview/clients",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-longview-clients": {
+            "method": "GET",
+            "path": "/{apiVersion}/longview/clients",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-longview-client": {
+            "method": "GET",
+            "path": "/{apiVersion}/longview/clients/{clientId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-longview-client": {
+            "method": "PUT",
+            "path": "/{apiVersion}/longview/clients/{clientId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-longview-client": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/longview/clients/{clientId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-longview-plan": {
+            "method": "GET",
+            "path": "/{apiVersion}/longview/plan",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-longview-plan": {
+            "method": "PUT",
+            "path": "/{apiVersion}/longview/plan",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-longview-subscriptions": {
+            "method": "GET",
+            "path": "/{apiVersion}/longview/subscriptions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-longview-subscription": {
+            "method": "GET",
+            "path": "/{apiVersion}/longview/subscriptions/{subscriptionId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-longview-types": {
+            "method": "GET",
+            "path": "/{apiVersion}/longview/types",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-maintenance-policies": {
+            "method": "GET",
+            "path": "/{apiVersion}/maintenance/policies",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-managed-contact": {
+            "method": "POST",
+            "path": "/{apiVersion}/managed/contacts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-contacts": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/contacts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-contact": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/contacts/{contactId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-managed-contact": {
+            "method": "PUT",
+            "path": "/{apiVersion}/managed/contacts/{contactId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-managed-contact": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/managed/contacts/{contactId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-managed-credential": {
+            "method": "POST",
+            "path": "/{apiVersion}/managed/credentials",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-credentials": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/credentials",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-ssh-key": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/credentials/sshkey",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-credential": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/credentials/{credentialId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-managed-credential": {
+            "method": "PUT",
+            "path": "/{apiVersion}/managed/credentials/{credentialId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-managed-credential-revoke": {
+            "method": "POST",
+            "path": "/{apiVersion}/managed/credentials/{credentialId}/revoke",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-managed-credential-username-password": {
+            "method": "POST",
+            "path": "/{apiVersion}/managed/credentials/{credentialId}/update",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-issues": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/issues",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-issue": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/issues/{issueId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-linode-settings": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/linode-settings",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-linode-setting": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/linode-settings/{linodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-managed-linode-setting": {
+            "method": "PUT",
+            "path": "/{apiVersion}/managed/linode-settings/{linodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-managed-service": {
+            "method": "POST",
+            "path": "/{apiVersion}/managed/services",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-services": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/services",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-service": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/services/{serviceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-managed-service": {
+            "method": "PUT",
+            "path": "/{apiVersion}/managed/services/{serviceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-managed-service": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/managed/services/{serviceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-disable-managed-service": {
+            "method": "POST",
+            "path": "/{apiVersion}/managed/services/{serviceId}/disable",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-enable-managed-service": {
+            "method": "POST",
+            "path": "/{apiVersion}/managed/services/{serviceId}/enable",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-managed-stats": {
+            "method": "GET",
+            "path": "/{apiVersion}/managed/stats",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-marketplace-contact": {
+            "method": "POST",
+            "path": "/{apiVersion}/marketplace",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-notification-channel": {
+            "method": "POST",
+            "path": "/{apiVersion}/monitor/alert-channels",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-notification-channels": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/alert-channels",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-notification-channel": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/alert-channels/{channelId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-notification-channel": {
+            "method": "PUT",
+            "path": "/{apiVersion}/monitor/alert-channels/{channelId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-notification-channel": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/monitor/alert-channels/{channelId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-notification-channel-alerts": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/alert-channels/{channelId}/alerts",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-alert-definitions": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/alert-definitions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-dashboards-all": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/dashboards",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-dashboards-by-id": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/dashboards/{dashboardId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-monitor-services": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/services",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-monitor-services-for-service-type": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/services/{serviceType}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-alert-definition-for-service-type": {
+            "method": "POST",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/alert-definitions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-alert-definitions-for-service-type": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/alert-definitions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-alert-definition": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/alert-definitions/{alertId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-alert-definition": {
+            "method": "PUT",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/alert-definitions/{alertId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-alert-definition": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/alert-definitions/{alertId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-clone-alert-definition": {
+            "method": "POST",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/alert-definitions/{alertId}/clone",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-alert-definition-entities": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/alert-definitions/{alertId}/entities",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-dashboards": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/dashboards",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-monitor-information": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/metric-definitions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-read-metric": {
+            "method": "POST",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/metrics",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-get-token": {
+            "method": "POST",
+            "path": "/{apiVersion}/monitor/services/{serviceType}/token",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-stream": {
+            "method": "POST",
+            "path": "/{apiVersion}/monitor/streams",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-streams": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/streams",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-destination": {
+            "method": "POST",
+            "path": "/{apiVersion}/monitor/streams/destinations",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-destinations": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/streams/destinations",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-destination": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/streams/destinations/{destinationId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-destination": {
+            "method": "PUT",
+            "path": "/{apiVersion}/monitor/streams/destinations/{destinationId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-destination": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/monitor/streams/destinations/{destinationId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-destination-history": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/streams/destinations/{destinationId}/history",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-stream": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/streams/{streamId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-stream": {
+            "method": "PUT",
+            "path": "/{apiVersion}/monitor/streams/{streamId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-stream": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/monitor/streams/{streamId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-stream-history": {
+            "method": "GET",
+            "path": "/{apiVersion}/monitor/streams/{streamId}/history",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-network-transfer-prices": {
+            "method": "GET",
+            "path": "/{apiVersion}/network-transfer/prices",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-firewalls": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/firewalls",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewalls": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-ruleset": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/firewalls/rulesets",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-rulesets": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/rulesets",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ruleset": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/rulesets/{ruleSetId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-ruleset": {
+            "method": "PUT",
+            "path": "/{apiVersion}/networking/firewalls/rulesets/{ruleSetId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-ruleset": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/networking/firewalls/rulesets/{ruleSetId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall-settings": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/settings",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-firewall-settings": {
+            "method": "PUT",
+            "path": "/{apiVersion}/networking/firewalls/settings",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall-templates": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/templates",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall-template": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/templates/{slug}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-firewall": {
+            "method": "PUT",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-firewall": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-firewall-device": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/devices",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall-devices": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/devices",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall-device": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/devices/{deviceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-firewall-device": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/devices/{deviceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall-rule-versions": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/history",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall-rule-version": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/history/rules/{version}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-firewall-rules": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/rules",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-firewall-rules": {
+            "method": "PUT",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/rules",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-expanded-firewall-rules": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/firewalls/{firewallId}/rules/expansion",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-allocate-ip": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/ips",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ips": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/ips",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-assign-ips": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/ips/assign",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-share-ips": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/ips/share",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ip": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/ips/{address}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-ip": {
+            "method": "PUT",
+            "path": "/{apiVersion}/networking/ips/{address}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-assign-ipv4s": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/ipv4/assign",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-share-ipv4s": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/ipv4/share",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ipv6-pools": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/ipv6/pools",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-ipv6-range": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/ipv6/ranges",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ipv6-ranges": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/ipv6/ranges",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ipv6-range": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/ipv6/ranges/{range}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-ipv6-range": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/networking/ipv6/ranges/{range}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-prefixlists": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/prefixlists",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-prefixlist": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/prefixlists/{prefixListId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-reserved-ip": {
+            "method": "POST",
+            "path": "/{apiVersion}/networking/reserved/ips",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-reserved-ips": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/reserved/ips",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-reserved-ip-types": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/reserved/ips/types",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-reserved-ip": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/reserved/ips/{address}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-reserved-ip": {
+            "method": "PUT",
+            "path": "/{apiVersion}/networking/reserved/ips/{address}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-reserved-ip": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/networking/reserved/ips/{address}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vlans": {
+            "method": "GET",
+            "path": "/{apiVersion}/networking/vlans",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-vlan": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/networking/vlans/{regionId}/{label}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-node-balancer": {
+            "method": "POST",
+            "path": "/{apiVersion}/nodebalancers",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancers": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-types": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/types",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-node-balancer": {
+            "method": "PUT",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-node-balancer": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-node-balancer-config": {
+            "method": "POST",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-configs": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-config": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-node-balancer-config": {
+            "method": "PUT",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-node-balancer-config": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-node-balancer-node": {
+            "method": "POST",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-config-nodes": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-node": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes/{nodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-node-balancer-node": {
+            "method": "PUT",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes/{nodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-node-balancer-config-node": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes/{nodeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-rebuild-node-balancer-config": {
+            "method": "POST",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/rebuild",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-firewalls": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/firewalls",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-node-balancer-firewalls": {
+            "method": "PUT",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/firewalls",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-stats": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/stats",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-vpcs": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/vpcs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-node-balancer-vpc-config": {
+            "method": "GET",
+            "path": "/{apiVersion}/nodebalancers/{nodeBalancerId}/vpcs/{nodeBalancerVpcConfigId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-object-storage-bucket": {
+            "method": "POST",
+            "path": "/{apiVersion}/object-storage/buckets",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-buckets": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/buckets",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-bucketin-cluster": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-bucket": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-object-storage-bucket": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-object-storage-bucket-access": {
+            "method": "POST",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/access",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-bucket-access": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/access",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-storage-bucket-access": {
+            "method": "PUT",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/access",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-bucket-acl": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-acl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-object-storage-bucket-acl": {
+            "method": "PUT",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-acl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-bucket-content": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-list",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-object-storage-object-url": {
+            "method": "POST",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-url",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-object-storage-ssl": {
+            "method": "POST",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/ssl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-ssl": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/ssl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-object-storage-ssl": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/ssl",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-cancel-object-storage": {
+            "method": "POST",
+            "path": "/{apiVersion}/object-storage/cancel",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-clusters": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/clusters",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-cluster": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/clusters/{clusterId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-endpoints": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/endpoints",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-global-quotas": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/global-quotas",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-global-quota": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/global-quotas/{objGlobalQuotaId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-global-quota-usage": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/global-quotas/{objGlobalQuotaId}/usage",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-object-storage-keys": {
+            "method": "POST",
+            "path": "/{apiVersion}/object-storage/keys",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-keys": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/keys",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-key": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/keys/{keyId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-object-storage-key": {
+            "method": "PUT",
+            "path": "/{apiVersion}/object-storage/keys/{keyId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-object-storage-key": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/object-storage/keys/{keyId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-quotas": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/quotas",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-quota": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/quotas/{objQuotaId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-quota-usage": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/quotas/{objQuotaId}/usage",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-transfer": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/transfer",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-object-storage-types": {
+            "method": "GET",
+            "path": "/{apiVersion}/object-storage/types",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-placement-group": {
+            "method": "POST",
+            "path": "/{apiVersion}/placement/groups",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-placement-groups": {
+            "method": "GET",
+            "path": "/{apiVersion}/placement/groups",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-placement-group": {
+            "method": "GET",
+            "path": "/{apiVersion}/placement/groups/{groupId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-placement-group": {
+            "method": "PUT",
+            "path": "/{apiVersion}/placement/groups/{groupId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-placement-group": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/placement/groups/{groupId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-group-add-linode": {
+            "method": "POST",
+            "path": "/{apiVersion}/placement/groups/{groupId}/assign",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-group-unassign": {
+            "method": "POST",
+            "path": "/{apiVersion}/placement/groups/{groupId}/unassign",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-profile": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-profile": {
+            "method": "PUT",
+            "path": "/{apiVersion}/profile",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-profile-apps": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/apps",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-profile-app": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/apps/{appId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-profile-app": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/profile/apps/{appId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-devices": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/devices",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-trusted-device": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/devices/{deviceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-trusted-device": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/profile/devices/{deviceId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-profile-grants": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/grants",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-profile-logins": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/logins",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-profile-login": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/logins/{loginId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-profile-phone-number": {
+            "method": "POST",
+            "path": "/{apiVersion}/profile/phone-number",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-profile-phone-number": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/profile/phone-number",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-profile-phone-number-verify": {
+            "method": "POST",
+            "path": "/{apiVersion}/profile/phone-number/verify",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-user-preferences": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/preferences",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-user-preferences": {
+            "method": "PUT",
+            "path": "/{apiVersion}/profile/preferences",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-security-questions": {
+            "method": "POST",
+            "path": "/{apiVersion}/profile/security-questions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-security-questions": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/security-questions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-add-ssh-key": {
+            "method": "POST",
+            "path": "/{apiVersion}/profile/sshkeys",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ssh-keys": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/sshkeys",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ssh-key": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/sshkeys/{sshKeyId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-ssh-key": {
+            "method": "PUT",
+            "path": "/{apiVersion}/profile/sshkeys/{sshKeyId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-ssh-key": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/profile/sshkeys/{sshKeyId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-tfa-disable": {
+            "method": "POST",
+            "path": "/{apiVersion}/profile/tfa-disable",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-tfa-enable": {
+            "method": "POST",
+            "path": "/{apiVersion}/profile/tfa-enable",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-tfa-confirm": {
+            "method": "POST",
+            "path": "/{apiVersion}/profile/tfa-enable-confirm",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-personal-access-token": {
+            "method": "POST",
+            "path": "/{apiVersion}/profile/tokens",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-personal-access-tokens": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/tokens",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-personal-access-token": {
+            "method": "GET",
+            "path": "/{apiVersion}/profile/tokens/{tokenId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-personal-access-token": {
+            "method": "PUT",
+            "path": "/{apiVersion}/profile/tokens/{tokenId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-personal-access-token": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/profile/tokens/{tokenId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-regions": {
+            "method": "GET",
+            "path": "/{apiVersion}/regions",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-regions-availability": {
+            "method": "GET",
+            "path": "/{apiVersion}/regions/availability",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-regions-vpc-availability": {
+            "method": "GET",
+            "path": "/{apiVersion}/regions/vpc-availability",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-region": {
+            "method": "GET",
+            "path": "/{apiVersion}/regions/{regionId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-region-availability": {
+            "method": "GET",
+            "path": "/{apiVersion}/regions/{regionId}/availability",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-region-vpc-availability": {
+            "method": "GET",
+            "path": "/{apiVersion}/regions/{regionId}/vpc-availability",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-ticket": {
+            "method": "POST",
+            "path": "/{apiVersion}/support/tickets",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-tickets": {
+            "method": "GET",
+            "path": "/{apiVersion}/support/tickets",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ticket": {
+            "method": "GET",
+            "path": "/{apiVersion}/support/tickets/{ticketId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-ticket-attachment": {
+            "method": "POST",
+            "path": "/{apiVersion}/support/tickets/{ticketId}/attachments",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-close-ticket": {
+            "method": "POST",
+            "path": "/{apiVersion}/support/tickets/{ticketId}/close",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-ticket-reply": {
+            "method": "POST",
+            "path": "/{apiVersion}/support/tickets/{ticketId}/replies",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-ticket-replies": {
+            "method": "GET",
+            "path": "/{apiVersion}/support/tickets/{ticketId}/replies",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-tag": {
+            "method": "POST",
+            "path": "/{apiVersion}/tags",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-tags": {
+            "method": "GET",
+            "path": "/{apiVersion}/tags",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-tagged-objects": {
+            "method": "GET",
+            "path": "/{apiVersion}/tags/{tagLabel}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-tag": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/tags/{tagLabel}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-volume": {
+            "method": "POST",
+            "path": "/{apiVersion}/volumes",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-volumes": {
+            "method": "GET",
+            "path": "/{apiVersion}/volumes",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-volume-types": {
+            "method": "GET",
+            "path": "/{apiVersion}/volumes/types",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-volume": {
+            "method": "GET",
+            "path": "/{apiVersion}/volumes/{volumeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-volume": {
+            "method": "PUT",
+            "path": "/{apiVersion}/volumes/{volumeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-volume": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/volumes/{volumeId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-attach-volume": {
+            "method": "POST",
+            "path": "/{apiVersion}/volumes/{volumeId}/attach",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-clone-volume": {
+            "method": "POST",
+            "path": "/{apiVersion}/volumes/{volumeId}/clone",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-detach-volume": {
+            "method": "POST",
+            "path": "/{apiVersion}/volumes/{volumeId}/detach",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-resize-volume": {
+            "method": "POST",
+            "path": "/{apiVersion}/volumes/{volumeId}/resize",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-vpc": {
+            "method": "POST",
+            "path": "/{apiVersion}/vpcs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpcs": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpcs-default-ranges": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs/default-ranges",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpcs-ips": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs/ips",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpcs-ipv6s": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs/ipv6s",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpc": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs/{vpcId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-vpc": {
+            "method": "PUT",
+            "path": "/{apiVersion}/vpcs/{vpcId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-vpc": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/vpcs/{vpcId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpc-ips": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs/{vpcId}/ips",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpc-ipv6s": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs/{vpcId}/ipv6s",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "post-vpc-subnet": {
+            "method": "POST",
+            "path": "/{apiVersion}/vpcs/{vpcId}/subnets",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpc-subnets": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs/{vpcId}/subnets",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "get-vpc-subnet": {
+            "method": "GET",
+            "path": "/{apiVersion}/vpcs/{vpcId}/subnets/{vpcSubnetId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "put-vpc-subnet": {
+            "method": "PUT",
+            "path": "/{apiVersion}/vpcs/{vpcId}/subnets/{vpcSubnetId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        },
+        "delete-vpc-subnet": {
+            "method": "DELETE",
+            "path": "/{apiVersion}/vpcs/{vpcId}/subnets/{vpcSubnetId}",
+            "mock_dispatch": "passed",
+            "live_verified": false
+        }
+    }
+}

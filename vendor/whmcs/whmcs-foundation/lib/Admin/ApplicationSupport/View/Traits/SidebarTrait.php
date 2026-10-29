@@ -8,7 +8,7 @@
 
 namespace WHMCS\Admin\ApplicationSupport\View\Traits;
 
-abstract class SidebarTrait
+trait SidebarTrait
 {
     protected $sidebarName = "";
     protected $sidebarNameOptions = array("support", "config", "home", "clients", "utilities", "billing", "orders", "addonmodules", "reports");

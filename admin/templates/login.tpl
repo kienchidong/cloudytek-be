@@ -15,12 +15,14 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-      </head>
+      <link rel="icon" type="image/png" href="../assets/img/cloudytek-brand.png?v=20261017-transparent">
+<link rel="stylesheet" href="../assets/css/cloudytek-brand.css?v=20261017-transparent">
+</head>
       <body>
         <div class="login-container">
-            <h1 class="logo">
+            <h1 class="logo ctk-admin-login-logo">
                 <a href="login.php">
-                    <img src="{$BASE_PATH_IMG}/whmcs.png" alt="WHMCS" />
+                    <span class="ctk-logo"><img src="../assets/img/cloudytek-brand.png?v=20261017-transparent" alt="Cloudytek" /></span>
                 </a>
             </h1>
             <div class="login-body">

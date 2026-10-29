@@ -8,7 +8,7 @@
 
 namespace WHMCS\Route;
 
-abstract class HandleMapTrait
+trait HandleMapTrait
 {
     protected $routes = array();
     public abstract function getMappedAttributeName();

@@ -1,0 +1,164 @@
+/* Native cart markup, forms, totals and confirmation dialogs remain functional. */
+.portal-cart-page #main-body{padding-top:30px!important;padding-bottom:45px!important}
+.portal-cart-page #order-standard_cart{max-width:1240px;margin:0 auto;padding:0;color:#526176}
+.portal-cart-page #order-standard_cart>.row>.sidebar{display:none!important}
+.portal-cart-page #order-standard_cart>.row>.col-md-9{width:100%;float:none!important;padding:0}
+.portal-cart-page #order-standard_cart>.row{margin:0}
+.portal-cart-page #order-standard_cart .categories-collapsed{display:none!important}
+.portal-cart-page #order-standard_cart .header-lined{margin:0 0 25px;padding:0;border:0}
+.portal-cart-page #order-standard_cart .header-lined h1{font-size:27px!important;font-weight:650!important;letter-spacing:-.6px;color:#344760!important;border:0!important;line-height:1.4;margin:0;padding:0}
+.portal-cart-page #order-standard_cart .view-cart-items-header{background:#f4f8fc;color:#6f8095;border:1px solid #dfe6ee;border-radius:10px 10px 0 0;padding:15px 20px;font-size:12px;font-weight:600}
+.portal-cart-page #order-standard_cart .view-cart-items{border:1px solid #dfe6ee;border-top:0;border-radius:0 0 10px 10px;background:#fff;margin-bottom:14px;overflow:hidden}
+.portal-cart-page #order-standard_cart .view-cart-items .item{padding:22px 20px;background:#fff;border-bottom:1px solid #edf1f6;font-size:13px;color:#6b7d92}
+.portal-cart-page #order-standard_cart .view-cart-items .item:last-child{border-bottom:0}
+.portal-cart-page #order-standard_cart .item-title{font-size:17px;color:#344760;font-weight:650;line-height:1.7}
+.portal-cart-page #order-standard_cart .item-title .btn-link{font-size:11px;padding:4px 8px!important;margin-left:8px;color:#1475bd!important;min-height:0;box-shadow:none!important;transform:none!important;background:#f0f7fd;border-radius:5px!important}
+.portal-cart-page #order-standard_cart .item-group{font-size:12px;color:#8593a5;line-height:1.8;margin-top:5px}
+.portal-cart-page #order-standard_cart .item-domain{font-size:12px;color:#5d728c}.portal-cart-page #order-standard_cart .item-price>span:first-child{font-size:18px;font-weight:650;color:#344760}.portal-cart-page #order-standard_cart .item-price .cycle{font-size:11px;color:#8896a8;margin-top:5px}
+.portal-cart-page #order-standard_cart .btn-remove-from-cart{background:transparent!important;border:0!important;color:#8c9aab!important;padding:7px!important;box-shadow:none!important;transform:none!important}.portal-cart-page #order-standard_cart .btn-remove-from-cart:hover{color:#b73535!important;background:#fff3f3!important}
+.portal-cart-page #order-standard_cart .empty-cart{padding:0;margin:0 0 24px;text-align:right}
+.portal-cart-page #order-standard_cart #btnEmptyCart{display:inline-flex;align-items:center;gap:8px;background:#fff!important;border:1px solid #dce4ed!important;color:#687b91!important;padding:8px 12px!important;font-size:12px;border-radius:6px!important;transform:none!important;box-shadow:none!important}
+.portal-cart-page #order-standard_cart #btnEmptyCart span,.portal-cart-page #order-standard_cart #btnEmptyCart i{color:inherit!important}
+.portal-cart-page #order-standard_cart .view-cart-tabs{margin-top:0}
+.portal-cart-page #order-standard_cart .view-cart-tabs .nav-tabs{border:0;margin:0}
+.portal-cart-page #order-standard_cart .view-cart-tabs .nav-tabs>li>a{background:#fff!important;border:1px solid #dfe6ee!important;border-bottom:0!important;color:#61758d!important;font-size:12px;padding:12px 16px;border-radius:8px 8px 0 0}
+.portal-cart-page #order-standard_cart .view-cart-tabs .tab-content{padding:20px;background:#fff;border:1px solid #dfe6ee;border-radius:0 9px 9px 9px;box-shadow:none}
+.portal-cart-page #order-standard_cart #applyPromo>form{display:flex;align-items:flex-start;gap:12px}
+.portal-cart-page #order-standard_cart #applyPromo .form-group{flex:1;min-width:0;margin:0}
+.portal-cart-page #order-standard_cart #inputPromotionCode{height:42px;width:100%;border:1px solid #d7e0eb!important;border-radius:7px;padding:10px 12px;background:#fff;font-size:13px;box-sizing:border-box}
+.portal-cart-page #order-standard_cart #applyPromo .field-icon{display:none}
+.portal-cart-page #order-standard_cart #applyPromo button{width:auto;flex:none;height:42px;border:1px solid #d7e0eb!important;background:#f4f8fc!important;color:#4c6583!important;font-size:12px;padding:9px 20px!important;border-radius:7px!important;box-shadow:none!important}
+.portal-cart-page #order-standard_cart .order-summary{position:relative!important;top:auto!important;background:#fff;border:1px solid #dce5ef;border-radius:12px;overflow:hidden;box-shadow:0 4px 18px #243f6008;padding:0;margin-bottom:20px}
+.portal-cart-page #order-standard_cart .order-summary h2{font-size:18px!important;font-weight:650!important;color:#3a506b!important;background:#f7fafd!important;border-bottom:1px solid #e6edf5;padding:20px 22px;margin:0;text-align:left}
+.portal-cart-page #order-standard_cart .summary-container{padding:22px;background:#fff;border:0;color:#657a94;font-size:12px}
+.portal-cart-page #order-standard_cart .order-summary :is(.subtotal,.recurring-totals,.bordered-totals){border-color:#e8eef5;padding-bottom:15px;margin-bottom:15px;font-size:12px;line-height:1.8}
+.portal-cart-page #order-standard_cart .recurring-charges{font-size:11px;color:#7d8da1;font-style:normal;max-width:65%;text-align:right}
+.portal-cart-page #order-standard_cart .total-due-today{margin:20px 0 24px;padding:0;text-align:left;border:0}
+.portal-cart-page #order-standard_cart .total-due-today .amt{display:block;font-size:29px!important;line-height:1.5;font-weight:700;letter-spacing:-.6px;color:#173752!important;overflow-wrap:anywhere}
+.portal-cart-page #order-standard_cart .total-due-today>span:last-child{font-size:11px;color:#90a0b3}
+.portal-cart-page #order-standard_cart .btn-checkout{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:45px;font-size:14px;background:#1475bd!important;color:#fff!important;border:1px solid #1475bd!important;border-radius:7px!important;box-shadow:none!important;transform:none!important}
+.portal-cart-page #order-standard_cart .btn-checkout:hover{background:#105f9b!important;border-color:#105f9b!important}
+.portal-cart-page #order-standard_cart .btn-checkout.disabled{background:#e8edf4!important;border-color:#e0e7ef!important;color:#8291a5!important;pointer-events:none}
+.portal-cart-page #order-standard_cart .btn-continue-shopping{display:block;text-align:center;font-size:12px;margin-top:11px;padding:7px!important;color:#7188a3!important}.portal-cart-page #order-standard_cart .btn-checkout+br{display:none}
+.portal-cart-page #order-standard_cart .view-cart-empty{padding:65px 20px;text-align:center;color:#8999ac;font-size:15px}.portal-cart-page #order-standard_cart .view-cart-empty:before{content:'\f290';display:block;font:900 36px 'Font Awesome 5 Free';color:#b5c8db;margin-bottom:18px}
+.portal-cart-page #order-standard_cart .modal-content{border:1px solid #dce5ef;border-radius:12px;box-shadow:0 15px 50px #17375330}.portal-cart-page #order-standard_cart .modal-title{color:#415873!important;font-size:18px}.portal-cart-page #order-standard_cart .modal-title i{font-size:20px}
+.portal-cart-page #order-standard_cart :is(.secondary-cart-body,.order-summary){min-width:0}
+.portal-cart-page #order-standard_cart #orderSummary{position:relative!important;top:auto!important;width:auto!important}
+@media(min-width:992px){.portal-cart-page #scrollingPanelContainer{position:sticky;top:110px}}
+@media(max-width:767px){.portal-cart-page #main-body{padding:22px 12px!important}.portal-cart-page #order-standard_cart .header-lined h1{font-size:23px!important}.portal-cart-page #order-standard_cart .header-lined{margin-bottom:20px}.portal-cart-page #order-standard_cart .view-cart-items-header{padding:12px;font-size:11px}.portal-cart-page #order-standard_cart .view-cart-items .item{padding:18px 13px}.portal-cart-page #order-standard_cart .item-title{font-size:15px}.portal-cart-page #order-standard_cart .item-price{margin-top:12px;text-align:left}.portal-cart-page #order-standard_cart .item-price>span:first-child{font-size:17px}.portal-cart-page #order-standard_cart #applyPromo>form{flex-wrap:wrap}.portal-cart-page #order-standard_cart #applyPromo .form-group{flex-basis:100%}.portal-cart-page #order-standard_cart #applyPromo button{width:100%}.portal-cart-page #order-standard_cart .view-cart-tabs .tab-content{padding:16px}.portal-cart-page #order-standard_cart .order-summary{margin-top:22px}.portal-cart-page #order-standard_cart .summary-container{padding:20px}.portal-cart-page #order-standard_cart .total-due-today .amt{font-size:27px!important}}
+
+/* Reference layout: a shared three-step header and spacious white order panels. */
+.portal-cart-page{background:#f7f9fa!important}
+.portal-cart-page #main-body{background:#f7f9fa!important;padding:24px 24px 48px!important}
+.portal-cart-page #main-body>.container-fluid{max-width:none!important;padding:0!important}
+.portal-cart-page #main-body .main-content{padding:0!important}
+.portal-cart-page #order-standard_cart{max-width:1480px;color:#59616d;font-size:15px}
+.portal-cart-page #order-standard_cart>.row>.col-md-9:first-child{display:none}
+.portal-cart-breadcrumb{display:flex;align-items:center;gap:14px;margin:2px 0 28px;font-size:15px}
+.portal-cart-breadcrumb a{color:#59616d!important;text-decoration:none!important}
+.portal-cart-breadcrumb>span:last-child{color:#32a2fa}
+.portal-cart-breadcrumb>span[aria-hidden]{font-size:25px;line-height:1;color:#6a7280}
+.portal-cart-steps{background:#fff;border:1px solid #dedfe2;border-radius:9px;padding:18px 24px 20px;margin-bottom:28px}
+.portal-cart-steps ol{list-style:none;padding:0;margin:0 auto;display:flex;max-width:600px}
+.portal-cart-steps li{flex:1;text-align:center;position:relative;color:#a5aab2;font-size:15px;font-weight:650;display:flex;align-items:center;flex-direction:column;gap:14px}
+.portal-cart-steps li:before{content:'';position:absolute;top:21px;height:1px;background:#e1e3e7;width:100%;left:-50%}
+.portal-cart-steps li:first-child:before{display:none}
+.portal-cart-steps .step-number{position:relative;z-index:1;background:#fff;border:1px solid #dfe2e6;border-radius:50%;width:43px;height:43px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.portal-cart-steps li:is(.is-current,.is-complete){color:#32a2fa}
+.portal-cart-steps li:is(.is-current,.is-complete):before{background:#32a2fa}
+.portal-cart-steps .is-current .step-number{border-color:#32a2fa}
+.portal-cart-steps .is-complete .step-number{border-color:#32a2fa;background:#32a2fa;color:#fff}
+.portal-cart-page #order-standard_cart .portal-cart-section-title{font-size:20px!important;font-weight:650!important;color:#59616d!important;margin:0 0 24px;line-height:1.4;letter-spacing:0}
+.portal-cart-review>.row>.col-md-9:last-child{background:#fff;border:1px solid #dedfe2;border-radius:9px;padding:28px!important}
+.portal-cart-page #order-standard_cart .view-cart-items-header{background:#f7f9fa;color:#68717e;border-color:#dedfe2;border-radius:8px 8px 0 0;font-size:13px}
+.portal-cart-page #order-standard_cart .view-cart-items{border-color:#dedfe2;border-radius:0 0 8px 8px}
+.portal-cart-page #order-standard_cart.is-empty .view-cart-items-header{display:none}
+.portal-cart-page #order-standard_cart.is-empty .view-cart-items{border:1px solid #dedfe2;border-radius:8px}
+.portal-cart-page #order-standard_cart.is-empty .portal-cart-review-main{width:100%}
+.portal-cart-page #order-standard_cart.is-empty #scrollingPanelContainer{display:none}
+.portal-cart-page #order-standard_cart .view-cart-empty{padding:28px 20px 24px;font-size:16px;color:#59616d}
+.portal-cart-page #order-standard_cart .view-cart-empty:before{display:none}
+.portal-cart-page #order-standard_cart .portal-empty-order{display:table;margin:24px auto 0!important;min-height:40px;padding:8px 30px!important;border:1px solid #32a2fa!important;background:white!important;color:#32a2fa!important;border-radius:5px!important;font-size:15px;font-weight:500}
+.portal-cart-page #order-standard_cart .portal-empty-order:hover{background:#ecf7ff!important;color:#167ac5!important}
+.portal-cart-page #order-standard_cart .view-cart-tabs{margin-top:34px}
+.portal-cart-page #order-standard_cart .view-cart-tabs .portal-cart-section-title{margin-bottom:12px}
+.portal-cart-page #order-standard_cart .view-cart-tabs .nav-tabs{display:flex;gap:12px}
+.portal-cart-page #order-standard_cart .view-cart-tabs .nav-tabs>li:first-child{display:none}
+.portal-cart-page #order-standard_cart .view-cart-tabs .nav-tabs>li>a{border:0!important;padding:0 0 12px;background:transparent!important}
+.portal-cart-page #order-standard_cart .view-cart-tabs .tab-content{padding:0;background:transparent;border:0;box-shadow:none}
+.portal-cart-page #order-standard_cart #inputPromotionCode{height:46px;font-size:15px;border-color:#c9cdd3!important;border-radius:7px;padding:10px 16px}
+.portal-cart-page #order-standard_cart #applyPromo button{height:46px;min-width:150px;background:#32a2fa!important;color:#fff!important;border:1px solid #32a2fa!important;font-size:15px;font-weight:550;border-radius:7px!important}
+.portal-cart-page #order-standard_cart #applyPromo button:hover{background:#168bdf!important;color:#fff!important}
+.portal-promo-help{font-size:14px;margin:12px 0 0;color:#69717e}
+.portal-cart-page #order-standard_cart .order-summary{box-shadow:none;border-color:#dedfe2;border-radius:8px}
+.portal-cart-page #order-standard_cart .order-summary h2{background:white!important;color:#59616d!important;font-size:20px!important;padding:22px 20px;border-color:#dedfe2}
+.portal-cart-page #order-standard_cart .summary-container{font-size:14px;padding:20px;color:#59616d}
+.portal-cart-page #order-standard_cart .summary-container>.clearfix{padding:9px 0;display:flex;justify-content:space-between;gap:12px}
+.portal-cart-page #order-standard_cart .summary-container>.clearfix .pull-right{text-align:right;flex-shrink:0}
+.portal-cart-page #order-standard_cart .product-name{font-size:18px;font-weight:650;margin-bottom:12px;color:#59616d}
+.portal-cart-page #order-standard_cart .summary-totals{border-color:#dedfe2;line-height:2.2}
+.portal-cart-page #order-standard_cart .total-due-today{border-top:1px solid #dedfe2;padding-top:16px;display:flex;flex-direction:row-reverse;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}
+.portal-cart-page #order-standard_cart .total-due-today .amt{font-size:23px!important;color:#eda73a!important;letter-spacing:0}
+.portal-cart-page #order-standard_cart .total-due-today>span:last-child{font-size:14px;color:#59616d;font-weight:650}
+/* Keep labels and prices on the same left/right rails, including long VND totals. */
+.portal-cart-page #order-standard_cart .order-summary .summary-container>.clearfix,
+.portal-cart-page #order-standard_cart .order-summary :is(.summary-totals,.bordered-totals)>.clearfix{display:grid;grid-template-columns:minmax(0,1fr) max-content;align-items:start;gap:12px;text-align:left}
+.portal-cart-page #order-standard_cart .order-summary .clearfix:before,
+.portal-cart-page #order-standard_cart .order-summary .clearfix:after{display:none}
+.portal-cart-page #order-standard_cart .order-summary .clearfix>.pull-left{float:none!important;text-align:left;min-width:0}
+.portal-cart-page #order-standard_cart .order-summary .clearfix>.pull-right{float:none!important;text-align:right;max-width:none;min-width:0}
+.portal-cart-page #order-standard_cart .order-summary :is(.subtotal,.bordered-totals,.summary-totals) .pull-right{white-space:nowrap}
+.portal-cart-page #order-standard_cart .order-summary .recurring-charges>span{display:block;line-height:1.6}
+.portal-cart-page #order-standard_cart .order-summary .recurring-charges .cost{display:block;white-space:nowrap;color:#354e65;font-size:14px}
+.portal-cart-page #order-standard_cart .order-summary .total-due-today{display:grid;grid-template-columns:minmax(0,1fr) max-content;align-items:center;gap:12px;text-align:left}
+.portal-cart-page #order-standard_cart .order-summary .total-due-today>.amt{grid-column:2;grid-row:1;min-width:0;white-space:nowrap;overflow-wrap:normal;word-break:normal;text-align:right;font-size:16px!important;line-height:1.4}
+.portal-cart-page #order-standard_cart .order-summary .total-due-today>span:last-child{grid-column:1;grid-row:1;text-align:left;white-space:nowrap}
+.portal-cart-page #order-standard_cart .btn-checkout,.portal-cart-page #order-standard_cart #btnCompleteProductConfig{height:48px;min-height:48px;background:#32a2fa!important;color:#fff!important;border:1px solid #32a2fa!important;border-radius:7px!important;font-size:16px;font-weight:650;box-shadow:none!important;width:100%;transform:none!important;display:flex;align-items:center;justify-content:center;gap:9px}
+.portal-cart-page #order-standard_cart :is(.btn-checkout,#btnCompleteProductConfig):hover{background:#168bdf!important;color:#fff!important}
+.portal-cart-configure #frmConfigureProduct>.row{display:flex;align-items:flex-start;gap:28px;margin:0}
+.portal-cart-configure #frmConfigureProduct>.row>.portal-cart-config-main{flex:1;width:auto;min-width:0;border:1px solid #dedfe2;border-radius:9px;padding:28px;background:#fff}
+.portal-cart-configure #frmConfigureProduct>.row>#scrollingPanelContainer{width:33%;padding:0;flex-shrink:0}
+.portal-cart-page #order-standard_cart .product-info{background:#fff;border:1px solid #dedfe2;border-radius:8px;margin:0 0 32px;padding:22px;line-height:1.9;color:#59616d}
+.portal-cart-page #order-standard_cart .product-title{font-size:19px;font-weight:650;color:#59616d;margin:0 0 18px!important;padding-bottom:15px;border-bottom:1px solid #e1e3e7}
+.portal-cart-page #order-standard_cart .portal-change-product{float:right;background:#fff!important;color:#32a2fa!important;border:1px solid #32a2fa!important;border-radius:6px!important;font-size:14px;padding:6px 12px!important;margin-left:14px;box-shadow:none!important}
+.portal-cart-page #order-standard_cart .portal-change-product:hover{background:#eff8ff!important;color:#167ac5!important}
+.portal-product-description ul{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:0;padding:0;list-style:none}
+.portal-product-description p{margin:0}
+.portal-cart-page #order-standard_cart #inputBillingcycle[hidden]{display:none!important}
+.portal-cart-page #order-standard_cart label{font-size:14px;font-weight:550;color:#59616d;margin-bottom:10px}
+.portal-cycle-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px;margin:8px 0 26px}
+.portal-cart-page #order-standard_cart .portal-cycle-card{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:94px;padding:14px 10px;background:#f7f9fa!important;border:1px solid #dedfe2!important;border-radius:8px!important;color:#59616d!important;box-shadow:none!important;margin:0!important;overflow:hidden;font-size:14px;line-height:1.5;cursor:pointer}
+.portal-cart-page #order-standard_cart .portal-cycle-card strong{font-size:13px;font-weight:650;white-space:normal}
+.portal-cart-page #order-standard_cart .portal-cycle-card:hover{background:#edf7ff!important;border-color:#89caff!important;color:#46556b!important}
+.portal-cart-page #order-standard_cart .portal-cycle-card[aria-pressed=true]{border-color:#32a2fa!important}
+.portal-cycle-card[aria-pressed=true]:after{content:'✓';position:absolute;right:0;top:0;background:#32a2fa;color:white;width:23px;height:23px;clip-path:polygon(0 0,100% 0,100% 100%);text-align:right;padding-right:2px;font-size:13px;line-height:16px}
+.portal-cart-configure #btnCompleteProductConfig{margin-top:18px!important}
+.portal-cart-page #order-standard_cart .sub-heading{border-bottom:1px solid #dedfe2;background:none;margin:30px 0 20px;text-align:left}
+.portal-cart-page #order-standard_cart .sub-heading span{background:#fff;padding:0 12px 0 0;font-size:18px;font-weight:650;color:#59616d}
+.portal-cart-page #order-standard_cart .field-container{margin:0}
+.portal-cart-page #order-standard_cart :is(input.form-control,select.form-control){height:44px;border-radius:7px;font-size:14px}
+@media(max-width:991px){.portal-cart-configure #frmConfigureProduct>.row{display:block}.portal-cart-configure #frmConfigureProduct>.row>#scrollingPanelContainer{width:100%;margin-top:24px}.portal-cart-configure #frmConfigureProduct>.row>.portal-cart-config-main{width:100%}.portal-cart-steps{margin-bottom:22px}}
+@media(max-width:767px){.portal-cart-page #main-body{padding:18px 14px 30px!important}.portal-cart-breadcrumb{margin-bottom:20px;font-size:13px}.portal-cart-steps{padding:18px 8px}.portal-cart-steps li{font-size:12px;gap:12px}.portal-cart-steps .step-number{width:35px;height:35px;font-size:15px}.portal-cart-steps li:before{top:17px}.portal-cart-review>.row>.col-md-9:last-child{padding:18px!important}.portal-cart-review-main{padding:0!important}.portal-cart-page #order-standard_cart .portal-cart-section-title{font-size:18px!important}.portal-cart-page #order-standard_cart #applyPromo>form{flex-wrap:nowrap;gap:8px}.portal-cart-page #order-standard_cart #applyPromo .form-group{flex-basis:auto}.portal-cart-page #order-standard_cart #applyPromo button{width:auto;min-width:85px;padding:9px 12px!important;font-size:13px}.portal-cart-page #order-standard_cart #inputPromotionCode{font-size:13px}.portal-cart-configure #frmConfigureProduct>.row>.portal-cart-config-main{padding:20px}.portal-product-description ul{grid-template-columns:1fr}.portal-cart-page #order-standard_cart .product-info{padding:16px}.portal-cycle-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.portal-cart-page #order-standard_cart .total-due-today .amt{font-size:21px!important}}
+.portal-cart-page #order-standard_cart .portal-cart-steps li>span{color:inherit!important;font-family:inherit;font-weight:650}
+.portal-cart-page #order-standard_cart .portal-cart-steps .is-complete .step-number{color:#fff!important}
+.portal-cart-page #order-standard_cart .view-cart-tabs .nav-tabs{border:0!important;min-height:0;padding:0}
+.portal-cart-page #order-standard_cart .view-cart-tabs .tab-content{border:0!important}
+.portal-cart-page #order-standard_cart .portal-cart-configure{padding:0}
+.portal-cart-page #order-standard_cart #frmConfigureProduct{padding:0;margin:0}
+.portal-cart-page #order-standard_cart .product-info{font-size:15px;line-height:2}
+.portal-cart-page #order-standard_cart .portal-cycle-cards{grid-template-columns:repeat(auto-fill,minmax(125px,1fr))}
+.portal-cart-configure #orderSummary{background:#fff;border:1px solid #dedfe2;border-radius:8px;overflow:hidden}
+.portal-cart-page .portal-cart-configure #orderSummary>.order-summary{border:0;border-radius:0;margin:0}
+.portal-cart-page .portal-cart-configure #orderSummary>.portal-config-submit{padding:0 20px 20px}
+.portal-cart-page .portal-cart-configure #btnCompleteProductConfig{margin-top:0!important}
+.portal-cart-page .portal-config-back{display:inline-block;margin-top:15px;color:#2396ee!important;font-size:14px;text-decoration:none!important}
+.portal-cart-page #order-standard_cart .portal-cycle-card{max-width:180px}
+.portal-cart-page #order-standard_cart .summary-container :is(.summary-totals,.subtotal,.recurring-totals){font-size:14px}
+.portal-cart-page #order-standard_cart .summary-container .product-group{font-size:14px;font-style:normal}
+.portal-cart-page #order-standard_cart .portal-cycle-card>span{color:inherit!important;font-family:inherit}
+@media(max-width:767px){.portal-cart-page #order-standard_cart .portal-cycle-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.portal-cart-page #order-standard_cart .portal-cycle-card{max-width:none}}
+.portal-cart-page #order-standard_cart{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif!important}
+.portal-cart-page #order-standard_cart :is(p,span,label,a,input,select,button,div,h1,h2,strong){font-family:inherit!important}
+.portal-product-features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 26px}
+.portal-product-features>div{padding:3px 0;color:#59616d;font-size:15px}
+@media(max-width:767px){.portal-product-features{grid-template-columns:1fr;gap:6px}}

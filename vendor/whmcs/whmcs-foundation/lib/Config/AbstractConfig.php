@@ -14,7 +14,7 @@ abstract class AbstractConfig extends \ArrayObject
     public function __construct(array $data = array())
     {
         parent::setFlags(parent::ARRAY_AS_PROPS);
-        parent::__construct($data);
+        parent::__construct($data, parent::ARRAY_AS_PROPS);
     }
     public function setData(array $data)
     {

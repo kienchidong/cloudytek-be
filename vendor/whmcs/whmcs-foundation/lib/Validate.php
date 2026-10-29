@@ -14,6 +14,7 @@ class Validate
     protected $validated = array();
     protected $errors = array();
     protected $errorMessages = array();
+    protected $fieldErrorMessages = array();
     public function setOptionalFields($optionalFields)
     {
         if (!is_array($optionalFields)) {
@@ -36,7 +37,7 @@ class Validate
         if ($rule === "captcha" && $languageKey === "captchaverifyincorrect" && Config\Setting::getValue("CaptchaType") === "recaptcha") {
             $languageKey = "googleRecaptchaIncorrect";
         }
-        $this->addError($languageKey);
+        $this->addError($languageKey, $rule === "match_value" && is_string($field2) && $field2 !== "" ? $field2 : $field);
         return false;
     }
     public function reverseValidate($rule, $field, $languageKey, $field2 = "", $value = NULL)
@@ -47,7 +48,7 @@ class Validate
             return true;
         }
         $this->errors[] = $field;
-        $this->addError($languageKey);
+        $this->addError($languageKey, $field);
         return false;
     }
     public function validateCustomFields($type, $relid, $order = false, $customFields = array())
@@ -75,27 +76,31 @@ class Validate
             if (is_null($value)) {
                 $value = isset($customFields[$fieldId]) ? $customFields[$fieldId] : null;
             }
+            $displayFieldName = CustomField::getFieldName($fieldId, $fieldName);
+            if (strpos($displayFieldName, "|") !== false) {
+                $displayFieldName = trim(explode("|", $displayFieldName, 2)[1]);
+            }
             $optionalMarker = $required ? "" : "?";
             if ($required) {
-                $thisFieldFailedValidation = !$this->validate("required", "customfield[" . $fieldId . "]", (string) $fieldName . " " . $whmcs->get_lang("clientareaerrorisrequired"), "", $value);
+                $thisFieldFailedValidation = !$this->validate("required", "customfield[" . $fieldId . "]", (string) $displayFieldName . " " . $whmcs->get_lang("clientareaerrorisrequired"), "", $value);
             } else {
                 $thisFieldFailedValidation = false;
             }
             if (!$thisFieldFailedValidation) {
                 switch ($data["fieldtype"]) {
                     case "link":
-                        $this->validate("url" . $optionalMarker, "customfield[" . $fieldId . "]", (string) $fieldName . " is an Invalid URL", "", $value);
+                        $this->validate("url" . $optionalMarker, "customfield[" . $fieldId . "]", (string) $displayFieldName . " " . $whmcs->get_lang("customfieldinvalidurl"), "", $value);
                         break;
                     case "dropdown":
-                        $this->validate("inarray" . $optionalMarker, "customfield[" . $fieldId . "]", (string) $fieldName . " Invalid Select Option", explode(",", $fieldOptions), $value);
+                        $this->validate("inarray" . $optionalMarker, "customfield[" . $fieldId . "]", (string) $displayFieldName . " " . $whmcs->get_lang("customfieldinvalidoption"), explode(",", $fieldOptions), $value);
                         break;
                     case "tickbox":
-                        $this->validate("inarray" . $optionalMarker, "customfield[" . $fieldId . "]", (string) $fieldName . " Invalid Value", array("on", "1", ""), $value);
+                        $this->validate("inarray" . $optionalMarker, "customfield[" . $fieldId . "]", (string) $displayFieldName . " " . $whmcs->get_lang("customfieldinvalidvalue"), array("on", "1", ""), $value);
                         break;
                 }
             }
             if ($regularExpression && (trim($whmcs->get_req_var("customfield", $fieldId)) || $value)) {
-                $this->validate("matchpattern" . $optionalMarker, "customfield[" . $fieldId . "]", (string) $fieldName . " " . $whmcs->get_lang("customfieldvalidationerror"), array($regularExpression), $value);
+                $this->validate("matchpattern" . $optionalMarker, "customfield[" . $fieldId . "]", (string) $displayFieldName . " " . $whmcs->get_lang("customfieldvalidationerror"), array($regularExpression), $value);
             }
         }
         return true;
@@ -330,7 +335,7 @@ class Validate
         $strength = $calculatedLength * 10 - 20 + $numericCount * 10 + $symbolCount * 15 + $uppercaseCount * 10;
         return $strength;
     }
-    public function addError($var)
+    public function addError($var, $field = null)
     {
         if ($var) {
             $replacement = array();
@@ -350,6 +355,10 @@ class Validate
             }
             if (!in_array($error, $this->errorMessages)) {
                 $this->errorMessages[] = $error;
+            }
+            if (is_string($field) && $field !== "") {
+                if (!isset($this->fieldErrorMessages[$error])) { $this->fieldErrorMessages[$error] = array(); }
+                if (!in_array($field, $this->fieldErrorMessages[$error], true)) { $this->fieldErrorMessages[$error][] = $field; }
             }
         }
         return true;
@@ -391,7 +400,9 @@ class Validate
     {
         $code = "";
         foreach ($this->getErrors() as $errorMessage) {
-            $code .= "<li>" . $errorMessage . "</li>";
+            $attribute = isset($this->fieldErrorMessages[$errorMessage])
+                ? ' data-validation-fields="' . htmlspecialchars(json_encode($this->fieldErrorMessages[$errorMessage]), ENT_QUOTES, 'UTF-8') . '"' : '';
+            $code .= "<li" . $attribute . ">" . $errorMessage . "</li>";
         }
         return $code;
     }

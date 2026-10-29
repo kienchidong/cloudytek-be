@@ -76,6 +76,22 @@ class UriPath implements Contracts\MapInterface
        em Class33.method_13()
        em Class35.method_3(Class3 class3_0, Class25 class25_0, String string_7, Boolean bool_1)
     */
+    public function getPath($routeName, $routeVars = array())
+    {
+        $routePath = $this->getRawPath($routeName, $routeVars);
+        $base = rtrim($this->baseUri, "/");
+        $uri = new \Zend\Diactoros\Uri();
+        if ($this->getMode() === self::MODE_REWRITE) {
+            return $uri->withPath($base . $routePath);
+        }
+        $adminBase = \WHMCS\Admin\AdminServiceProvider::getAdminRouteBase();
+        $entryPoint = strpos($routePath, $adminBase . "/") === 0
+            ? $adminBase . "/index.php" : "/index.php";
+        if ($this->getMode() === self::MODE_ACCEPTPATHINFO) {
+            return $uri->withPath($base . $entryPoint . $routePath);
+        }
+        return $uri->withPath($base . $entryPoint)->withQuery("rp=" . $routePath);
+    }
     public function getRouteCollector()
     {
         return \DI::make("Route\\RouteCollector");

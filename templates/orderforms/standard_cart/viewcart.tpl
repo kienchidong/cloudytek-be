@@ -12,7 +12,8 @@
     {include file="orderforms/standard_cart/common.tpl"}
     <script type="text/javascript" src="{$BASE_PATH_JS}/StatesDropdown.js"></script>
 
-    <div id="order-standard_cart">
+    <div id="order-standard_cart"{if $template == 'kinsmen'} class="portal-cart-review{if $cartitems == 0} is-empty{/if}"{/if}>
+    {if $template == 'kinsmen'}{include file="$template/includes/cart-steps.tpl" step=2}{/if}
 
         <div class="row">
 
@@ -35,7 +36,8 @@
                 {include file="orderforms/standard_cart/sidebar-categories-collapsed.tpl"}
 
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8 portal-cart-review-main">
+                        {if $template == 'kinsmen'}<h2 class="portal-cart-section-title">{$LANG.portalCartConfirm}</h2>{/if}
 
                         {if $promoerrormessage}
                             <div class="alert alert-warning text-center" role="alert">
@@ -355,6 +357,7 @@
                                 {if $cartitems == 0}
                                     <div class="view-cart-empty">
                                         {$LANG.cartempty}
+                                        {if $template == 'kinsmen'}<a href="cart.php" class="btn btn-default portal-empty-order">{$LANG.navservicesorder}</a>{/if}
                                     </div>
                                 {/if}
 
@@ -384,6 +387,7 @@
                         {/foreach}
 
                         <div class="view-cart-tabs">
+                            {if $template == 'kinsmen'}<h2 class="portal-cart-section-title">{$LANG.portalCartPromo}</h2>{/if}
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#applyPromo" aria-controls="applyPromo" role="tab" data-toggle="tab">{$LANG.orderForm.applyPromoCode}</a></li>
                                 {if $taxenabled && !$loggedin}
@@ -404,16 +408,17 @@
                                     {else}
                                         <form method="post" action="cart.php?a=view">
                                             <div class="form-group prepend-icon ">
-                                                <label for="cardno" class="field-icon">
+                                                <label for="inputPromotionCode" class="field-icon">
                                                     <i class="fas fa-ticket-alt"></i>
                                                 </label>
                                                 <input type="text" name="promocode" id="inputPromotionCode" class="field" placeholder="{lang key="orderPromoCodePlaceholder"}" required="required">
                                             </div>
                                             <button type="submit" name="validatepromo" class="btn btn-block" value="{$LANG.orderpromovalidatebutton}">
-                                                {$LANG.orderpromovalidatebutton}
+                                                {if $template == 'kinsmen'}{$LANG.portalCartApply}{else}{$LANG.orderpromovalidatebutton}{/if}
                                             </button>
                                         </form>
                                     {/if}
+                                    {if $template == 'kinsmen'}<p class="portal-promo-help">{$LANG.portalCartPromoHelp}</p>{/if}
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="calcTaxes">
 

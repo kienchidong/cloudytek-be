@@ -1,0 +1,30 @@
+/* Button variants keep their own foreground colors in every interaction state. */
+body.admin-layout .btn:is(.btn-primary,.btn-success,.btn-danger,.btn-info){color:#fff!important}
+body.admin-layout .btn-primary{background:#1475bd!important;border-color:#1475bd!important}
+body.admin-layout .btn-primary:is(:hover,:focus,:active,.active){background:#105f9b!important;border-color:#105f9b!important;color:#fff!important}
+body.admin-layout .btn-success{background:#237744!important;border-color:#237744!important}
+body.admin-layout .btn-success:is(:hover,:focus,:active,.active){background:#195d33!important;border-color:#195d33!important;color:#fff!important}
+body.admin-layout .btn-danger{background:#b73535!important;border-color:#b73535!important}
+body.admin-layout .btn-danger:is(:hover,:focus,:active,.active){background:#962929!important;border-color:#962929!important;color:#fff!important}
+body.admin-layout .btn-info{background:#176780!important;border-color:#176780!important}
+body.admin-layout .btn-info:is(:hover,:focus,:active,.active){background:#105268!important;border-color:#105268!important;color:#fff!important}
+body.admin-layout .btn-warning{background:#fff0c2!important;border-color:#e3c66f!important;color:#734b0b!important}
+body.admin-layout .btn-warning:is(:hover,:focus,:active,.active){background:#ffe6a0!important;border-color:#cfad4f!important;color:#5e3b07!important}
+body.admin-layout :is(.btn-default,.btn-outline-primary){background:var(--bg-secondary,#f4f6f9)!important;border-color:var(--border-color,#d5dbe3)!important;color:var(--text-primary,#4b5563)!important}
+body.admin-layout :is(.btn-default,.btn-outline-primary):is(:hover,:focus,:active,.active){background:var(--bg-hover,#e9eef4)!important;color:var(--text-heading,#303b4b)!important}
+body.admin-layout .btn:is(:disabled,.disabled){opacity:1!important;background:#edf0f4!important;border-color:#dce1e8!important;color:#687485!important;cursor:not-allowed;transform:none!important}
+body.admin-layout .main-content :not(.btn-group,.btn-group-vertical,.input-group-btn,.input-group,.btn-toolbar)>.btn+.btn{margin-left:8px!important}
+body.admin-layout .btn-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-left:0}
+body.admin-layout .btn-toolbar>:is(.btn,.btn-group){margin-left:0!important}
+body.admin-layout .modal-footer{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:10px}
+body.admin-layout .modal-footer>.btn{margin:0!important}
+body.admin-layout .modal-footer>.pull-left{margin-right:auto}
+body.admin-layout .portal-register:is(:hover,:focus-visible){background:#105f9b!important;color:#fff!important}
+body.admin-layout .portal-order-link,body.admin-layout .catalog-plan-order button:not(:disabled){background:#1475bd!important;border-color:#1475bd!important;color:#fff!important}
+body.admin-layout :is(.portal-signin,.portal-reset,.support-form) .btn-primary{background:#1475bd!important;border-color:#1475bd!important;color:#fff!important}
+body.admin-layout :is(.portal-signin,.portal-reset,.support-form) .btn-primary:is(:hover,:focus,:active){background:#105f9b!important;border-color:#105f9b!important;color:#fff!important}
+body.admin-layout .portal-order-link:is(:hover,:focus-visible),body.admin-layout .catalog-plan-order button:not(:disabled):is(:hover,:focus-visible){background:#1475bd!important;border-color:#1475bd!important;color:#fff!important}
+body.admin-layout .portal-signin-link:is(:hover,:focus-visible){background:#edf7ff!important;color:#146eae!important;border-color:#146eae!important}
+body.admin-layout .top-nav .primary-action>a:is(:hover,:focus-visible){background:#105f9b!important;color:#fff!important}
+body.admin-layout .list-group-item.active:is(:hover,:focus),body.admin-layout .pagination>.active>a:is(:hover,:focus){color:#fff!important}
+body.admin-layout .btn .fas,body.admin-layout .btn .far{color:inherit}

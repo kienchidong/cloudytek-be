@@ -1,0 +1,85 @@
+/* Shared conversation design. Native WHMCS forms, tokens and attachments stay intact. */
+.ctk-support-thread{display:flex;flex-direction:column;gap:18px;margin:0 0 24px;min-width:0}
+.ctk-ticket-summary,.ctk-ticket-departments{background:#fff;border:1px solid #dce5ed;border-radius:12px;padding:24px;margin-bottom:22px}
+.ctk-ticket-summary h2,.ctk-ticket-create h2,.ctk-ticket-departments h2{font-size:21px!important;font-weight:650!important;line-height:1.4;color:#243e56!important;margin:16px 0!important}
+.ctk-ticket-summary>div{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;font-size:14px;color:#4f667b}
+body .ctk-ticket-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#096da8!important;text-decoration:none!important}
+.ctk-support-thread .ticket-reply{display:grid!important;grid-template-columns:1fr auto;gap:16px;background:#fff!important;border:1px solid #dce5ed!important;border-left:3px solid #0e83c6!important;border-radius:12px!important;margin:0 28px 0 0!important;padding:22px!important;box-shadow:none!important;min-width:0}
+.ctk-support-thread .ticket-reply.staff{background:#f1f7fc!important;border-left-color:#5e7e98!important;margin:0 0 0 28px!important}
+.ctk-support-thread .ticket-reply .user{grid-column:1;grid-row:1;float:none!important;width:auto!important;padding:0!important;display:grid;grid-template-columns:42px 1fr;gap:2px 12px;min-width:0;text-align:left!important;align-items:center;background:transparent!important;border:0!important}
+.ctk-support-thread .ticket-reply .user>i{grid-row:1/3;display:grid;place-items:center;width:42px;height:42px;background:#0878b9;color:#fff!important;border-radius:50%;font-size:18px!important;margin:0!important}
+.ctk-support-thread .ticket-reply.staff .user>i{background:#55748d}
+.ctk-support-thread .ticket-reply .user .name{font-size:15px!important;font-weight:650;color:#263f56!important;overflow-wrap:anywhere}
+.ctk-support-thread .ticket-reply .user .type{font-size:12px!important;color:#526a7f!important;display:block}
+.ctk-support-thread .ticket-reply .date{grid-column:2;grid-row:1;float:none!important;margin:0!important;color:#526a7f!important;font-size:13px;align-self:center;white-space:nowrap}
+.ctk-support-thread .ticket-reply .message{grid-column:1/-1;clear:both;margin:0!important;padding:0!important;background:transparent!important;border:0!important;color:#263f56!important;font-size:15px!important;line-height:1.8!important;min-width:0;overflow-wrap:anywhere}
+.ctk-support-thread .ticket-reply .message p{color:inherit!important;margin:0 0 12px!important}
+.ctk-support-thread .message img{max-width:100%;height:auto}
+.ctk-support-thread .message pre{max-width:100%;overflow:auto;white-space:pre}
+.ctk-support-thread .ticket-reply .attachments{grid-column:1/-1;margin:0!important;padding:16px 0 0!important;border-top:1px solid #dce5ed;background:transparent!important;font-size:13px}
+.ctk-support-thread .attachments ul{display:flex;flex-wrap:wrap;gap:10px;padding:10px 0 0;list-style:none;margin:0}
+.ctk-support-thread .attachments li{padding:10px 14px;border:1px solid #d6e2ed;border-radius:8px;background:#fff;overflow-wrap:anywhere}
+.portal-member .md-editor .glyphicon{font-family:'Glyphicons Halflings'!important}
+.portal-member .md-editor .fa{font-family:'Font Awesome 5 Free'!important;font-weight:900!important}
+.portal-member .md-editor .md-header{display:flex;align-items:center;flex-wrap:wrap;gap:6px;background:#f7fafc;padding:10px;border-bottom:1px solid #e1e8ef}
+.portal-member .md-editor .md-header .btn-group{margin:0!important}
+.portal-member .md-editor .md-header .btn{min-height:32px!important;height:32px;padding:6px 9px!important;font-size:13px!important}
+.portal-member .ctk-support-thread .star{background:none!important;display:inline-block;width:24px;height:26px;cursor:pointer}
+.portal-member .ctk-support-thread .star:before{content:'★'!important;font-family:Arial,sans-serif!important;font-size:22px;color:#73869a}
+.portal-member .ctk-support-thread .star.active:before,.portal-member .ctk-support-thread .star:hover:before{color:#986a0a}
+.portal-member .ctk-ticket-composer{border-radius:12px;margin:0}
+.portal-member .ctk-ticket-composer .panel-heading{cursor:default}
+.portal-member .ctk-ticket-composer .panel-body{display:block!important}
+.portal-member .ctk-ticket-composer .form-group.text-center,.portal-member .ctk-ticket-create>p.text-center{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin:20px 0 0!important;flex-wrap:wrap}
+.portal-member .ctk-ticket-create h2{border-bottom:1px solid #e4ebf2;padding-bottom:14px;margin-top:24px!important}
+.ctk-ticket-help{display:flex;gap:10px;background:#fff7e8;border:1px solid #f1dfb9;border-radius:8px;padding:14px 16px;font-size:14px;line-height:1.7;color:#78541d;margin:18px 0}
+.ctk-ticket-help i{margin-top:5px;flex:none}
+.ctk-department-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.ctk-department-card{display:flex;align-items:center;gap:16px;padding:22px;border:1px solid #dce5ed;border-radius:10px;background:#f8fbfd;text-decoration:none!important}
+.ctk-department-card:hover{border-color:#84b5d6;background:#eef7fd}
+.ctk-department-card>i:first-child{font-size:24px;color:#0878b9}
+.ctk-department-card>i:last-child{margin-left:auto;color:#526a7f}
+.ctk-department-card strong{font-size:16px;color:#263f56}
+.ctk-department-card p{font-size:14px;color:#526a7f;margin:5px 0 0}
+.portal-member[data-client-page=supportticketslist] .member-table-toolbar{gap:14px}
+.portal-member[data-client-page=supportticketslist] .member-ticket-actions{margin:0}
+.portal-member #tableTicketsList>tbody>tr>td:nth-child(2){min-width:210px;max-width:360px}
+.portal-member #tableTicketsList .ticket-subject{font-size:14px!important;line-height:1.6;white-space:normal}
+.portal-member #tableTicketsList .ticket-subject.unread{font-weight:700}
+/* Admin: public replies and private notes are visibly different. */
+.cloudytek-admin .ctk-admin-thread .reply{display:grid!important;grid-template-columns:170px minmax(0,1fr);border:1px solid #dce5ed!important;border-left:3px solid #0e83c6!important;border-radius:12px!important;background:#fff!important;margin:0 28px 0 0!important;padding:20px!important;color:#263f56;box-shadow:none!important}
+.cloudytek-admin .ctk-admin-thread .reply.staff{background:#f1f7fc!important;border-left-color:#55748d!important;margin:0 0 0 28px!important}
+.cloudytek-admin .ctk-admin-thread .reply.note{background:#fff8e9!important;border-color:#e7d4a8!important;border-left:3px solid #a67b20!important;margin:0!important}
+.cloudytek-admin .ctk-admin-thread .reply .leftcol,.cloudytek-admin .ctk-admin-thread .reply .rightcol{float:none!important;width:auto!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;min-width:0}
+.cloudytek-admin .ctk-admin-thread .reply .leftcol{padding-right:20px!important}
+.cloudytek-admin .ctk-admin-thread .reply{min-height:0!important}
+.cloudytek-admin .ctk-admin-thread .reply .submitter{text-align:left!important}
+.cloudytek-admin .ctk-admin-thread .reply .tools>div:not([style*="display:none"]):not([style*="display: none"]){display:flex;flex-wrap:wrap;gap:6px}
+.cloudytek-admin .ctk-admin-thread .reply .clear{display:none}
+.cloudytek-admin .ctk-admin-thread .reply .name{font-size:15px!important;font-weight:650!important;color:#263f56!important;overflow-wrap:anywhere}
+.cloudytek-admin .ctk-admin-thread .reply .title,.cloudytek-admin .ctk-admin-thread .reply .postedon{font-size:12px!important;color:#526a7f!important;line-height:1.6}
+.cloudytek-admin .ctk-admin-thread .reply .tools{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.cloudytek-admin .ctk-admin-thread .reply .message{font-size:14px!important;line-height:1.8;color:#263f56!important;overflow-wrap:anywhere}
+.cloudytek-admin .ctk-admin-thread .reply .msgwrap{padding-top:12px}
+.cloudytek-admin .ctk-admin-composer{margin:24px 0;padding:20px;border:1px solid #dce5ed;border-radius:12px;background:#fff}
+.cloudytek-admin .ctk-admin-composer{scroll-margin-top:80px}
+.cloudytek-admin .ctk-admin-jump-reply{margin:8px 0 8px 12px;display:inline-flex;align-items:center;gap:8px}
+.cloudytek-admin .ctk-admin-composer textarea{min-height:160px;font-size:14px;line-height:1.7}
+.cloudytek-admin .ctk-admin-composer .ticket-reply-submit-options{margin-top:16px}
+.cloudytek-admin .ctk-admin-composer .ticket-reply-edit-options .form-control{margin-top:10px}
+.cloudytek-admin .ctk-admin-thread .ticketattachmentcontainer{max-width:100%;border-radius:8px;border:1px solid #dce5ed;padding:8px}
+@media(max-width:767px){
+ .ctk-ticket-summary,.ctk-ticket-departments{padding:18px}
+ .ctk-department-grid{grid-template-columns:1fr}
+ .ctk-support-thread .ticket-reply,.ctk-support-thread .ticket-reply.staff{margin:0!important;padding:16px!important;grid-template-columns:1fr;gap:12px}
+ .ctk-support-thread .ticket-reply .date{grid-column:1;grid-row:2;white-space:normal}
+ .ctk-support-thread .ticket-reply .user{grid-row:1}
+ .ctk-support-thread .ticket-reply .message{font-size:14px!important}
+ .cloudytek-admin .ctk-admin-thread .reply,.cloudytek-admin .ctk-admin-thread .reply.staff{grid-template-columns:1fr;margin:0!important;gap:14px;padding:16px!important}
+ .cloudytek-admin .ctk-admin-thread .reply .leftcol{padding:0 0 12px!important;border-bottom:1px solid #dce5ed!important;display:flex;justify-content:space-between;gap:12px}
+ .cloudytek-admin .ctk-admin-thread .reply .tools{margin:0}
+ .cloudytek-admin .ctk-admin-composer{padding:14px}
+ .portal-member[data-client-page=supportticketslist] .member-table-toolbar{flex-wrap:wrap}
+ .portal-member[data-client-page=supportticketslist] .member-ticket-actions{width:100%}
+ .portal-member[data-client-page=supportticketslist] .member-new-ticket{width:100%}
+}

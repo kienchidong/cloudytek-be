@@ -2074,6 +2074,12 @@ if ($action == "") {
                                                                                             $smartyvalues["notallowed"] = true;
                                                                                         } else {
                                                                                             $amount = $whmcs->get_req_var("amount");
+                                                                                            if ($amount && \Cloudytek\Currency::enabled()) {
+                                                                                                $inputCurrency=\Cloudytek\Currency::displayCurrency();
+                                                                                                $ledgerCurrency=getCurrency($legacyClient->getID());
+                                                                                                if(!is_numeric($amount) || (float)$amount<=0){http_response_code(400);exit('Invalid top-up amount.');}
+                                                                                                $amount=\Cloudytek\Currency::convert($amount,$inputCurrency,$ledgerCurrency);
+                                                                                            }
                                                                                             if ($amount) {
                                                                                                 check_token();
                                                                                                 $totalcredit = $clientsdetails["credit"] + $amount;
@@ -2089,9 +2095,10 @@ if ($action == "") {
                                                                                                 if ($errormessage) {
                                                                                                     $ca->assign("errormessage", $errormessage);
                                                                                                 } else {
-                                                                                                    $paymentmethods = getGatewaysArray();
-                                                                                                    if (!array_key_exists($paymentmethod, $paymentmethods)) {
-                                                                                                        $paymentmethod = getClientsPaymentMethod($legacyClient->getID());
+                                                                                                    $paymentmethods = (new WHMCS\Gateways())->getAvailableGateways();
+                                                                                                    if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !array_key_exists($paymentmethod, $paymentmethods)) {
+                                                                                                        http_response_code(400);
+                                                                                                        exit('Invalid top-up payment method or request. Please return to the Add Funds page.');
                                                                                                     }
                                                                                                     $paymentmethod = WHMCS\Gateways::makeSafeName($paymentmethod);
                                                                                                     if (!$paymentmethod) {

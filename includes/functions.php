@@ -1466,6 +1466,17 @@ if (!function_exists("sendMessage")) {
         }
         return substr($query, 0, -1);
     }
+    function routePath($routeName, ...$routeVariables)
+    {
+        if (count($routeVariables) === 1 && is_array($routeVariables[0])) {
+            $routeVariables = $routeVariables[0];
+        }
+        return (string) DI::make("Route\\UriPath")->getPath($routeName, $routeVariables);
+    }
+    function fqdnRoutePath($routeName, ...$routeVariables)
+    {
+        return prependSystemUrlToRoutePath(routePath($routeName, ...$routeVariables));
+    }
     function routePathWithQuery($routeName, $routeVariables = array(), $queryParameters = array())
     {
         $redirectUrl = routePath($routeName, $routeVariables);

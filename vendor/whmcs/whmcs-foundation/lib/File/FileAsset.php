@@ -16,7 +16,14 @@ class FileAsset
     const TYPE_EMAIL_TEMPLATE_ATTACHMENTS = "email_template_attachments";
     const TYPE_PM_FILES = "pm_files";
     const TYPE_TICKET_ATTACHMENTS = "ticket_attachments";
-    const TYPES = NULL;
+    const TYPES = array(
+        self::TYPE_CLIENT_FILES => "Client Files",
+        self::TYPE_DOWNLOADS => "Downloads",
+        self::TYPE_EMAIL_ATTACHMENTS => "Email Attachments",
+        self::TYPE_EMAIL_TEMPLATE_ATTACHMENTS => "Email Template Attachments",
+        self::TYPE_PM_FILES => "Project Management Files",
+        self::TYPE_TICKET_ATTACHMENTS => "Ticket Attachments"
+    );
     const NO_MIGRATION_TYPES = NULL;
     public static function canMigrate($assetType)
     {

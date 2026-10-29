@@ -1,0 +1,43 @@
+/* Shared client dialogs: retain native Bootstrap actions, forms and focus handling. */
+body .modal.ctk-client-modal{padding:0!important;overflow:hidden!important}
+body .modal.ctk-client-modal .modal-dialog{position:absolute;top:50%;left:50%;width:calc(100% - 32px)!important;max-width:520px;margin:0!important;transform:translate(-50%,-50%)}
+body .modal.ctk-client-modal .modal-dialog.modal-lg{max-width:840px}
+body .modal.ctk-client-modal .modal-dialog.modal-sm{max-width:380px}
+body .modal.ctk-client-modal.fade .modal-dialog{opacity:0;transform:translate(-50%,calc(-50% + 14px)) scale(.97);transition:transform .22s cubic-bezier(.2,.7,.2,1),opacity .18s ease}
+body .modal.ctk-client-modal.in .modal-dialog{opacity:1;transform:translate(-50%,-50%) scale(1)}
+body .modal.ctk-client-modal.fade{transition:opacity .18s ease}
+body .modal.ctk-client-modal .modal-content{display:flex;flex-direction:column;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);margin:0;background:#fff!important;border:1px solid #dde5ed!important;border-radius:16px!important;box-shadow:0 24px 80px #142d4c33!important;overflow:hidden;color:#294158}
+body .modal.ctk-client-modal .modal-content>form{display:flex;flex-direction:column;min-height:0;max-height:inherit;margin:0}
+body .modal.ctk-client-modal .modal-header{position:relative;flex:none;padding:22px 62px 20px 24px!important;background:#fff!important;border-bottom:1px solid #e8edf2!important;text-align:left;border-radius:0}
+body .modal.ctk-client-modal .modal-header:before,body .modal.ctk-client-modal .modal-header:after,body .modal.ctk-client-modal .modal-footer:before,body .modal.ctk-client-modal .modal-footer:after{display:none}
+body .modal.ctk-client-modal .modal-title{display:flex;align-items:center;gap:12px;margin:0!important;color:#294158!important;font-size:18px!important;font-weight:650;line-height:1.45;text-align:left}
+body .modal.ctk-client-modal .modal-title>i{display:inline-flex!important;align-items:center;justify-content:center;flex:none;width:38px;height:38px;padding:0!important;margin:0!important;box-sizing:border-box;background:#eef6fc;color:#0878b9;border-radius:10px;font-size:18px!important;line-height:1}
+body .modal.ctk-client-modal .modal-title>br{display:none}
+body .modal.ctk-client-modal .modal-header>.close{position:absolute;right:16px;top:20px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0!important;margin:0!important;border:1px solid #e1e7ee!important;border-radius:8px;background:#f7f9fc!important;color:#667e92!important;font-size:0!important;opacity:1;text-shadow:none;cursor:pointer;transition:background .15s ease,color .15s ease}
+body .modal.ctk-client-modal .modal-header>.close:before,body .modal.ctk-client-modal .modal-header>.close:after{content:'';position:absolute;top:14px;left:8px;width:14px;height:2px;border-radius:2px;background:currentColor;transform:rotate(45deg)}
+body .modal.ctk-client-modal .modal-header>.close:after{transform:rotate(-45deg)}
+body .modal.ctk-client-modal .modal-header>.close:hover{background:#eaf3fa!important;color:#0878b9!important}
+body .modal.ctk-client-modal .modal-header>.close>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+body .modal.ctk-client-modal .modal-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:22px 24px!important;color:#40576c!important;font-size:14px;line-height:1.75;text-align:left!important}
+body .modal.ctk-client-modal .modal-body>p:last-child{margin-bottom:0}
+body #order-standard_cart .modal.ctk-client-modal .modal-body{text-align:left!important}
+body .modal.ctk-client-modal .modal-footer{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;flex:none;gap:10px;padding:16px 24px!important;background:#fff!important;border-top:1px solid #e8edf2!important;text-align:right}
+body .modal.ctk-client-modal .modal-footer>.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:88px;min-height:40px;height:auto;padding:9px 18px!important;margin:0!important;border-radius:8px!important;font-size:14px!important;font-weight:600;line-height:1.4;box-shadow:none!important;transform:none!important}
+body .modal.ctk-client-modal .modal-footer>.btn-default{background:#fff!important;border:1px solid #d4dee8!important;color:#486078!important}
+body .modal.ctk-client-modal .modal-footer>.btn-default:hover{background:#f4f8fc!important;border-color:#b7cbdc!important}
+body .modal.ctk-client-modal .modal-footer>:is(.btn-primary,.btn-success){background:#087cba!important;border:1px solid #087cba!important;color:#fff!important}
+body .modal.ctk-client-modal .modal-footer>:is(.btn-primary,.btn-success):hover{background:#066ca3!important;border-color:#066ca3!important}
+body .modal.ctk-client-modal .modal-footer>.pull-left{margin-right:auto}
+body .modal.ctk-client-modal :is(button,a,input,select,textarea):focus-visible{outline:2px solid #087cba!important;outline-offset:3px!important}
+body .modal-backdrop.ctk-client-backdrop{background:#132b42}
+body .modal-backdrop.ctk-client-backdrop.in{opacity:.48}
+@media(max-width:480px){
+ body .modal.ctk-client-modal .modal-dialog{width:calc(100% - 24px)!important}
+ body .modal.ctk-client-modal .modal-content{max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);border-radius:14px!important}
+ body .modal.ctk-client-modal .modal-header{padding:18px 58px 16px 20px!important}
+ body .modal.ctk-client-modal .modal-header>.close{top:18px;right:14px}
+ body .modal.ctk-client-modal .modal-title{font-size:17px!important;gap:10px}
+ body .modal.ctk-client-modal .modal-body{padding:18px 20px!important}
+ body .modal.ctk-client-modal .modal-footer{padding:14px 20px!important}
+}
+@media(prefers-reduced-motion:reduce){body .modal.ctk-client-modal,body .modal.ctk-client-modal .modal-dialog,body .modal-backdrop.ctk-client-backdrop{transition:none!important}body .modal.ctk-client-modal .modal-header>.close{transition:none!important}}

@@ -37,7 +37,6 @@ class Php
     {
         switch (php_sapi_name()) {
             case "cli":
-            case "cli-server":
                 return true;
         }
         if (!isset($_SERVER["SERVER_NAME"]) && !isset($_SERVER["HTTP_HOST"])) {

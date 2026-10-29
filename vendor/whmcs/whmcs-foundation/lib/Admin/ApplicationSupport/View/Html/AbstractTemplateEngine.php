@@ -10,7 +10,9 @@ namespace WHMCS\Admin\ApplicationSupport\View\Html;
 
 abstract class AbstractTemplateEngine extends \WHMCS\Http\Message\AbstractViewableResponse implements \WHMCS\View\HtmlPageInterface
 {
-    use \WHMCS\Admin\ApplicationSupport\View\Traits\AdminHtmlViewTrait;
+    use \WHMCS\Admin\ApplicationSupport\View\Traits\AdminHtmlViewTrait {
+        prepareVariableContent as protected standardPrepareVariableContent;
+    }
     public abstract function getFormattedHeaderContent();
     public abstract function getFormattedBodyContent();
     public abstract function getFormattedFooterContent();

@@ -51,6 +51,11 @@ if ($action == "") {
             redir("userid=" . $userid);
         }
         if ($sub == "delete") {
+            require_once ROOTDIR.'/includes/cloudytek/wallet.php';
+            if (\Cloudytek\Wallet::installed() && WHMCS\Database\Capsule::table('ctk_wallets')->where('client_id',$userid)->exists()) {
+                $aInt->gracefulExit('Wallet credit history is immutable. Use a new adjustment instead of deleting a recorded transaction.');
+                exit;
+            }
             $ide = (int) $whmcs->get_req_var("ide");
             $result = select_query("tblcredit", "", array("id" => $ide));
             $data = mysql_fetch_array($result);

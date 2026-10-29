@@ -14,9 +14,7 @@ class Country
     protected $countriesPath = NULL;
     public function __construct($countriesPath = "")
     {
-        if (!empty($countriesPath)) {
-            $this->countriesPath = $countriesPath;
-        }
+        $this->countriesPath = rtrim($countriesPath ?: ROOTDIR . "/resources/country", "/\\") . DIRECTORY_SEPARATOR;
         $this->load();
     }
     protected function load()

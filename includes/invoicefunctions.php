@@ -915,6 +915,15 @@ function getNewClientAutoProvisionStatus($userid)
 }
 function applyCredit($invoiceid, $userid, $amount, $noemail = "")
 {
+    require_once ROOTDIR . '/includes/cloudytek/wallet.php';
+    if (\Cloudytek\Wallet::installed()) {
+        $taken = \Cloudytek\Wallet::spend($invoiceid, $userid, (string)$amount);
+        if (!$taken) return;
+        logActivity('Wallet credit applied, promotion first - Invoice ID: '.$invoiceid.' - Amount: '.\Cloudytek\Wallet::money($taken), $userid);
+        $current = WHMCS\Billing\Invoice::find($invoiceid);
+        if ($current && $current->balance <= 0) processpaidinvoice($invoiceid, $noemail);
+        return;
+    }
     $amount = round($amount, 2);
     update_query("tblinvoices", array("credit" => "+=" . $amount), array("id" => (int) $invoiceid));
     update_query("tblclients", array("credit" => "-=" . $amount), array("id" => (int) $userid));
@@ -979,6 +988,11 @@ function isUniqueTransactionID($transactionID, $gateway)
 }
 function removeCreditOnInvoiceDelete($invoiceID)
 {
+    require_once ROOTDIR . '/includes/cloudytek/wallet.php';
+    if (\Cloudytek\Wallet::installed()) {
+        \Cloudytek\Wallet::refundInvoice($invoiceID, 'Wallet credit returned on deletion of invoice #'.$invoiceID);
+        return;
+    }
     $invoiceData = WHMCS\Database\Capsule::table("tblinvoices")->find($invoiceID, array("userid", "credit"));
     $creditAmount = $invoiceData->credit;
     $userID = $invoiceData->userid;
@@ -994,6 +1008,11 @@ function removeCreditOnInvoiceDelete($invoiceID)
 }
 function refundCreditOnStatusChange($invoiceId, $status = "Fraud")
 {
+    require_once ROOTDIR . '/includes/cloudytek/wallet.php';
+    if (\Cloudytek\Wallet::installed()) {
+        \Cloudytek\Wallet::refundInvoice($invoiceId, 'Wallet credit returned from invoice #'.$invoiceId.' ('.$status.')');
+        return;
+    }
     $invoiceData = WHMCS\Database\Capsule::table("tblinvoices")->find($invoiceId, array("userid", "credit"));
     $creditAmount = $invoiceData->credit;
     $userId = $invoiceData->userid;

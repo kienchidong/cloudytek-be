@@ -8,6 +8,12 @@
 
 define("ADMINAREA", true);
 require_once dirname(__DIR__) . "/init.php";
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && empty($_GET)
+    && stripos(isset($_SERVER['HTTP_ACCEPT']) ? $_SERVER['HTTP_ACCEPT'] : '', 'text/html') !== false
+    && strtolower(isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? $_SERVER['HTTP_X_REQUESTED_WITH'] : '') !== 'xmlhttprequest') {
+    header('Location: workspace.php');
+    exit;
+}
 $request = WHMCS\Http\Message\ServerRequest::fromGlobals();
 $response = DI::make("Frontend\\Dispatcher")->dispatch($request);
 $statusCode = $response->getStatusCode();

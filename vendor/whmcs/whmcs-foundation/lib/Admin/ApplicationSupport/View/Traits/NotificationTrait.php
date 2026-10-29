@@ -8,7 +8,7 @@
 
 namespace WHMCS\Admin\ApplicationSupport\View\Traits;
 
-abstract class NotificationTrait
+trait NotificationTrait
 {
     protected $topBarNotification = array();
     protected $clientLimitNotification = array();

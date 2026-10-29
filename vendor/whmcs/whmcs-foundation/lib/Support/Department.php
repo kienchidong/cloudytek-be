@@ -26,7 +26,7 @@ class Department extends \WHMCS\Model\AbstractModel
         static::addGlobalScope("order", function (\Illuminate\Database\Eloquent\Builder $builder) {
             $builder->orderBy("tblticketdepartments.order");
         });
-        self::saved(function (\self $department) {
+        self::saved(function (self $department) {
             if (\WHMCS\Config\Setting::getValue("EnableTranslations")) {
                 $translation = \WHMCS\Language\DynamicTranslation::firstOrNew(array("related_type" => "ticket_department.{id}.description", "related_id" => $department->id, "language" => \WHMCS\Config\Setting::getValue("Language"), "input_type" => "text"));
                 $translation->translation = $department->getRawAttribute("description") ?: "";
@@ -36,7 +36,7 @@ class Department extends \WHMCS\Model\AbstractModel
                 $translation->save();
             }
         });
-        self::deleted(function (\self $department) {
+        self::deleted(function (self $department) {
             if (\WHMCS\Config\Setting::getValue("EnableTranslations")) {
                 \WHMCS\Language\DynamicTranslation::whereIn("related_type", array("ticket_department.{id}.description", "ticket_department.{id}.name"))->where("related_id", "=", $department->id)->delete();
             }

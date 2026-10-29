@@ -1,3 +1,6 @@
+{if $portalCatalog}
+{include file="$template/includes/catalog.tpl"}
+{else}
 {include file="orderforms/standard_cart/common.tpl"}
 
 <div id="order-standard_cart">
@@ -124,3 +127,5 @@
         </div>
     </div>
 </div>
+
+{/if}

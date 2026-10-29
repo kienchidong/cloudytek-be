@@ -9,6 +9,16 @@
 define("ADMINAREA", true);
 require "../init.php";
 $aInt = new WHMCS\Admin("List Clients");
+// Ordinary bookmarks use the React customer list; native POST and iframe requests stay native.
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['workspace_frame']) && !isset($_GET['classic'])
+    && !array_diff(array_keys($_GET), array('legacy', 'page', 'orderby', 'sort', 'q', 'status', 'group', 'limit'))
+    && stripos(isset($_SERVER['HTTP_ACCEPT']) ? $_SERVER['HTTP_ACCEPT'] : '', 'text/html') !== false
+    && strtolower(isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? $_SERVER['HTTP_X_REQUESTED_WITH'] : '') !== 'xmlhttprequest') {
+    $workspaceQuery = $_GET; unset($workspaceQuery['legacy']);
+    $workspaceRoute = 'clients.php'.($workspaceQuery ? '?'.http_build_query($workspaceQuery) : '');
+    header('Location: workspace.php#/'.rawurlencode($workspaceRoute));
+    exit;
+}
 $aInt->title = $aInt->lang("clients", "viewsearch");
 $aInt->sidebar = "clients";
 $aInt->icon = "clients";

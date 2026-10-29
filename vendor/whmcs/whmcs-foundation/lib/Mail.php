@@ -90,6 +90,9 @@ class Mail extends \PHPMailer\PHPMailer\PHPMailer
     }
     public function send()
     {
+        if (defined('WHMCS_LOCAL_DEMO_DISABLE_DELIVERY') && WHMCS_LOCAL_DEMO_DISABLE_DELIVERY) {
+            throw new Exception\Mail\SendFailure('Email delivery is disabled in this local demo.');
+        }
         $this->Subject = Input\Sanitize::decode($this->Subject);
         if ($this->decodeAltBodyOnSend) {
             $this->AltBody = Input\Sanitize::decode($this->AltBody);

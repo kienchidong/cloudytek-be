@@ -6,12 +6,16 @@
  * @ Website    : http://EasyToYou.eu
  */
 
+require_once __DIR__ . '/includes/cloudytek/clean_urls.php';
+\Cloudytek\CleanUrls\boot();
+
 ini_set("eaccelerator.enable", 0);
 ini_set("eaccelerator.optimizer", 0);
 $systemErrorReportingLevel = error_reporting();
-if (function_exists("gracefulCoreRequiredFileInclude")) {
+if (!empty($GLOBALS["whmcsInitBootstrapped"])) {
     exit("Detected attempt to include init.php for a second time. Unable to continue." . PHP_EOL);
 }
+$GLOBALS["whmcsInitBootstrapped"] = true;
 function gracefulCoreRequiredFileInclude($path)
 {
     $fullpath = ROOTDIR . $path;
@@ -50,6 +54,8 @@ if (!defined("WHMCS")) {
     define("WHMCS", true);
 }
 gracefulCoreRequiredFileInclude("/vendor/autoload.php");
+$whmcsComposerLoader = require ROOTDIR . "/vendor/autoload.php";
+$whmcsComposerLoader->addPsr4("WHMCS\\Module\\Gateway\\Stripe\\", ROOTDIR . "/modules/gateways/stripe/lib");
 if (function_exists("stream_get_wrappers") && function_exists("stream_wrapper_unregister") && in_array("phar", stream_get_wrappers())) {
     stream_wrapper_unregister("phar");
 }
@@ -131,10 +137,11 @@ if (function_exists("mb_internal_encoding")) {
 }
 if (function_exists("htmlspecialchars_array")) {
     exit("Detected attempt to include init.php for a second time. Unable to continue.");
-}
-function htmlspecialchars_array($arr)
-{
-    return App::self()->sanitize_input_vars($arr);
+} else {
+    function htmlspecialchars_array($arr)
+    {
+        return App::self()->sanitize_input_vars($arr);
+    }
 }
 define("CLIENT_DATE_FORMAT", getClientDateFormat());
 if (defined("ADMINAREA") && !defined("MOBILEEDITION")) {

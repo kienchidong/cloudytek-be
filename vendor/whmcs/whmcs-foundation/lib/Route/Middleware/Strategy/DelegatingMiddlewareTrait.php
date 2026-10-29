@@ -8,7 +8,7 @@
 
 namespace WHMCS\Route\Middleware\Strategy;
 
-abstract class DelegatingMiddlewareTrait
+trait DelegatingMiddlewareTrait
 {
     public abstract function _process(\WHMCS\Http\Message\ServerRequest $request, \Interop\Http\ServerMiddleware\DelegateInterface $delegate);
     public function process(\Psr\Http\Message\ServerRequestInterface $request, \Interop\Http\ServerMiddleware\DelegateInterface $delegate)

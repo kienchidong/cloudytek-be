@@ -10,7 +10,9 @@ namespace WHMCS\Security\Middleware;
 
 class Authorization implements \WHMCS\Route\Contracts\Middleware\StrategyInterface
 {
-    use \WHMCS\Route\Middleware\Strategy\DelegatingMiddlewareTrait;
+    use \WHMCS\Route\Middleware\Strategy\DelegatingMiddlewareTrait {
+        process as protected delegateProcess;
+    }
     protected $request = NULL;
     protected $csrfRequestMethods = array();
     protected $csrfNamespace = "";

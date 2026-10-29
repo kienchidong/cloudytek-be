@@ -1555,6 +1555,14 @@ if ($a == "confproduct") {
                 $orderSummaryTemplate = "/templates/orderforms/" . WHMCS\View\Template\OrderForm::factory("ordersummary.tpl", $orderFormTemplateName)->getName() . "/ordersummary.tpl";
                 $cartTotals = calcCartTotals(false, true);
                 $templateVariables = array("producttotals" => $cartTotals["products"][$productInfoKey], "carttotals" => $cartTotals);
+                // Match live, rendered summaries to the client's presentation currency.
+                // Raw totals used for billing and gateway requests remain unchanged.
+                if (function_exists('cloudytekLocaleMoneyView')) {
+                    $displayCurrency = WHMCS\Database\Capsule::table('tblcurrencies')->where('code', Lang::getName() === 'vietnamese' ? 'VND' : 'USD')->first();
+                    if ($displayCurrency && (int) $displayCurrency->id !== (int) $currency['id']) {
+                        $templateVariables = cloudytekLocaleMoneyView($templateVariables, $currency, (array) $displayCurrency);
+                    }
+                }
                 header("HTTP/1.1 200 OK");
                 header("Status: 200 OK");
                 echo processSingleTemplate($orderSummaryTemplate, $templateVariables);

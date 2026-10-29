@@ -55,9 +55,15 @@ if (!in_array($type, array("add", "remove"))) {
                         if ($type === "remove") {
                             $relativeChange = 0 - $relativeChange;
                         }
-                        insert_query("tblcredit", array("clientid" => $clientid, "admin_id" => $adminId, "date" => $date, "description" => $description, "amount" => $relativeChange));
-                        $client->credit += $relativeChange;
-                        $client->save();
+                        require_once ROOTDIR . '/includes/cloudytek/wallet.php';
+                        if (\Cloudytek\Wallet::installed()) {
+                            try { \Cloudytek\Wallet::mainAdjustment($clientid, $relativeChange, $description, $date, $adminId); }
+                            catch (RuntimeException $e) { $apiresults = array('result'=>'error','message'=>$e->getMessage()); return; }
+                        } else {
+                            insert_query("tblcredit", array("clientid" => $clientid, "admin_id" => $adminId, "date" => $date, "description" => $description, "amount" => $relativeChange));
+                            $client->credit += $relativeChange;
+                            $client->save();
+                        }
                         $client = $client->fresh();
                         $currency = getCurrency($clientid);
                         $message = "Added Credit - User ID: " . $clientid . " - Amount: " . formatCurrency($amount);

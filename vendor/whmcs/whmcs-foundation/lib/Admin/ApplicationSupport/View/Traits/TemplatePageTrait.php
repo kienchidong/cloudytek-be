@@ -8,7 +8,7 @@
 
 namespace WHMCS\Admin\ApplicationSupport\View\Traits;
 
-abstract class TemplatePageTrait
+trait TemplatePageTrait
 {
     protected $templateVariables = NULL;
     protected $templateEngine = NULL;

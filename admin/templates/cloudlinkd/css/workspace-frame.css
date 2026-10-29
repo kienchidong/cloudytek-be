@@ -1,0 +1,20 @@
+/* Scope every rule to the authenticated React workspace iframe. */
+html.cloudytek-workspace-frame .topbar,
+html.cloudytek-workspace-frame body > .header,
+html.cloudytek-workspace-frame .navigation,
+html.cloudytek-workspace-frame .footerbar,
+html.cloudytek-workspace-frame #whmcsdevbanner,
+html.cloudytek-workspace-frame #sidebaropen { display:none!important; }
+html.cloudytek-workspace-frame body.cloudytek-admin { background:#f4f7fb; }
+html.cloudytek-workspace-frame #sidebar { display:none!important; }
+html.cloudytek-workspace-frame .contentarea { margin:0 12px!important; padding:56px 8px 20px!important; min-height:60vh; }
+html.cloudytek-workspace-frame .contentarea > div:first-child h1 { display:none; }
+html.cloudytek-workspace-frame .global-admin-warning { margin:60px 18px 12px; }
+html.cloudytek-workspace-frame .global-admin-warning:not(.hidden) ~ .contentarea { padding-top:10px!important; }
+html.cloudytek-workspace-frame .intelligent-search-container { top:10px!important;right:22px!important;margin:0!important; }
+html.cloudytek-workspace-frame #intelligentSearchResults { top:52px;right:18px; }
+html.cloudytek-workspace-frame .cloudytek-sidebar-toggle { display:none; }
+html.cloudytek-workspace-frame.workspace-context-open #sidebar { display:block!important;position:fixed;top:58px;left:0;bottom:10px;width:220px;margin:0 0 0 10px;overflow:auto;z-index:1000; }
+html.cloudytek-workspace-frame.workspace-context-open .contentarea { margin-left:248px!important; }
+@media(max-width:767px){html.cloudytek-workspace-frame .contentarea{margin:0 4px!important;padding-left:4px!important;padding-right:4px!important}html.cloudytek-workspace-frame .intelligent-search-container{left:12px!important;right:12px!important}html.cloudytek-workspace-frame.workspace-context-open .contentarea{margin-left:4px!important}html.cloudytek-workspace-frame.workspace-context-open #sidebar{box-shadow:8px 0 25px #10213a44}}
+html.cloudytek-workspace-frame body.cloudytek-admin{background:#f6f6f3}html.cloudytek-workspace-frame .contentarea{background:#f6f6f3!important}html.cloudytek-workspace-frame .tablebg,html.cloudytek-workspace-frame .panel{border:1px solid #e5e5db!important;border-radius:10px;box-shadow:none!important;overflow:hidden}html.cloudytek-workspace-frame table.datatable th{background:#f4f4ed!important;color:#7b8574!important;font-size:11px;font-weight:600;border-color:#e7e8df!important}html.cloudytek-workspace-frame table.datatable td{padding:12px 9px!important;border-color:#efefe8!important;font-size:12px;color:#697364}html.cloudytek-workspace-frame .btn-primary{background:#e57440!important;border-color:#e57440!important}html.cloudytek-workspace-frame .form-control{border-color:#dedfd5;border-radius:6px;box-shadow:none}html.cloudytek-workspace-frame .nav-tabs>li.active>a{border-top-color:#e57440;color:#bd7149}html.cloudytek-workspace-frame .panel-heading{background:#f8f8f3!important;color:#78836e!important}

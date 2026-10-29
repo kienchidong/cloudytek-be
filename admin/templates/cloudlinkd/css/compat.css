@@ -1,0 +1,32 @@
+/* CloudLinkd compatibility additions for the existing WHMCS 7.8 templates. */
+body { font-family:'Segoe UI',Arial,sans-serif; }
+body,input,button,select,textarea { font-family:'Segoe UI',Arial,sans-serif; }
+.header .logo { padding-top:7px; }
+.cloudlinkd-brand { display:inline-flex; align-items:center; gap:9px; color:#f4f4f5!important; font-size:20px; font-weight:650; text-decoration:none!important; }
+.cloudlinkd-mark { display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:8px; background:#3b82f6; color:#fff; font-size:18px; }
+.cloudlinkd-brand small { font-size:9px; letter-spacing:1px; color:#a1a1aa; }
+.global-admin-warning { margin:10px; }
+.intelligent-search-container { position:fixed; top:27px; right:15px; z-index:1000; }
+.intelligent-search-container input[type=text] { width:220px; height:32px; padding:6px 12px; border-radius:7px; border:1px solid #444; background:#1c1c1e; color:#f4f4f5; }
+#intelligentSearchResults { display:none; position:absolute; top:86px; right:6px; margin:0 0 0 10px; padding:0; width:500px; max-width:calc(100vw - 20px); font-size:12px; text-align:left; z-index:1050; border:1px solid #3f3f46; border-radius:6px; background:#1c1c1e; color:#e4e4e7; }
+#intelligentSearchResults .search-results { padding:8px; max-height:400px; overflow:auto; text-align:left; }
+#intelligentSearchResults .search-header,#intelligentSearchResults .search-footer { padding:6px 10px; line-height:21px; }
+#intelligentSearchResults .search-footer .realtime,#intelligentSearchResults .search-footer .hide-inactive { float:right; line-height:0; margin-left:5px; }
+#intelligentSearchResults ul { padding:0; margin:2px; list-style:none; }
+#intelligentSearchResults ul li { padding:5px 8px; margin:2px; border-radius:4px; background:#232326; }
+#intelligentSearchResults ul li a { display:block; text-decoration:none; }
+#intelligentSearchResults h5 { padding:8px 15px; margin:0 0 5px; font-size:12px; font-weight:600; border-bottom:1px solid #3f3f46; cursor:pointer; }
+#intelligentSearchResults h5 i,#intelligentSearchResults ul li .label { float:right; }
+#intelligentSearchResults ul li .icon { float:left; margin-right:8px; }
+#intelligentSearchResults .search-in-progress,#intelligentSearchResults .search-no-results,#intelligentSearchResults .session-expired,#intelligentSearchResults .search-warning,#intelligentSearchResults .error { padding:24px; text-align:center; }
+#intelligentSearchResults .search-header,#intelligentSearchResults .search-footer { background:#232326; color:#e4e4e7; border-color:#3f3f46; }
+#intelligentSearchResults .search-results h5 { color:#e4e4e7; }
+#intelligentSearchResults .search-results ul li:hover { background:#27272a; }
+.client-paymethods-container,.paymethod-container { background:#1c1c1e; color:#e4e4e7; }
+h1,h2,h3,h4,.panel-title { color:#e4e4e7; }
+.text-muted,.help-block { color:#a1a1aa; }
+.widget-billing .data { font-size:18px; line-height:1.4; white-space:normal; overflow-wrap:anywhere; }
+#whmcsdevbanner { position:static!important; display:block!important; background:#232326!important; }
+#whmcsdevbanner>div { padding:8px 20px!important; font-size:12px!important; color:#a1a1aa!important; }
+.cloudlinkd-brand:focus-visible,a:focus-visible,button:focus-visible { outline:2px solid #60a5fa; outline-offset:3px; }
+@media(max-width:767px) { .intelligent-search-container { position:relative; top:auto; right:auto; margin:12px; } .intelligent-search-container input[type=text] { width:100%; } .cloudlinkd-brand { font-size:17px; } }

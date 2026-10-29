@@ -7,7 +7,8 @@ var _localLang = {
 }
 </script>
 
-<div id="order-standard_cart">
+<div id="order-standard_cart"{if $template == 'kinsmen'} class="portal-cart-configure"{/if}>
+    {if $template == 'kinsmen'}{include file="$template/includes/cart-steps.tpl" step=1}{/if}
 
     <div class="row">
 
@@ -34,13 +35,14 @@ var _localLang = {
                 <input type="hidden" name="i" value="{$i}" />
 
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8 portal-cart-config-main">
 
-                        <p>{$LANG.orderForm.configureDesiredOptions}</p>
+                        {if $template == 'kinsmen'}<h2 class="portal-cart-section-title">{$LANG.portalCartSelected}</h2>{else}<p>{$LANG.orderForm.configureDesiredOptions}</p>{/if}
 
                         <div class="product-info">
+                            {if $template == 'kinsmen'}<a class="btn btn-default portal-change-product" href="cart.php">{$LANG.portalCartChange}</a>{/if}
                             <p class="product-title">{$productinfo.name}</p>
-                            <p>{$productinfo.description}</p>
+                            <div class="portal-product-description">{$productinfo.description}</div>
                         </div>
 
                         <div class="alert alert-danger hidden" role="alert" id="containerProductValidationErrors">
@@ -51,7 +53,7 @@ var _localLang = {
                         {if $pricing.type eq "recurring"}
                             <div class="field-container">
                                 <div class="form-group">
-                                    <label for="inputBillingcycle">{$LANG.cartchoosecycle}</label>
+                                    <label for="inputBillingcycle">{if $template == 'kinsmen'}{$LANG.portalCartCycle}{else}{$LANG.cartchoosecycle}{/if}</label>
                                     <select name="billingcycle" id="inputBillingcycle" class="form-control select-inline" onchange="{if $configurableoptions}updateConfigurableOptions({$i}, this.value);{else}recalctotals();{/if}">
                                         {if $pricing.monthly}
                                             <option value="monthly"{if $billingcycle eq "monthly"} selected{/if}>
@@ -84,6 +86,7 @@ var _localLang = {
                                             </option>
                                         {/if}
                                     </select>
+                                    {if $template == 'kinsmen'}<div class="portal-cycle-cards" data-month-label="{$LANG.portalCartMonth|escape}" aria-label="{$LANG.portalCartCycle|escape}"></div>{/if}
                                 </div>
                             </div>
                         {/if}
@@ -313,11 +316,12 @@ var _localLang = {
                                 <h2>{$LANG.ordersummary}</h2>
                                 <div class="summary-container" id="producttotal"></div>
                             </div>
-                            <div class="text-center">
+                            <div class="text-center portal-config-submit">
                                 <button type="submit" id="btnCompleteProductConfig" class="btn btn-primary btn-lg">
-                                    {$LANG.continue}
+                                    {if $template == 'kinsmen'}{$LANG.portalCartAdd}{else}{$LANG.continue}{/if}
                                     <i class="fas fa-arrow-circle-right"></i>
                                 </button>
+                                {if $template == 'kinsmen'}<a class="portal-config-back" href="cart.php">{$LANG.back}</a>{/if}
                             </div>
                         </div>
 

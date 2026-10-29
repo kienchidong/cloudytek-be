@@ -1,0 +1,10 @@
+/* Inline field feedback shared by all client forms, including dynamic checkout controls. */
+body.admin-layout .ctk-field-error{display:block;position:static!important;clear:both;width:100%;margin:6px 0 10px;padding:0;color:#bc2637!important;background:none;border:0;font:400 12px/1.5 'Segoe UI',Arial,sans-serif;text-align:left;overflow-wrap:anywhere}
+body.admin-layout :is(input,select,textarea).ctk-field-invalid{border-color:#bc2637!important;box-shadow:none!important}
+body.admin-layout :is(input,select,textarea).ctk-field-invalid:focus{outline:2px solid #bc263733;outline-offset:2px}
+/* Native theme fields have ID-scoped border rules; feedback must take precedence. */
+body.admin-layout #main-body :is(#registration,#order-standard_cart,.portal-signin,.portal-reset,.main-content,.portal-support) :is(input,select,textarea).ctk-field-invalid{border-color:#bc2637!important;box-shadow:none!important}
+body.admin-layout .portal-input-field.ctk-invalid-wrap{margin-bottom:0}
+body.admin-layout [hidden][data-inline-error-moved],body.admin-layout .alert[hidden]{display:none!important}
+body.admin-layout .ctk-field-error+label{margin-top:5px}
+@media(prefers-color-scheme:dark){body.dark-mode .ctk-field-error{color:#ff95a1!important}}

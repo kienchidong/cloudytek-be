@@ -75,7 +75,7 @@ class Price
                 if ($currency["format"] == 4) {
                     $format_dm = "0";
                     $format_dp = "";
-                    $format_ts = ",";
+                    $format_ts = isset($currency['code']) && $currency['code']==='VND' ? '.' : ',';
                 }
             }
         }

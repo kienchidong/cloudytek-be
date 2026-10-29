@@ -8,7 +8,7 @@
 
 namespace WHMCS\Scheduling\Task;
 
-abstract class RegisterTrait
+trait RegisterTrait
 {
     protected $outputInstances = array();
     public function output($key)

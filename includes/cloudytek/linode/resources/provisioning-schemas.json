@@ -1,0 +1,4726 @@
+{
+  "linode": {
+    "operation": "post-linode-instance",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "allOf": [
+              {
+                "properties": {
+                  "authorized_keys": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "writeOnly": true
+                  },
+                  "authorized_users": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "writeOnly": true
+                  },
+                  "booted": {
+                    "default": true,
+                    "type": "boolean",
+                    "writeOnly": true
+                  },
+                  "disk_encryption": {
+                    "enum": [
+                      "enabled",
+                      "disabled"
+                    ],
+                    "type": "string"
+                  },
+                  "image": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "maintenance_policy": {
+                    "enum": [
+                      "linode/migrate",
+                      "linode/power_off_on"
+                    ],
+                    "type": "string"
+                  },
+                  "metadata": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "user_data": {
+                        "format": "byte",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object",
+                    "writeOnly": true
+                  },
+                  "root_pass": {
+                    "format": "password",
+                    "maxLength": 128,
+                    "minLength": 7,
+                    "type": "string",
+                    "writeOnly": true
+                  },
+                  "stackscript_data": {
+                    "type": "object"
+                  },
+                  "stackscript_id": {
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "properties": {
+                  "backup_id": {
+                    "type": "integer"
+                  },
+                  "backups_enabled": {
+                    "type": "boolean"
+                  },
+                  "boot_size": {
+                    "minimum": 8192,
+                    "type": "integer",
+                    "writeOnly": true
+                  },
+                  "firewall_id": {
+                    "minimum": -1,
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "group": {
+                    "deprecated": true,
+                    "type": "string"
+                  },
+                  "interface_generation": {
+                    "enum": [
+                      "legacy_config",
+                      "linode"
+                    ],
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "interfaces": {
+                    "default": [],
+                    "items": {
+                      "oneOf": [
+                        {
+                          "oneOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "default_route": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "ipv4": {
+                                      "nullable": true,
+                                      "type": "boolean"
+                                    },
+                                    "ipv6": {
+                                      "nullable": true,
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "firewall_id": {
+                                  "minimum": -1,
+                                  "nullable": true,
+                                  "type": "integer"
+                                },
+                                "public": {
+                                  "additionalProperties": false,
+                                  "nullable": true,
+                                  "properties": {
+                                    "ipv4": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "addresses": {
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "address": {
+                                                "anyOf": [
+                                                  {
+                                                    "format": "ip",
+                                                    "minLength": 1,
+                                                    "title": "User assigned IPv4",
+                                                    "type": "string"
+                                                  },
+                                                  {
+                                                    "enum": [
+                                                      "auto"
+                                                    ],
+                                                    "title": "Automatically assigned IPv4",
+                                                    "type": "string"
+                                                  },
+                                                  {
+                                                    "items": {
+                                                      "type": "string"
+                                                    },
+                                                    "maxItems": 0,
+                                                    "title": "No IPv4 [empty list]",
+                                                    "type": "array"
+                                                  }
+                                                ],
+                                                "default": "auto",
+                                                "type": "string"
+                                              },
+                                              "primary": {
+                                                "default": false,
+                                                "type": "boolean"
+                                              }
+                                            },
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "ipv6": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "ranges": {
+                                          "default": [],
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "range": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "range"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        }
+                                      },
+                                      "type": "object"
+                                    }
+                                  },
+                                  "type": "object"
+                                }
+                              },
+                              "title": "Public interface",
+                              "type": "object"
+                            },
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "vlan": {
+                                  "additionalProperties": false,
+                                  "nullable": true,
+                                  "properties": {
+                                    "ipam_address": {
+                                      "format": "ipv4-cidr",
+                                      "type": "string"
+                                    },
+                                    "vlan_label": {
+                                      "maxLength": 64,
+                                      "minLength": 1,
+                                      "pattern": "[a-zA-Z0-9-]+",
+                                      "type": "string"
+                                    }
+                                  },
+                                  "type": "object"
+                                }
+                              },
+                              "title": "VLAN interface",
+                              "type": "object"
+                            },
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "default_route": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "ipv4": {
+                                      "nullable": true,
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "firewall_id": {
+                                  "minimum": -1,
+                                  "nullable": true,
+                                  "type": "integer"
+                                },
+                                "vpc": {
+                                  "additionalProperties": false,
+                                  "nullable": true,
+                                  "properties": {
+                                    "ipv4": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "addresses": {
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "address": {
+                                                "anyOf": [
+                                                  {
+                                                    "format": "ip",
+                                                    "minLength": 1,
+                                                    "title": "User assigned IPv4 from the VPC subnet",
+                                                    "type": "string"
+                                                  },
+                                                  {
+                                                    "enum": [
+                                                      "auto"
+                                                    ],
+                                                    "title": "Automatically assigned IPv4",
+                                                    "type": "string"
+                                                  }
+                                                ],
+                                                "default": "auto",
+                                                "type": "string"
+                                              },
+                                              "nat_1_1_address": {
+                                                "anyOf": [
+                                                  {
+                                                    "format": "ip",
+                                                    "minLength": 1,
+                                                    "title": "User assigned public IPv4",
+                                                    "type": "string"
+                                                  },
+                                                  {
+                                                    "enum": [
+                                                      "auto"
+                                                    ],
+                                                    "title": "Automatically assigned public IPv4",
+                                                    "type": "string"
+                                                  }
+                                                ],
+                                                "default": null,
+                                                "nullable": true,
+                                                "type": "string"
+                                              },
+                                              "primary": {
+                                                "default": false,
+                                                "nullable": true,
+                                                "type": "boolean"
+                                              }
+                                            },
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "ranges": {
+                                          "default": [],
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "range": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "range"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "ipv6": {
+                                      "additionalProperties": false,
+                                      "nullable": true,
+                                      "properties": {
+                                        "is_public": {
+                                          "default": false,
+                                          "type": "boolean"
+                                        },
+                                        "ranges": {
+                                          "default": [],
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "range": {
+                                                "default": "auto",
+                                                "nullable": true,
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "range"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "slaac": {
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "address": {
+                                                "format": "ipv6",
+                                                "readOnly": true,
+                                                "type": "string"
+                                              },
+                                              "range": {
+                                                "default": "auto",
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "range"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "maxItems": 1,
+                                          "minItems": 0,
+                                          "type": "array"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "subnet_id": {
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "required": [
+                                    "subnet_id"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "title": "VPC interface",
+                              "type": "object"
+                            },
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "default_route": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "ipv4": {
+                                      "nullable": true,
+                                      "type": "boolean"
+                                    },
+                                    "ipv6": {
+                                      "nullable": true,
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "firewall_id": {
+                                  "minimum": -1,
+                                  "nullable": false,
+                                  "type": "integer"
+                                },
+                                "rdma_vpc": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "ipv4": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "addresses": {
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "address": {
+                                                "anyOf": [
+                                                  {
+                                                    "format": "ip",
+                                                    "minLength": 1,
+                                                    "title": "User assigned IPv4 from the RDMA VPC subnet",
+                                                    "type": "string"
+                                                  },
+                                                  {
+                                                    "enum": [
+                                                      "auto"
+                                                    ],
+                                                    "title": "Automatically assigned IPv4",
+                                                    "type": "string"
+                                                  }
+                                                ],
+                                                "default": "auto",
+                                                "type": "string"
+                                              },
+                                              "primary": {
+                                                "default": true,
+                                                "nullable": true,
+                                                "type": "boolean"
+                                              }
+                                            },
+                                            "type": "object"
+                                          },
+                                          "maxItems": 1,
+                                          "minItems": 1,
+                                          "type": "array"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "subnet_id": {
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "required": [
+                                    "subnet_id"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "title": "RDMA VPC interface",
+                              "type": "object"
+                            }
+                          ],
+                          "title": "Linode interface",
+                          "type": "object"
+                        },
+                        {
+                          "allOf": [
+                            {
+                              "required": [
+                                "purpose"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "primary": {
+                                      "type": "boolean"
+                                    },
+                                    "purpose": {
+                                      "enum": [
+                                        "public"
+                                      ],
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "purpose"
+                                  ],
+                                  "title": "Public configuration profile interface",
+                                  "type": "object"
+                                },
+                                {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "ip_ranges": {
+                                      "items": {
+                                        "format": "ip",
+                                        "type": "string"
+                                      },
+                                      "nullable": true,
+                                      "type": "array"
+                                    },
+                                    "ipv4": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "nat_1_1": {
+                                          "anyOf": [
+                                            {
+                                              "format": "ip",
+                                              "minLength": 1,
+                                              "title": "An available public IPv4 address",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "enum": [
+                                                "any"
+                                              ],
+                                              "title": "The assigned public IPv4 address",
+                                              "type": "string"
+                                            }
+                                          ],
+                                          "nullable": true,
+                                          "type": "string"
+                                        },
+                                        "vpc": {
+                                          "format": "ip",
+                                          "nullable": true,
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "ipv6": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "is_public": {
+                                          "default": false,
+                                          "type": "boolean"
+                                        },
+                                        "ranges": {
+                                          "default": [],
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "range": {
+                                                "default": "auto",
+                                                "nullable": true,
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "range"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "slaac": {
+                                          "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                              "address": {
+                                                "format": "ipv6",
+                                                "readOnly": true,
+                                                "type": "string"
+                                              },
+                                              "range": {
+                                                "default": "auto",
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "range"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "maxItems": 1,
+                                          "minItems": 0,
+                                          "type": "array"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "primary": {
+                                      "type": "boolean"
+                                    },
+                                    "purpose": {
+                                      "enum": [
+                                        "vpc"
+                                      ],
+                                      "type": "string"
+                                    },
+                                    "subnet_id": {
+                                      "nullable": true,
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "required": [
+                                    "purpose"
+                                  ],
+                                  "title": "VPC configuration profile interface",
+                                  "type": "object"
+                                },
+                                {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "ipam_address": {
+                                      "format": "ip/netmask",
+                                      "nullable": true,
+                                      "type": "string"
+                                    },
+                                    "label": {
+                                      "maxLength": 64,
+                                      "minLength": 1,
+                                      "nullable": true,
+                                      "pattern": "[a-zA-Z0-9-]+",
+                                      "type": "string"
+                                    },
+                                    "primary": {
+                                      "type": "boolean"
+                                    },
+                                    "purpose": {
+                                      "enum": [
+                                        "vlan"
+                                      ],
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "label",
+                                    "purpose"
+                                  ],
+                                  "title": "VLAN configuration profile interface",
+                                  "type": "object"
+                                }
+                              ],
+                              "type": "object"
+                            }
+                          ],
+                          "title": "Legacy configuration interface"
+                        }
+                      ],
+                      "type": "object"
+                    },
+                    "maxItems": 1,
+                    "type": "array"
+                  },
+                  "ipv4": {
+                    "items": {
+                      "format": "ipv4",
+                      "type": "string"
+                    },
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "type": "array"
+                  },
+                  "kernel": {
+                    "maxLength": 100,
+                    "minLength": 1,
+                    "type": "string",
+                    "writeOnly": true
+                  },
+                  "label": {
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "pattern": "^[a-zA-Z]((?!--|__|\\.\\.)[a-zA-Z0-9-_.])+$",
+                    "type": "string"
+                  },
+                  "network_helper": {
+                    "nullable": true,
+                    "type": "boolean"
+                  },
+                  "placement_group": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "nullable": false,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "private_ip": {
+                    "type": "boolean"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "swap_size": {
+                    "default": 512,
+                    "type": "integer"
+                  },
+                  "tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "region"
+                ],
+                "type": "object"
+              }
+            ]
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "volume": {
+    "operation": "post-volume",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "config_id": {
+                "type": "integer"
+              },
+              "encryption": {
+                "default": "enabled",
+                "enum": [
+                  "enabled",
+                  "disabled"
+                ],
+                "type": "string"
+              },
+              "label": {
+                "maxLength": 32,
+                "minLength": 1,
+                "pattern": "^[a-zA-Z]((?!--|__)[a-zA-Z0-9-_])+$",
+                "type": "string"
+              },
+              "linode_id": {
+                "type": "integer"
+              },
+              "region": {
+                "nullable": true,
+                "type": "string"
+              },
+              "size": {
+                "default": 20,
+                "type": "integer"
+              },
+              "tags": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "label"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "domain": {
+    "operation": "post-domain",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "allOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "axfr_ips": {
+                    "items": {
+                      "format": "ip",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "domain": {
+                    "maxLength": 253,
+                    "minLength": 1,
+                    "pattern": "^(\\*\\.)?([a-zA-Z0-9-_]{1,63}\\.)+([a-zA-Z]{2,3}\\.)?([a-zA-Z]{2,16}|xn--[a-zA-Z0-9]+)$",
+                    "type": "string"
+                  },
+                  "expire_sec": {
+                    "default": 0,
+                    "type": "integer"
+                  },
+                  "group": {
+                    "deprecated": true,
+                    "maxLength": 50,
+                    "minLength": 1,
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "id": {
+                    "readOnly": true,
+                    "type": "integer"
+                  },
+                  "master_ips": {
+                    "items": {
+                      "format": "ip",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "refresh_sec": {
+                    "default": 0,
+                    "type": "integer"
+                  },
+                  "retry_sec": {
+                    "default": 0,
+                    "type": "integer"
+                  },
+                  "soa_email": {
+                    "format": "email",
+                    "type": "string"
+                  },
+                  "status": {
+                    "default": "active",
+                    "enum": [
+                      "disabled",
+                      "active"
+                    ],
+                    "type": "string"
+                  },
+                  "tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "ttl_sec": {
+                    "default": 0,
+                    "type": "integer"
+                  },
+                  "type": {
+                    "enum": [
+                      "master",
+                      "slave"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "title": "Domain",
+                "type": "object"
+              }
+            ],
+            "required": [
+              "domain",
+              "type"
+            ]
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "firewall": {
+    "operation": "post-firewalls",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "allOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "created": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "entities": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "label": {
+                          "nullable": true,
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "parent_entity": {
+                          "additionalProperties": false,
+                          "nullable": true,
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "label": {
+                              "type": "string"
+                            },
+                            "parent_entity": {
+                              "nullable": true,
+                              "readOnly": true,
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "linode"
+                              ],
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          },
+                          "readOnly": true,
+                          "type": "object"
+                        },
+                        "type": {
+                          "enum": [
+                            "linode",
+                            "linode_interface",
+                            "nodebalancer"
+                          ],
+                          "type": "string"
+                        },
+                        "url": {
+                          "readOnly": true,
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                  },
+                  "id": {
+                    "readOnly": true,
+                    "type": "integer"
+                  },
+                  "label": {
+                    "maxLength": 32,
+                    "minLength": 3,
+                    "pattern": "^[a-zA-Z]((?!--|__|\\.\\.)[a-zA-Z0-9-_.])+$",
+                    "type": "string"
+                  },
+                  "rules": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fingerprint": {
+                        "readOnly": true,
+                        "type": "string"
+                      },
+                      "inbound": {
+                        "items": {
+                          "oneOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "action": {
+                                  "enum": [
+                                    "ACCEPT",
+                                    "DROP"
+                                  ],
+                                  "type": "string"
+                                },
+                                "addresses": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "ipv4": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "ipv6": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "label": {
+                                  "maxLength": 32,
+                                  "minLength": 3,
+                                  "type": "string"
+                                },
+                                "ports": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "protocol": {
+                                  "oneOf": [
+                                    {
+                                      "enum": [
+                                        "TCP",
+                                        "UDP",
+                                        "ICMP",
+                                        "IPENCAP",
+                                        "ALL"
+                                      ],
+                                      "title": "Protocol name",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "pattern": "^(0|[1-9][0-9]?|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+                                      "title": "IANA protocol number",
+                                      "type": "string"
+                                    }
+                                  ],
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "action",
+                                "addresses",
+                                "protocol"
+                              ],
+                              "title": "Defined Rule (inbound)",
+                              "type": "object"
+                            },
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "ruleset": {
+                                  "type": "integer"
+                                }
+                              },
+                              "title": "Referenced Rule Set (inbound)",
+                              "type": "object"
+                            }
+                          ]
+                        },
+                        "type": "array"
+                      },
+                      "inbound_policy": {
+                        "enum": [
+                          "ACCEPT",
+                          "DROP"
+                        ],
+                        "type": "string"
+                      },
+                      "outbound": {
+                        "items": {
+                          "oneOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "action": {
+                                  "enum": [
+                                    "ACCEPT",
+                                    "DROP"
+                                  ],
+                                  "type": "string"
+                                },
+                                "addresses": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "ipv4": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "ipv6": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "label": {
+                                  "maxLength": 32,
+                                  "minLength": 3,
+                                  "type": "string"
+                                },
+                                "ports": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "protocol": {
+                                  "oneOf": [
+                                    {
+                                      "enum": [
+                                        "TCP",
+                                        "UDP",
+                                        "ICMP",
+                                        "IPENCAP",
+                                        "ALL"
+                                      ],
+                                      "title": "Protocol name",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "pattern": "^(0|[1-9][0-9]?|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+                                      "title": "IANA protocol number",
+                                      "type": "string"
+                                    }
+                                  ],
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "action",
+                                "addresses",
+                                "protocol"
+                              ],
+                              "title": "Defined Rule (outbound)",
+                              "type": "object"
+                            },
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "ruleset": {
+                                  "type": "integer"
+                                }
+                              },
+                              "title": "Referenced Rule Set (outbound)",
+                              "type": "object"
+                            }
+                          ]
+                        },
+                        "type": "array"
+                      },
+                      "outbound_policy": {
+                        "enum": [
+                          "ACCEPT",
+                          "DROP"
+                        ],
+                        "type": "string"
+                      },
+                      "version": {
+                        "readOnly": true,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "inbound_policy",
+                      "outbound_policy"
+                    ],
+                    "type": "object"
+                  },
+                  "status": {
+                    "enum": [
+                      "enabled",
+                      "disabled",
+                      "deleted"
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "updated": {
+                    "readOnly": true,
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            ],
+            "properties": {
+              "devices": {
+                "additionalProperties": false,
+                "properties": {
+                  "linode_interfaces": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "linodes": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "nodebalancers": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "rules": {
+                "additionalProperties": false,
+                "properties": {
+                  "inbound": {
+                    "required": [
+                      "action",
+                      "addresses",
+                      "protocol"
+                    ]
+                  },
+                  "outbound": {
+                    "required": [
+                      "action",
+                      "addresses",
+                      "protocol"
+                    ]
+                  }
+                },
+                "required": [
+                  "inbound_policy",
+                  "outbound_policy"
+                ]
+              }
+            },
+            "required": [
+              "label",
+              "rules"
+            ]
+          }
+        }
+      }
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "vpc": {
+    "operation": "post-vpc",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "allOf": [
+              {
+                "required": [
+                  "label",
+                  "region"
+                ]
+              },
+              {
+                "properties": {
+                  "subnets": {
+                    "required": [
+                      "ipv4",
+                      "label"
+                    ]
+                  }
+                }
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "created": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "id": {
+                    "readOnly": true,
+                    "type": "integer"
+                  },
+                  "ipv4": {
+                    "items": {
+                      "properties": {
+                        "range": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "maxItems": 30,
+                    "minItems": 1,
+                    "nullable": true,
+                    "type": "array"
+                  },
+                  "ipv6": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "allocation_range": {
+                          "default": null,
+                          "type": "string"
+                        },
+                        "range": {
+                          "default": "/52",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "type": "array"
+                  },
+                  "label": {
+                    "maxLength": 64,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "subnets": {
+                    "items": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "created": {
+                              "format": "date-time",
+                              "readOnly": true,
+                              "type": "string"
+                            },
+                            "databases": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "ipv4_range": {
+                                    "type": "string"
+                                  },
+                                  "ipv6_ranges": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "range": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "readOnly": true,
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "id": {
+                              "readOnly": true,
+                              "type": "integer"
+                            },
+                            "ipv4": {
+                              "format": "ip",
+                              "type": "string"
+                            },
+                            "label": {
+                              "maxLength": 64,
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "linodes": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "interfaces": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "active": {
+                                          "type": "boolean"
+                                        },
+                                        "config_id": {
+                                          "nullable": true,
+                                          "type": "integer"
+                                        },
+                                        "id": {
+                                          "type": "integer"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "nodebalancers": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "ipv4_range": {
+                                    "type": "string"
+                                  },
+                                  "ipv6_ranges": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "range": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "nullable": true,
+                                    "readOnly": true,
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "updated": {
+                              "format": "date-time",
+                              "nullable": true,
+                              "readOnly": true,
+                              "type": "string"
+                            },
+                            "vpc_type": {
+                              "default": "regular",
+                              "enum": [
+                                "regular",
+                                "rdma"
+                              ],
+                              "readOnly": true,
+                              "type": "string"
+                            }
+                          },
+                          "title": "IPv4 subnets only",
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "created": {
+                              "format": "date-time",
+                              "readOnly": true,
+                              "type": "string"
+                            },
+                            "databases": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "ipv4_range": {
+                                    "type": "string"
+                                  },
+                                  "ipv6_ranges": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "range": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "nullable": true,
+                                    "readOnly": true,
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "id": {
+                              "readOnly": true,
+                              "type": "integer"
+                            },
+                            "ipv6": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "allocation_range": {
+                                    "type": "string"
+                                  },
+                                  "range": {
+                                    "default": "auto",
+                                    "enum": [
+                                      "auto",
+                                      "/56",
+                                      "/52",
+                                      "/53",
+                                      "/54",
+                                      "/55",
+                                      "/57",
+                                      "/58",
+                                      "/59",
+                                      "/60",
+                                      "/61",
+                                      "/62"
+                                    ],
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "maxItems": 1,
+                              "type": "array"
+                            },
+                            "label": {
+                              "maxLength": 64,
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "linodes": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "interfaces": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "active": {
+                                          "type": "boolean"
+                                        },
+                                        "config_id": {
+                                          "nullable": true,
+                                          "type": "integer"
+                                        },
+                                        "id": {
+                                          "type": "integer"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "nodebalancers": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "ipv4_range": {
+                                    "type": "string"
+                                  },
+                                  "ipv6_ranges": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "range": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "nullable": true,
+                                    "readOnly": true,
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "updated": {
+                              "format": "date-time",
+                              "nullable": true,
+                              "readOnly": true,
+                              "type": "string"
+                            },
+                            "vpc_type": {
+                              "default": "regular",
+                              "enum": [
+                                "regular",
+                                "rdma"
+                              ],
+                              "readOnly": true,
+                              "type": "string"
+                            }
+                          },
+                          "title": "IPv6 subnets only",
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "created": {
+                              "format": "date-time",
+                              "readOnly": true,
+                              "type": "string"
+                            },
+                            "databases": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "ipv4_range": {
+                                    "type": "string"
+                                  },
+                                  "ipv6_ranges": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "nullable": true,
+                                      "properties": {
+                                        "range": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "readOnly": true,
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "id": {
+                              "readOnly": true,
+                              "type": "integer"
+                            },
+                            "ipv4": {
+                              "format": "ip",
+                              "type": "string"
+                            },
+                            "ipv6": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "allocation_range": {
+                                    "type": "string"
+                                  },
+                                  "range": {
+                                    "default": "auto",
+                                    "enum": [
+                                      "auto",
+                                      "/56",
+                                      "/52",
+                                      "/53",
+                                      "/54",
+                                      "/55",
+                                      "/57",
+                                      "/58",
+                                      "/59",
+                                      "/60",
+                                      "/61",
+                                      "/62"
+                                    ],
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "maxItems": 1,
+                              "type": "array"
+                            },
+                            "label": {
+                              "maxLength": 64,
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "linodes": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "interfaces": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "active": {
+                                          "type": "boolean"
+                                        },
+                                        "config_id": {
+                                          "nullable": true,
+                                          "type": "integer"
+                                        },
+                                        "id": {
+                                          "type": "integer"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "nodebalancers": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "ipv4_range": {
+                                    "type": "string"
+                                  },
+                                  "ipv6_ranges": {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "range": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "nullable": true,
+                                    "readOnly": true,
+                                    "type": "array"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "readOnly": true,
+                              "type": "array"
+                            },
+                            "updated": {
+                              "format": "date-time",
+                              "nullable": true,
+                              "readOnly": true,
+                              "type": "string"
+                            },
+                            "vpc_type": {
+                              "default": "regular",
+                              "enum": [
+                                "regular",
+                                "rdma"
+                              ],
+                              "readOnly": true,
+                              "type": "string"
+                            }
+                          },
+                          "title": "IPv4 and IPv6 subnets",
+                          "type": "object"
+                        }
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "updated": {
+                    "format": "date-time",
+                    "nullable": true,
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "vpc_type": {
+                    "default": "regular",
+                    "enum": [
+                      "regular",
+                      "rdma"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            ]
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "nodebalancer": {
+    "operation": "post-node-balancer",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "client_conn_throttle": {
+                "maximum": 20,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "configs": {
+                "items": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "algorithm": {
+                          "default": "roundrobin",
+                          "enum": [
+                            "roundrobin",
+                            "leastconn",
+                            "ring_hash"
+                          ],
+                          "type": "string"
+                        },
+                        "check": {
+                          "default": "none",
+                          "enum": [
+                            "none",
+                            "connection",
+                            "http",
+                            "http_body"
+                          ],
+                          "type": "string"
+                        },
+                        "check_attempts": {
+                          "default": 3,
+                          "maximum": 30,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "check_body": {
+                          "type": "string"
+                        },
+                        "check_interval": {
+                          "default": 5,
+                          "maximum": 3600,
+                          "minimum": 2,
+                          "type": "integer"
+                        },
+                        "check_passive": {
+                          "readOnly": true,
+                          "type": "boolean"
+                        },
+                        "check_path": {
+                          "pattern": "^[a-zA-Z0-9\\/\\-%?&=.]*$",
+                          "type": "string"
+                        },
+                        "check_timeout": {
+                          "default": 30,
+                          "maximum": 30,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "cipher_suite": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "id": {
+                          "readOnly": true,
+                          "type": "integer"
+                        },
+                        "nodebalancer_id": {
+                          "readOnly": true,
+                          "type": "integer"
+                        },
+                        "nodes": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "address": {
+                                "format": "ip",
+                                "type": "string"
+                              },
+                              "config_id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "label": {
+                                "maxLength": 32,
+                                "minLength": 3,
+                                "pattern": "[a-zA-Z0-9-_.]{3,32}",
+                                "type": "string"
+                              },
+                              "mode": {
+                                "enum": [
+                                  "none"
+                                ],
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "nodebalancer_id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "status": {
+                                "enum": [
+                                  "unknown",
+                                  "UP",
+                                  "DOWN"
+                                ],
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "subnet_id": {
+                                "type": "integer"
+                              },
+                              "weight": {
+                                "maximum": 255,
+                                "minimum": 1,
+                                "type": "integer"
+                              }
+                            },
+                            "title": "UDP config"
+                          },
+                          "type": "array"
+                        },
+                        "nodes_status": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "down": {
+                              "readOnly": true,
+                              "type": "integer"
+                            },
+                            "up": {
+                              "readOnly": true,
+                              "type": "integer"
+                            }
+                          },
+                          "readOnly": true,
+                          "type": "object"
+                        },
+                        "port": {
+                          "default": 80,
+                          "maximum": 65535,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "protocol": {
+                          "default": "http",
+                          "enum": [
+                            "udp"
+                          ],
+                          "type": "string"
+                        },
+                        "proxy_protocol": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_cert": {
+                          "nullable": true,
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_commonname": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_fingerprint": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_key": {
+                          "nullable": true,
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "stickiness": {
+                          "default": "session",
+                          "enum": [
+                            "none",
+                            "session",
+                            "source_ip"
+                          ],
+                          "type": "string"
+                        },
+                        "udp_check_port": {
+                          "default": 80,
+                          "maximum": 65535,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "udp_session_timeout": {
+                          "default": 16,
+                          "maximum": 300,
+                          "minimum": 1,
+                          "readOnly": true,
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "nodes"
+                      ],
+                      "title": "UDP",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "algorithm": {
+                          "default": "roundrobin",
+                          "enum": [
+                            "roundrobin",
+                            "leastconn",
+                            "source"
+                          ],
+                          "type": "string"
+                        },
+                        "check": {
+                          "default": "none",
+                          "enum": [
+                            "none",
+                            "connection",
+                            "http",
+                            "http_body"
+                          ],
+                          "type": "string"
+                        },
+                        "check_attempts": {
+                          "default": 3,
+                          "maximum": 30,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "check_body": {
+                          "type": "string"
+                        },
+                        "check_interval": {
+                          "default": 5,
+                          "maximum": 3600,
+                          "minimum": 2,
+                          "type": "integer"
+                        },
+                        "check_passive": {
+                          "default": true,
+                          "type": "boolean"
+                        },
+                        "check_path": {
+                          "pattern": "^[a-zA-Z0-9\\/\\-%?&=.]*$",
+                          "type": "string"
+                        },
+                        "check_timeout": {
+                          "default": 30,
+                          "maximum": 30,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "cipher_suite": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "id": {
+                          "readOnly": true,
+                          "type": "integer"
+                        },
+                        "nodebalancer_id": {
+                          "readOnly": true,
+                          "type": "integer"
+                        },
+                        "nodes": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "address": {
+                                "format": "ip",
+                                "type": "string"
+                              },
+                              "config_id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "label": {
+                                "maxLength": 32,
+                                "minLength": 3,
+                                "pattern": "[a-zA-Z0-9-_.]{3,32}",
+                                "type": "string"
+                              },
+                              "mode": {
+                                "enum": [
+                                  "accept",
+                                  "reject",
+                                  "drain",
+                                  "backup"
+                                ],
+                                "type": "string"
+                              },
+                              "nodebalancer_id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "status": {
+                                "enum": [
+                                  "unknown",
+                                  "UP",
+                                  "DOWN"
+                                ],
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "subnet_id": {
+                                "type": "integer"
+                              },
+                              "weight": {
+                                "maximum": 255,
+                                "minimum": 1,
+                                "type": "integer"
+                              }
+                            },
+                            "title": "TCP, HTTP, or HTTPS config"
+                          },
+                          "type": "array"
+                        },
+                        "nodes_status": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "down": {
+                              "readOnly": true,
+                              "type": "integer"
+                            },
+                            "up": {
+                              "readOnly": true,
+                              "type": "integer"
+                            }
+                          },
+                          "readOnly": true,
+                          "type": "object"
+                        },
+                        "port": {
+                          "default": 80,
+                          "maximum": 65535,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "protocol": {
+                          "default": "http",
+                          "enum": [
+                            "tcp"
+                          ],
+                          "type": "string"
+                        },
+                        "proxy_protocol": {
+                          "default": "none",
+                          "enum": [
+                            "none",
+                            "v1",
+                            "v2"
+                          ],
+                          "type": "string"
+                        },
+                        "ssl_cert": {
+                          "nullable": true,
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_commonname": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_fingerprint": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_key": {
+                          "nullable": true,
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "stickiness": {
+                          "default": "none",
+                          "enum": [
+                            "none",
+                            "table"
+                          ],
+                          "readOnly": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "nodes"
+                      ],
+                      "title": "TCP",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "algorithm": {
+                          "default": "roundrobin",
+                          "enum": [
+                            "roundrobin",
+                            "leastconn",
+                            "source"
+                          ],
+                          "type": "string"
+                        },
+                        "check": {
+                          "default": "none",
+                          "enum": [
+                            "none",
+                            "connection",
+                            "http",
+                            "http_body"
+                          ],
+                          "type": "string"
+                        },
+                        "check_attempts": {
+                          "default": 3,
+                          "maximum": 30,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "check_body": {
+                          "type": "string"
+                        },
+                        "check_interval": {
+                          "default": 5,
+                          "maximum": 3600,
+                          "minimum": 2,
+                          "type": "integer"
+                        },
+                        "check_passive": {
+                          "default": true,
+                          "type": "boolean"
+                        },
+                        "check_path": {
+                          "pattern": "^[a-zA-Z0-9\\/\\-%?&=.]*$",
+                          "type": "string"
+                        },
+                        "check_timeout": {
+                          "default": 3,
+                          "maximum": 30,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "cipher_suite": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "id": {
+                          "readOnly": true,
+                          "type": "integer"
+                        },
+                        "nodebalancer_id": {
+                          "readOnly": true,
+                          "type": "integer"
+                        },
+                        "nodes": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "address": {
+                                "format": "ip",
+                                "type": "string"
+                              },
+                              "config_id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "label": {
+                                "maxLength": 32,
+                                "minLength": 3,
+                                "pattern": "[a-zA-Z0-9-_.]{3,32}",
+                                "type": "string"
+                              },
+                              "mode": {
+                                "enum": [
+                                  "accept",
+                                  "reject",
+                                  "drain",
+                                  "backup"
+                                ],
+                                "type": "string"
+                              },
+                              "nodebalancer_id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "status": {
+                                "enum": [
+                                  "unknown",
+                                  "UP",
+                                  "DOWN"
+                                ],
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "subnet_id": {
+                                "type": "integer"
+                              },
+                              "weight": {
+                                "maximum": 255,
+                                "minimum": 1,
+                                "type": "integer"
+                              }
+                            },
+                            "title": "TCP, HTTP, or HTTPS config"
+                          },
+                          "type": "array"
+                        },
+                        "nodes_status": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "down": {
+                              "readOnly": true,
+                              "type": "integer"
+                            },
+                            "up": {
+                              "readOnly": true,
+                              "type": "integer"
+                            }
+                          },
+                          "readOnly": true,
+                          "type": "object"
+                        },
+                        "port": {
+                          "default": 80,
+                          "maximum": 65535,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "protocol": {
+                          "default": "http",
+                          "enum": [
+                            "http"
+                          ],
+                          "type": "string"
+                        },
+                        "proxy_protocol": {
+                          "default": "none",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_cert": {
+                          "nullable": true,
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_commonname": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_fingerprint": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_key": {
+                          "nullable": true,
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "stickiness": {
+                          "default": "table",
+                          "enum": [
+                            "none",
+                            "table",
+                            "http_cookie"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "nodes"
+                      ],
+                      "title": "HTTP",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "algorithm": {
+                          "default": "roundrobin",
+                          "enum": [
+                            "roundrobin",
+                            "leastconn",
+                            "source"
+                          ],
+                          "type": "string"
+                        },
+                        "check": {
+                          "default": "none",
+                          "enum": [
+                            "none",
+                            "connection",
+                            "http",
+                            "http_body"
+                          ],
+                          "type": "string"
+                        },
+                        "check_attempts": {
+                          "default": 3,
+                          "maximum": 30,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "check_body": {
+                          "type": "string"
+                        },
+                        "check_interval": {
+                          "default": 5,
+                          "maximum": 3600,
+                          "minimum": 2,
+                          "type": "integer"
+                        },
+                        "check_passive": {
+                          "default": true,
+                          "type": "boolean"
+                        },
+                        "check_path": {
+                          "pattern": "^[a-zA-Z0-9\\/\\-%?&=.]*$",
+                          "type": "string"
+                        },
+                        "check_timeout": {
+                          "default": 3,
+                          "maximum": 30,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "cipher_suite": {
+                          "default": "recommended",
+                          "enum": [
+                            "recommended",
+                            "legacy"
+                          ],
+                          "type": "string"
+                        },
+                        "id": {
+                          "readOnly": true,
+                          "type": "integer"
+                        },
+                        "nodebalancer_id": {
+                          "readOnly": true,
+                          "type": "integer"
+                        },
+                        "nodes": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "address": {
+                                "format": "ip",
+                                "type": "string"
+                              },
+                              "config_id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "label": {
+                                "maxLength": 32,
+                                "minLength": 3,
+                                "pattern": "[a-zA-Z0-9-_.]{3,32}",
+                                "type": "string"
+                              },
+                              "mode": {
+                                "enum": [
+                                  "accept",
+                                  "reject",
+                                  "drain",
+                                  "backup"
+                                ],
+                                "type": "string"
+                              },
+                              "nodebalancer_id": {
+                                "readOnly": true,
+                                "type": "integer"
+                              },
+                              "status": {
+                                "enum": [
+                                  "unknown",
+                                  "UP",
+                                  "DOWN"
+                                ],
+                                "readOnly": true,
+                                "type": "string"
+                              },
+                              "subnet_id": {
+                                "type": "integer"
+                              },
+                              "weight": {
+                                "maximum": 255,
+                                "minimum": 1,
+                                "type": "integer"
+                              }
+                            },
+                            "title": "TCP, HTTP, or HTTPS config"
+                          },
+                          "type": "array"
+                        },
+                        "nodes_status": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "down": {
+                              "readOnly": true,
+                              "type": "integer"
+                            },
+                            "up": {
+                              "readOnly": true,
+                              "type": "integer"
+                            }
+                          },
+                          "readOnly": true,
+                          "type": "object"
+                        },
+                        "port": {
+                          "default": 80,
+                          "maximum": 65535,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "protocol": {
+                          "default": "http",
+                          "enum": [
+                            "https"
+                          ],
+                          "type": "string"
+                        },
+                        "proxy_protocol": {
+                          "default": "none",
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_cert": {
+                          "format": "ssl-cert",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "ssl_commonname": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_fingerprint": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "ssl_key": {
+                          "format": "ssl-key",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "stickiness": {
+                          "default": "table",
+                          "enum": [
+                            "none",
+                            "table",
+                            "http_cookie"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "nodes"
+                      ],
+                      "title": "HTTPS",
+                      "type": "object"
+                    }
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "firewall_id": {
+                "type": "integer"
+              },
+              "ipv4": {
+                "format": "ip",
+                "type": "string"
+              },
+              "label": {
+                "maxLength": 32,
+                "minLength": 3,
+                "pattern": "[a-zA-Z0-9-_]{3,32}",
+                "type": "string"
+              },
+              "region": {
+                "type": "string"
+              },
+              "tags": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "vpcs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "readOnly": true,
+                      "type": "integer"
+                    },
+                    "ipv4_range": {
+                      "type": "string"
+                    },
+                    "ipv4_range_auto_assign": {
+                      "default": false,
+                      "nullable": true,
+                      "type": "boolean",
+                      "writeOnly": true
+                    },
+                    "nodebalancer_id": {
+                      "readOnly": true,
+                      "type": "integer"
+                    },
+                    "subnet_id": {
+                      "type": "integer"
+                    },
+                    "vpc_id": {
+                      "nullable": true,
+                      "readOnly": true,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "subnet_id"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "region"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "lke": {
+    "operation": "post-lke-cluster",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "apl_enabled": {
+                "type": "boolean"
+              },
+              "control_plane": {
+                "additionalProperties": false,
+                "properties": {
+                  "acl": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "addresses": {
+                        "additionalProperties": false,
+                        "default": {},
+                        "properties": {
+                          "ipv4": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "ipv6": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "enabled": {
+                        "default": true,
+                        "type": "boolean"
+                      },
+                      "revision-id": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "audit_logs_enabled": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "high_availability": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "metrics_enabled": {
+                    "default": false,
+                    "type": "boolean",
+                    "writeOnly": true
+                  }
+                },
+                "type": "object"
+              },
+              "k8s_version": {
+                "type": "string"
+              },
+              "label": {
+                "maxLength": 32,
+                "minLength": 1,
+                "type": "string"
+              },
+              "node_pools": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "autoscaler": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "max": {
+                          "maximum": 100,
+                          "minimum": 1,
+                          "type": "integer"
+                        },
+                        "min": {
+                          "maximum": 100,
+                          "minimum": 1,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "count": {
+                      "maximum": 100,
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    "disk_encryption": {
+                      "default": "disabled",
+                      "enum": [
+                        "enabled",
+                        "disabled"
+                      ],
+                      "type": "string"
+                    },
+                    "disks": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "size": {
+                            "type": "integer"
+                          },
+                          "type": {
+                            "enum": [
+                              "raw",
+                              "ext4"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "firewall_id": {
+                      "type": "integer"
+                    },
+                    "k8s_version": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "maxLength": 32,
+                      "minLength": 1,
+                      "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])$",
+                      "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "maxLength": 63,
+                        "minLength": 0,
+                        "pattern": "^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?",
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "taints": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "effect": {
+                            "enum": [
+                              "NoSchedule",
+                              "PreferNoSchedule",
+                              "NoExecute"
+                            ],
+                            "type": "string"
+                          },
+                          "key": {
+                            "maxLength": 63,
+                            "minLength": 1,
+                            "pattern": "^([A-Za-z0-9][-A-Za-z0-9_.]*)?(\\/)?([A-Za-z0-9][-A-Za-z0-9_.]{1,63})?$",
+                            "type": "string"
+                          },
+                          "value": {
+                            "maxLength": 63,
+                            "minLength": 0,
+                            "pattern": "^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "value",
+                          "effect"
+                        ],
+                        "type": "object"
+                      },
+                      "minItems": 0,
+                      "type": "array"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "update_strategy": {
+                      "enum": [
+                        "rolling_update",
+                        "on_recycle"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "count"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "region": {
+                "type": "string"
+              },
+              "stack_type": {
+                "default": "ipv4",
+                "enum": [
+                  "ipv4",
+                  "ipv4-ipv6"
+                ],
+                "type": "string"
+              },
+              "subnet_id": {
+                "type": "integer"
+              },
+              "tags": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "tier": {
+                "enum": [
+                  "standard",
+                  "enterprise"
+                ],
+                "type": "string"
+              },
+              "vpc_id": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "label",
+              "region",
+              "k8s_version",
+              "node_pools"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "mysql": {
+    "operation": "post-databases-mysql-instances",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "allow_list": {
+                    "items": {
+                      "format": "ipv4/prefix_length",
+                      "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array"
+                  },
+                  "cluster_size": {
+                    "default": 1,
+                    "enum": [
+                      1,
+                      2,
+                      3
+                    ],
+                    "type": "integer"
+                  },
+                  "engine": {
+                    "type": "string"
+                  },
+                  "engine_config": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "binlog_retention_period": {
+                        "maximum": 9007199254740991,
+                        "minimum": 600,
+                        "type": "integer"
+                      },
+                      "mysql": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "connect_timeout": {
+                            "maximum": 3600,
+                            "minimum": 2,
+                            "type": "integer"
+                          },
+                          "default_time_zone": {
+                            "maxLength": 100,
+                            "minLength": 2,
+                            "pattern": "^([-+][\\d:]*|[\\w/]*)$",
+                            "type": "string"
+                          },
+                          "group_concat_max_len": {
+                            "maximum": 18446744073709552000,
+                            "minimum": 4,
+                            "type": "integer"
+                          },
+                          "information_schema_stats_expiry": {
+                            "maximum": 31536000,
+                            "minimum": 900,
+                            "type": "integer"
+                          },
+                          "innodb_change_buffer_max_size": {
+                            "default": 25,
+                            "maximum": 50,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "innodb_flush_neighbors": {
+                            "default": 1,
+                            "maximum": 2,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "innodb_ft_min_token_size": {
+                            "maximum": 16,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "innodb_ft_server_stopword_table": {
+                            "maxLength": 1024,
+                            "nullable": true,
+                            "pattern": "^.+/.+$",
+                            "type": "string"
+                          },
+                          "innodb_lock_wait_timeout": {
+                            "default": 120,
+                            "maximum": 3600,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "innodb_log_buffer_size": {
+                            "maximum": 4294967295,
+                            "minimum": 1048576,
+                            "type": "integer"
+                          },
+                          "innodb_online_alter_log_max_size": {
+                            "maximum": 1099511627776,
+                            "minimum": 65536,
+                            "type": "integer"
+                          },
+                          "innodb_read_io_threads": {
+                            "default": 4,
+                            "maximum": 64,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "innodb_rollback_on_timeout": {
+                            "type": "boolean"
+                          },
+                          "innodb_thread_concurrency": {
+                            "default": 0,
+                            "maximum": 1000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "innodb_write_io_threads": {
+                            "default": 4,
+                            "maximum": 64,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "interactive_timeout": {
+                            "maximum": 604800,
+                            "minimum": 30,
+                            "type": "integer"
+                          },
+                          "internal_tmp_mem_storage_engine": {
+                            "enum": [
+                              "TempTable",
+                              "MEMORY"
+                            ],
+                            "type": "string"
+                          },
+                          "max_allowed_packet": {
+                            "default": 7108864,
+                            "maximum": 1073741824,
+                            "minimum": 102400,
+                            "type": "integer"
+                          },
+                          "max_heap_table_size": {
+                            "default": 16777216,
+                            "maximum": 1073741824,
+                            "minimum": 1048576,
+                            "type": "integer"
+                          },
+                          "net_buffer_length": {
+                            "default": 16384,
+                            "maximum": 1048576,
+                            "minimum": 1024,
+                            "type": "integer"
+                          },
+                          "net_read_timeout": {
+                            "maximum": 3600,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "net_write_timeout": {
+                            "maximum": 3600,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "sort_buffer_size": {
+                            "default": 262144,
+                            "maximum": 1073741824,
+                            "minimum": 32768,
+                            "type": "integer"
+                          },
+                          "sql_mode": {
+                            "default": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
+                            "maxLength": 1024,
+                            "pattern": "^[A-Z_]*(,[A-Z_]+)*$",
+                            "type": "string"
+                          },
+                          "sql_require_primary_key": {
+                            "default": true,
+                            "type": "boolean"
+                          },
+                          "tmp_table_size": {
+                            "default": 16777216,
+                            "maximum": 1073741824,
+                            "minimum": 1048576,
+                            "type": "integer"
+                          },
+                          "wait_timeout": {
+                            "maximum": 2147483,
+                            "minimum": 1,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "label": {
+                    "maxLength": 32,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "private_network": {
+                    "additionalProperties": false,
+                    "nullable": true,
+                    "properties": {
+                      "public_access": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "subnet_id": {
+                        "type": "integer"
+                      },
+                      "vpc_id": {
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "ssl_connection": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "label",
+                  "type",
+                  "engine",
+                  "region"
+                ],
+                "title": "Create MySQL database",
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "allow_list": {
+                    "items": {
+                      "format": "ipv4/prefix_length",
+                      "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array"
+                  },
+                  "cluster_size": {
+                    "default": 1,
+                    "enum": [
+                      1,
+                      2,
+                      3
+                    ],
+                    "type": "integer"
+                  },
+                  "engine_config": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "binlog_retention_period": {
+                        "maximum": 9007199254740991,
+                        "minimum": 600,
+                        "type": "integer"
+                      },
+                      "mysql": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "connect_timeout": {
+                            "maximum": 3600,
+                            "minimum": 2,
+                            "type": "integer"
+                          },
+                          "default_time_zone": {
+                            "maxLength": 100,
+                            "minLength": 2,
+                            "pattern": "^([-+][\\d:]*|[\\w/]*)$",
+                            "type": "string"
+                          },
+                          "group_concat_max_len": {
+                            "maximum": 18446744073709552000,
+                            "minimum": 4,
+                            "type": "integer"
+                          },
+                          "information_schema_stats_expiry": {
+                            "maximum": 31536000,
+                            "minimum": 900,
+                            "type": "integer"
+                          },
+                          "innodb_change_buffer_max_size": {
+                            "default": 25,
+                            "maximum": 50,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "innodb_flush_neighbors": {
+                            "default": 1,
+                            "maximum": 2,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "innodb_ft_min_token_size": {
+                            "maximum": 16,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "innodb_ft_server_stopword_table": {
+                            "maxLength": 1024,
+                            "nullable": true,
+                            "pattern": "^.+/.+$",
+                            "type": "string"
+                          },
+                          "innodb_lock_wait_timeout": {
+                            "default": 120,
+                            "maximum": 3600,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "innodb_log_buffer_size": {
+                            "maximum": 4294967295,
+                            "minimum": 1048576,
+                            "type": "integer"
+                          },
+                          "innodb_online_alter_log_max_size": {
+                            "maximum": 1099511627776,
+                            "minimum": 65536,
+                            "type": "integer"
+                          },
+                          "innodb_read_io_threads": {
+                            "default": 4,
+                            "maximum": 64,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "innodb_rollback_on_timeout": {
+                            "type": "boolean"
+                          },
+                          "innodb_thread_concurrency": {
+                            "default": 0,
+                            "maximum": 1000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "innodb_write_io_threads": {
+                            "default": 4,
+                            "maximum": 64,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "interactive_timeout": {
+                            "maximum": 604800,
+                            "minimum": 30,
+                            "type": "integer"
+                          },
+                          "internal_tmp_mem_storage_engine": {
+                            "enum": [
+                              "TempTable",
+                              "MEMORY"
+                            ],
+                            "type": "string"
+                          },
+                          "max_allowed_packet": {
+                            "default": 7108864,
+                            "maximum": 1073741824,
+                            "minimum": 102400,
+                            "type": "integer"
+                          },
+                          "max_heap_table_size": {
+                            "default": 16777216,
+                            "maximum": 1073741824,
+                            "minimum": 1048576,
+                            "type": "integer"
+                          },
+                          "net_buffer_length": {
+                            "default": 16384,
+                            "maximum": 1048576,
+                            "minimum": 1024,
+                            "type": "integer"
+                          },
+                          "net_read_timeout": {
+                            "maximum": 3600,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "net_write_timeout": {
+                            "maximum": 3600,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "sort_buffer_size": {
+                            "default": 262144,
+                            "maximum": 1073741824,
+                            "minimum": 32768,
+                            "type": "integer"
+                          },
+                          "sql_mode": {
+                            "default": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
+                            "maxLength": 1024,
+                            "pattern": "^[A-Z_]*(,[A-Z_]+)*$",
+                            "type": "string"
+                          },
+                          "sql_require_primary_key": {
+                            "default": true,
+                            "type": "boolean"
+                          },
+                          "tmp_table_size": {
+                            "default": 16777216,
+                            "maximum": 1073741824,
+                            "minimum": 1048576,
+                            "type": "integer"
+                          },
+                          "wait_timeout": {
+                            "maximum": 2147483,
+                            "minimum": 1,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "fork": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "restore_time": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "source"
+                    ],
+                    "type": "object"
+                  },
+                  "label": {
+                    "maxLength": 32,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "private_network": {
+                    "additionalProperties": false,
+                    "nullable": true,
+                    "properties": {
+                      "public_access": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "subnet_id": {
+                        "type": "integer"
+                      },
+                      "vpc_id": {
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "ssl_connection": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "fork"
+                ],
+                "title": "Restore MySQL database",
+                "type": "object"
+              }
+            ],
+            "type": "object"
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "postgresql": {
+    "operation": "post-databases-postgre-sql-instances",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "allow_list": {
+                    "items": {
+                      "format": "ipv4/prefix_length",
+                      "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array"
+                  },
+                  "cluster_size": {
+                    "default": 1,
+                    "enum": [
+                      1,
+                      2,
+                      3
+                    ],
+                    "type": "integer"
+                  },
+                  "engine": {
+                    "type": "string"
+                  },
+                  "engine_config": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "pg": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "autovacuum_analyze_scale_factor": {
+                            "default": 0.2,
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "autovacuum_analyze_threshold": {
+                            "default": 50,
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "autovacuum_max_workers": {
+                            "default": 3,
+                            "maximum": 20,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "autovacuum_naptime": {
+                            "default": 60,
+                            "maximum": 86400,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "autovacuum_vacuum_cost_delay": {
+                            "default": 20,
+                            "maximum": 100,
+                            "minimum": -1,
+                            "type": "integer"
+                          },
+                          "autovacuum_vacuum_cost_limit": {
+                            "default": -1,
+                            "maximum": 10000,
+                            "minimum": -1,
+                            "type": "integer"
+                          },
+                          "autovacuum_vacuum_scale_factor": {
+                            "default": 0.2,
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "autovacuum_vacuum_threshold": {
+                            "default": 50,
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "bgwriter_delay": {
+                            "default": 200,
+                            "maximum": 10000,
+                            "minimum": 20,
+                            "type": "integer"
+                          },
+                          "bgwriter_flush_after": {
+                            "default": 512,
+                            "maximum": 2048,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "bgwriter_lru_maxpages": {
+                            "default": 100,
+                            "maximum": 1073741823,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "bgwriter_lru_multiplier": {
+                            "default": 2.5,
+                            "maximum": 10,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "deadlock_timeout": {
+                            "maximum": 1800000,
+                            "minimum": 500,
+                            "type": "integer"
+                          },
+                          "default_toast_compression": {
+                            "default": "lz4",
+                            "enum": [
+                              "lz4",
+                              "pglz"
+                            ],
+                            "type": "string"
+                          },
+                          "idle_in_transaction_session_timeout": {
+                            "maximum": 604800000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "jit": {
+                            "type": "boolean"
+                          },
+                          "max_files_per_process": {
+                            "maximum": 4096,
+                            "minimum": 1000,
+                            "type": "integer"
+                          },
+                          "max_locks_per_transaction": {
+                            "maximum": 6400,
+                            "minimum": 64,
+                            "type": "integer"
+                          },
+                          "max_logical_replication_workers": {
+                            "maximum": 64,
+                            "minimum": 4,
+                            "type": "integer"
+                          },
+                          "max_parallel_workers": {
+                            "maximum": 96,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "max_parallel_workers_per_gather": {
+                            "maximum": 96,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "max_pred_locks_per_transaction": {
+                            "maximum": 5120,
+                            "minimum": 64,
+                            "type": "integer"
+                          },
+                          "max_replication_slots": {
+                            "maximum": 64,
+                            "minimum": 8,
+                            "type": "integer"
+                          },
+                          "max_slot_wal_keep_size": {
+                            "default": -1,
+                            "maximum": 2147483647,
+                            "minimum": -1,
+                            "type": "integer"
+                          },
+                          "max_stack_depth": {
+                            "maximum": 6291456,
+                            "minimum": 2097152,
+                            "type": "integer"
+                          },
+                          "max_standby_archive_delay": {
+                            "maximum": 43200000,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "max_standby_streaming_delay": {
+                            "maximum": 43200000,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "max_wal_senders": {
+                            "maximum": 64,
+                            "minimum": 20,
+                            "type": "integer"
+                          },
+                          "max_worker_processes": {
+                            "maximum": 96,
+                            "minimum": 8,
+                            "type": "integer"
+                          },
+                          "password_encryption": {
+                            "default": "scram-sha-256",
+                            "enum": [
+                              "scram-sha-256",
+                              "md5"
+                            ],
+                            "type": "string"
+                          },
+                          "pg_partman_bgw.interval": {
+                            "maximum": 604800,
+                            "minimum": 3600,
+                            "type": "integer"
+                          },
+                          "pg_partman_bgw.role": {
+                            "type": "string"
+                          },
+                          "pg_stat_monitor.pgsm_enable_query_plan": {
+                            "type": "boolean"
+                          },
+                          "pg_stat_monitor.pgsm_max_buckets": {
+                            "maximum": 10,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "pg_stat_statements.track": {
+                            "default": "top",
+                            "enum": [
+                              "all",
+                              "top",
+                              "none"
+                            ],
+                            "type": "string"
+                          },
+                          "synchronous_replication": {
+                            "enum": [
+                              "quorum",
+                              "off"
+                            ],
+                            "type": "string"
+                          },
+                          "temp_file_limit": {
+                            "maximum": 2147483647,
+                            "minimum": -1,
+                            "type": "integer"
+                          },
+                          "timezone": {
+                            "maxLength": 64,
+                            "pattern": "^[\\w/]*$",
+                            "type": "string"
+                          },
+                          "track_activity_query_size": {
+                            "maximum": 10240,
+                            "minimum": 1024,
+                            "type": "integer"
+                          },
+                          "track_commit_timestamp": {
+                            "enum": [
+                              "on",
+                              "off"
+                            ],
+                            "type": "string"
+                          },
+                          "track_functions": {
+                            "default": "none",
+                            "enum": [
+                              "all",
+                              "pl",
+                              "none"
+                            ],
+                            "type": "string"
+                          },
+                          "track_io_timing": {
+                            "default": "off",
+                            "enum": [
+                              "on",
+                              "off"
+                            ],
+                            "type": "string"
+                          },
+                          "wal_sender_timeout": {
+                            "maximum": 60000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "wal_writer_delay": {
+                            "default": 200,
+                            "maximum": 200,
+                            "minimum": 10,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "pg_stat_monitor_enable": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "pglookout": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "max_failover_replication_time_lag": {
+                            "default": 60,
+                            "maximum": 999999,
+                            "minimum": 10,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "shared_buffers_percentage": {
+                        "maximum": 60,
+                        "minimum": 20,
+                        "type": "number"
+                      },
+                      "synchronous_replication": {
+                        "enum": [
+                          "quorum",
+                          "off"
+                        ],
+                        "type": "string"
+                      },
+                      "work_mem": {
+                        "maximum": 4,
+                        "minimum": 1,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "label": {
+                    "maxLength": 32,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "private_network": {
+                    "additionalProperties": false,
+                    "nullable": true,
+                    "properties": {
+                      "public_access": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "subnet_id": {
+                        "type": "integer"
+                      },
+                      "vpc_id": {
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "ssl_connection": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "label",
+                  "type",
+                  "engine",
+                  "region"
+                ],
+                "title": "Create PostgreSQL database",
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "allow_list": {
+                    "items": {
+                      "format": "ipv4/prefix_length",
+                      "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array"
+                  },
+                  "cluster_size": {
+                    "default": 1,
+                    "enum": [
+                      1,
+                      2,
+                      3
+                    ],
+                    "type": "integer"
+                  },
+                  "engine_config": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "pg": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "autovacuum_analyze_scale_factor": {
+                            "default": 0.2,
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "autovacuum_analyze_threshold": {
+                            "default": 50,
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "autovacuum_max_workers": {
+                            "default": 3,
+                            "maximum": 20,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "autovacuum_naptime": {
+                            "default": 60,
+                            "maximum": 86400,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "autovacuum_vacuum_cost_delay": {
+                            "default": 20,
+                            "maximum": 100,
+                            "minimum": -1,
+                            "type": "integer"
+                          },
+                          "autovacuum_vacuum_cost_limit": {
+                            "default": -1,
+                            "maximum": 10000,
+                            "minimum": -1,
+                            "type": "integer"
+                          },
+                          "autovacuum_vacuum_scale_factor": {
+                            "default": 0.2,
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "autovacuum_vacuum_threshold": {
+                            "default": 50,
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "bgwriter_delay": {
+                            "default": 200,
+                            "maximum": 10000,
+                            "minimum": 20,
+                            "type": "integer"
+                          },
+                          "bgwriter_flush_after": {
+                            "default": 512,
+                            "maximum": 2048,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "bgwriter_lru_maxpages": {
+                            "default": 100,
+                            "maximum": 1073741823,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "bgwriter_lru_multiplier": {
+                            "default": 2.5,
+                            "maximum": 10,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "deadlock_timeout": {
+                            "maximum": 1800000,
+                            "minimum": 500,
+                            "type": "integer"
+                          },
+                          "default_toast_compression": {
+                            "default": "lz4",
+                            "enum": [
+                              "lz4",
+                              "pglz"
+                            ],
+                            "type": "string"
+                          },
+                          "idle_in_transaction_session_timeout": {
+                            "maximum": 604800000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "jit": {
+                            "type": "boolean"
+                          },
+                          "max_files_per_process": {
+                            "maximum": 4096,
+                            "minimum": 1000,
+                            "type": "integer"
+                          },
+                          "max_locks_per_transaction": {
+                            "maximum": 6400,
+                            "minimum": 64,
+                            "type": "integer"
+                          },
+                          "max_logical_replication_workers": {
+                            "maximum": 64,
+                            "minimum": 4,
+                            "type": "integer"
+                          },
+                          "max_parallel_workers": {
+                            "maximum": 96,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "max_parallel_workers_per_gather": {
+                            "maximum": 96,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "max_pred_locks_per_transaction": {
+                            "maximum": 5120,
+                            "minimum": 64,
+                            "type": "integer"
+                          },
+                          "max_replication_slots": {
+                            "maximum": 64,
+                            "minimum": 8,
+                            "type": "integer"
+                          },
+                          "max_slot_wal_keep_size": {
+                            "default": -1,
+                            "maximum": 2147483647,
+                            "minimum": -1,
+                            "type": "integer"
+                          },
+                          "max_stack_depth": {
+                            "maximum": 6291456,
+                            "minimum": 2097152,
+                            "type": "integer"
+                          },
+                          "max_standby_archive_delay": {
+                            "maximum": 43200000,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "max_standby_streaming_delay": {
+                            "maximum": 43200000,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "max_wal_senders": {
+                            "maximum": 64,
+                            "minimum": 20,
+                            "type": "integer"
+                          },
+                          "max_worker_processes": {
+                            "maximum": 96,
+                            "minimum": 8,
+                            "type": "integer"
+                          },
+                          "password_encryption": {
+                            "default": "scram-sha-256",
+                            "enum": [
+                              "scram-sha-256",
+                              "md5"
+                            ],
+                            "type": "string"
+                          },
+                          "pg_partman_bgw.interval": {
+                            "maximum": 604800,
+                            "minimum": 3600,
+                            "type": "integer"
+                          },
+                          "pg_partman_bgw.role": {
+                            "type": "string"
+                          },
+                          "pg_stat_monitor.pgsm_enable_query_plan": {
+                            "type": "boolean"
+                          },
+                          "pg_stat_monitor.pgsm_max_buckets": {
+                            "maximum": 10,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "pg_stat_statements.track": {
+                            "default": "top",
+                            "enum": [
+                              "all",
+                              "top",
+                              "none"
+                            ],
+                            "type": "string"
+                          },
+                          "synchronous_replication": {
+                            "enum": [
+                              "quorum",
+                              "off"
+                            ],
+                            "type": "string"
+                          },
+                          "temp_file_limit": {
+                            "maximum": 2147483647,
+                            "minimum": -1,
+                            "type": "integer"
+                          },
+                          "timezone": {
+                            "maxLength": 64,
+                            "pattern": "^[\\w/]*$",
+                            "type": "string"
+                          },
+                          "track_activity_query_size": {
+                            "maximum": 10240,
+                            "minimum": 1024,
+                            "type": "integer"
+                          },
+                          "track_commit_timestamp": {
+                            "enum": [
+                              "on",
+                              "off"
+                            ],
+                            "type": "string"
+                          },
+                          "track_functions": {
+                            "default": "none",
+                            "enum": [
+                              "all",
+                              "pl",
+                              "none"
+                            ],
+                            "type": "string"
+                          },
+                          "track_io_timing": {
+                            "default": "off",
+                            "enum": [
+                              "on",
+                              "off"
+                            ],
+                            "type": "string"
+                          },
+                          "wal_sender_timeout": {
+                            "maximum": 60000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "wal_writer_delay": {
+                            "default": 200,
+                            "maximum": 200,
+                            "minimum": 10,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "pg_stat_monitor_enable": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "pglookout": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "max_failover_replication_time_lag": {
+                            "default": 60,
+                            "maximum": 999999,
+                            "minimum": 10,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "shared_buffers_percentage": {
+                        "maximum": 60,
+                        "minimum": 20,
+                        "type": "number"
+                      },
+                      "synchronous_replication": {
+                        "enum": [
+                          "quorum",
+                          "off"
+                        ],
+                        "type": "string"
+                      },
+                      "work_mem": {
+                        "maximum": 4,
+                        "minimum": 1,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "fork": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "restore_time": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "source"
+                    ],
+                    "type": "object"
+                  },
+                  "label": {
+                    "maxLength": 32,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "private_network": {
+                    "additionalProperties": false,
+                    "nullable": true,
+                    "properties": {
+                      "public_access": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "subnet_id": {
+                        "type": "integer"
+                      },
+                      "vpc_id": {
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "ssl_connection": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "fork"
+                ],
+                "title": "Restore PostgreSQL database",
+                "type": "object"
+              }
+            ],
+            "type": "object"
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "valkey": {
+    "operation": "post-databases-valkey-instances",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "allow_list": {
+                    "items": {
+                      "format": "ipv4/prefix_length",
+                      "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array"
+                  },
+                  "cluster_size": {
+                    "default": 1,
+                    "enum": [
+                      1,
+                      2,
+                      3
+                    ],
+                    "type": "integer"
+                  },
+                  "engine": {
+                    "type": "string"
+                  },
+                  "engine_config": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "backup_hour": {
+                        "maximum": 23,
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "backup_minute": {
+                        "maximum": 23,
+                        "minimum": 0,
+                        "nullable": true,
+                        "type": "integer"
+                      },
+                      "frequent_snapshots": {
+                        "type": "boolean"
+                      },
+                      "valkey_acl_channels_default": {
+                        "type": "string"
+                      },
+                      "valkey_active_expire_effort": {
+                        "default": 1,
+                        "maximum": 10,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "valkey_activedefrag": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "valkey_lfu_decay_time": {
+                        "default": 1,
+                        "maximum": 120,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "valkey_lfu_log_factor": {
+                        "default": 10,
+                        "maximum": 100,
+                        "type": "integer"
+                      },
+                      "valkey_maxmemory_policy": {
+                        "default": "noeviction",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "valkey_number_of_databases": {
+                        "maximum": 128,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "valkey_persistence": {
+                        "default": "rdb",
+                        "enum": [
+                          "off",
+                          "rdb"
+                        ],
+                        "type": "string"
+                      },
+                      "valkey_pubsub_client_output_buffer_limit": {
+                        "maximum": 262144,
+                        "minimum": 32,
+                        "type": "integer"
+                      },
+                      "valkey_timeout": {
+                        "default": 300,
+                        "maximum": 2073600,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "label": {
+                    "maxLength": 32,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "private_network": {
+                    "additionalProperties": false,
+                    "nullable": true,
+                    "properties": {
+                      "public_access": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "subnet_id": {
+                        "type": "integer"
+                      },
+                      "vpc_id": {
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "ssl_connection": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "label",
+                  "type",
+                  "engine",
+                  "region"
+                ],
+                "title": "Create Valkey database",
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "allow_list": {
+                    "items": {
+                      "format": "ipv4/prefix_length",
+                      "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array"
+                  },
+                  "cluster_size": {
+                    "default": 1,
+                    "enum": [
+                      1,
+                      2,
+                      3
+                    ],
+                    "type": "integer"
+                  },
+                  "engine_config": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "backup_hour": {
+                        "maximum": 23,
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "backup_minute": {
+                        "maximum": 23,
+                        "minimum": 0,
+                        "nullable": true,
+                        "type": "integer"
+                      },
+                      "frequent_snapshots": {
+                        "type": "boolean"
+                      },
+                      "valkey_acl_channels_default": {
+                        "type": "string"
+                      },
+                      "valkey_active_expire_effort": {
+                        "default": 1,
+                        "maximum": 10,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "valkey_activedefrag": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "valkey_lfu_decay_time": {
+                        "default": 1,
+                        "maximum": 120,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "valkey_lfu_log_factor": {
+                        "default": 10,
+                        "maximum": 100,
+                        "type": "integer"
+                      },
+                      "valkey_maxmemory_policy": {
+                        "default": "noeviction",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "valkey_number_of_databases": {
+                        "maximum": 128,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "valkey_persistence": {
+                        "default": "rdb",
+                        "enum": [
+                          "off",
+                          "rdb"
+                        ],
+                        "type": "string"
+                      },
+                      "valkey_pubsub_client_output_buffer_limit": {
+                        "maximum": 262144,
+                        "minimum": 32,
+                        "type": "integer"
+                      },
+                      "valkey_timeout": {
+                        "default": 300,
+                        "maximum": 2073600,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "fork": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "restore_time": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "source"
+                    ],
+                    "type": "object"
+                  },
+                  "label": {
+                    "maxLength": 32,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "private_network": {
+                    "additionalProperties": false,
+                    "nullable": true,
+                    "properties": {
+                      "public_access": {
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "subnet_id": {
+                        "type": "integer"
+                      },
+                      "vpc_id": {
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "ssl_connection": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "fork"
+                ],
+                "title": "Restore Valkey database",
+                "type": "object"
+              }
+            ],
+            "type": "object"
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "bucket": {
+    "operation": "post-object-storage-bucket",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "acl": {
+                "default": "private",
+                "enum": [
+                  "private",
+                  "public-read",
+                  "authenticated-read",
+                  "public-read-write"
+                ],
+                "type": "string"
+              },
+              "cors_enabled": {
+                "type": "boolean"
+              },
+              "endpoint_type": {
+                "enum": [
+                  "E0",
+                  "E1",
+                  "E2",
+                  "E3"
+                ],
+                "type": "string"
+              },
+              "label": {
+                "pattern": "^(?=.{3,63}$)[a-z0-9]+(?:-[a-z0-9]+)*(?:[.][a-z0-9]+(?:-[a-z0-9]+)*)*$",
+                "type": "string"
+              },
+              "region": {
+                "type": "string"
+              },
+              "s3_endpoint": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "region"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "longview": {
+    "operation": "post-longview-client",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "api_key": {
+                "readOnly": true,
+                "type": "string"
+              },
+              "apps": {
+                "additionalProperties": false,
+                "properties": {
+                  "apache": {
+                    "readOnly": true,
+                    "type": "boolean"
+                  },
+                  "mysql": {
+                    "readOnly": true,
+                    "type": "boolean"
+                  },
+                  "nginx": {
+                    "readOnly": true,
+                    "type": "boolean"
+                  }
+                },
+                "readOnly": true,
+                "type": "object"
+              },
+              "created": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+              },
+              "id": {
+                "readOnly": true,
+                "type": "integer"
+              },
+              "install_code": {
+                "readOnly": true,
+                "type": "string"
+              },
+              "label": {
+                "maxLength": 32,
+                "minLength": 3,
+                "pattern": "[a-zA-Z0-9-_]{3,32}",
+                "type": "string"
+              },
+              "updated": {
+                "format": "date-time",
+                "readOnly": true,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "stackscript": {
+    "operation": "post-add-stack-script",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "allOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "created": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "deployments_active": {
+                    "readOnly": true,
+                    "type": "integer"
+                  },
+                  "deployments_total": {
+                    "readOnly": true,
+                    "type": "integer"
+                  },
+                  "id": {
+                    "readOnly": true,
+                    "type": "integer"
+                  },
+                  "images": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "is_public": {
+                    "type": "boolean"
+                  },
+                  "label": {
+                    "maxLength": 128,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "mine": {
+                    "readOnly": true,
+                    "type": "boolean"
+                  },
+                  "rev_note": {
+                    "type": "string"
+                  },
+                  "script": {
+                    "type": "string"
+                  },
+                  "updated": {
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "user_defined_fields": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "default": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "label": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "manyOf": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "name": {
+                          "readOnly": true,
+                          "type": "string"
+                        },
+                        "oneOf": {
+                          "readOnly": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "name",
+                        "example"
+                      ],
+                      "type": "object"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                  },
+                  "user_gravatar_id": {
+                    "readOnly": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "readOnly": true,
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            ],
+            "required": [
+              "script",
+              "label",
+              "images"
+            ]
+          }
+        }
+      },
+      "required": true
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  },
+  "image": {
+    "operation": "post-image",
+    "request": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "cloud_init": {
+                "type": "boolean"
+              },
+              "disk_id": {
+                "type": "integer"
+              },
+              "label": {
+                "type": "string"
+              },
+              "tags": {
+                "items": {
+                  "maxLength": 100,
+                  "minLength": 3,
+                  "type": "string"
+                },
+                "maxItems": 500,
+                "minItems": 0,
+                "type": "array"
+              }
+            },
+            "required": [
+              "disk_id"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    "note": "Configure a complete provider-valid payload before enabling automation."
+  }
+}

@@ -14,7 +14,8 @@
     window.langPasswordStrong = "{$LANG.pwstrengthstrong}";
 </script>
 
-<div id="order-standard_cart">
+<div id="order-standard_cart"{if $template == 'kinsmen'} class="portal-cart-checkout"{/if}>
+    {if $template == 'kinsmen'}{include file="$template/includes/cart-steps.tpl" step=3}{/if}
 
     <div class="row">
 
@@ -37,6 +38,7 @@
             {include file="orderforms/standard_cart/sidebar-categories-collapsed.tpl"}
 
             <div class="already-registered clearfix">
+                {if $template == 'kinsmen'}<h2 class="checkout-title">{$LANG.orderForm.checkout}</h2>{/if}
                 <div class="pull-right">
                     <button type="button" class="btn btn-info{if $loggedin || !$loggedin && $custtype eq "existing"} hidden{/if}" id="btnAlreadyRegistered">
                         {$LANG.orderForm.alreadyRegistered}
@@ -45,7 +47,7 @@
                         {$LANG.orderForm.createAccount}
                     </button>
                 </div>
-                <p>{$LANG.orderForm.enterPersonalDetails}</p>
+                <p>{if $template == 'kinsmen' && $loggedin}{$LANG.portalCheckoutReview}{else}{$LANG.orderForm.enterPersonalDetails}{/if}</p>
             </div>
 
             {if $errormessage}
@@ -71,17 +73,17 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputLoginEmail" class="field-icon">
+                                <label for="inputLoginEmail" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.emailAddress}{else}
                                     <i class="fas fa-envelope"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="loginemail" id="inputLoginEmail" class="field" placeholder="{$LANG.orderForm.emailAddress}">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputLoginPassword" class="field-icon">
+                                <label for="inputLoginPassword" class="field-icon">{if $template == 'kinsmen'}{$LANG.clientareapassword}{else}
                                     <i class="fas fa-lock"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="password" name="loginpassword" id="inputLoginPassword" class="field" placeholder="{$LANG.clientareapassword}">
                             </div>
                         </div>
@@ -96,40 +98,40 @@
                         {include file="orderforms/standard_cart/linkedaccounts.tpl" linkContext="checkout-new"}
                     </div>
 
-                    <div class="sub-heading">
+                    <div class="sub-heading checkout-first-heading">
                         <span>{$LANG.orderForm.personalInformation}</span>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputFirstName" class="field-icon">
+                                <label for="inputFirstName" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.firstName}{else}
                                     <i class="fas fa-user"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="firstname" id="inputFirstName" class="field" placeholder="{$LANG.orderForm.firstName}" value="{$clientsdetails.firstname}"{if $loggedin} readonly="readonly"{/if} autofocus>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputLastName" class="field-icon">
+                                <label for="inputLastName" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.lastName}{else}
                                     <i class="fas fa-user"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="lastname" id="inputLastName" class="field" placeholder="{$LANG.orderForm.lastName}" value="{$clientsdetails.lastname}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputEmail" class="field-icon">
+                                <label for="inputEmail" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.emailAddress}{else}
                                     <i class="fas fa-envelope"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="email" name="email" id="inputEmail" class="field" placeholder="{$LANG.orderForm.emailAddress}" value="{$clientsdetails.email}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputPhone" class="field-icon">
+                                <label for="inputPhone" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.phoneNumber}{else}
                                     <i class="fas fa-phone"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="tel" name="phonenumber" id="inputPhone" class="field" placeholder="{$LANG.orderForm.phoneNumber}" value="{$clientsdetails.phonenumber}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
@@ -142,60 +144,64 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group prepend-icon">
-                                <label for="inputCompanyName" class="field-icon">
+                                <label for="inputCompanyName" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.companyName}{else}
                                     <i class="fas fa-building"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="companyname" id="inputCompanyName" class="field" placeholder="{$LANG.orderForm.companyName} ({$LANG.orderForm.optional})" value="{$clientsdetails.companyname}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group prepend-icon">
-                                <label for="inputAddress1" class="field-icon">
+                                <label for="inputAddress1" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.streetAddress}{else}
                                     <i class="far fa-building"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="address1" id="inputAddress1" class="field" placeholder="{$LANG.orderForm.streetAddress}" value="{$clientsdetails.address1}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group prepend-icon">
-                                <label for="inputAddress2" class="field-icon">
+                                <label for="inputAddress2" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.streetAddress2}{else}
                                     <i class="fas fa-map-marker-alt"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="address2" id="inputAddress2" class="field" placeholder="{$LANG.orderForm.streetAddress2}" value="{$clientsdetails.address2}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group prepend-icon">
-                                <label for="inputCity" class="field-icon">
+                                <label for="inputCity" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.city}{else}
                                     <i class="far fa-building"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="city" id="inputCity" class="field" placeholder="{$LANG.orderForm.city}" value="{$clientsdetails.city}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
                         <div class="col-sm-5">
                             <div class="form-group prepend-icon">
+                                {if $template == 'kinsmen'}
+                                <label for="inputState" class="field-icon" id="checkoutStateLabel">{$LANG.orderForm.state}</label>
+                                {else}
                                 <label for="state" class="field-icon" id="inputStateIcon">
                                     <i class="fas fa-map-signs"></i>
                                 </label>
                                 <label for="stateinput" class="field-icon" id="inputStateIcon">
                                     <i class="fas fa-map-signs"></i>
                                 </label>
+                                {/if}
                                 <input type="text" name="state" id="inputState" class="field" placeholder="{$LANG.orderForm.state}" value="{$clientsdetails.state}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group prepend-icon">
-                                <label for="inputPostcode" class="field-icon">
+                                <label for="inputPostcode" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.postcode}{else}
                                     <i class="fas fa-certificate"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="postcode" id="inputPostcode" class="field" placeholder="{$LANG.orderForm.postcode}" value="{$clientsdetails.postcode}"{if $loggedin} readonly="readonly"{/if}>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group prepend-icon">
-                                <label for="inputCountry" class="field-icon" id="inputCountryIcon">
+                                <label for="inputCountry" class="field-icon" id="inputCountryIcon">{if $template == 'kinsmen'}{$LANG.orderForm.country}{else}
                                     <i class="fas fa-globe"></i>
-                                </label>
+                                {/if}</label>
                                 <select name="country" id="inputCountry" class="field"{if $loggedin} disabled="disabled"{/if}>
                                     {foreach $countries as $countrycode => $countrylabel}
                                         <option value="{$countrycode}"{if (!$country && $countrycode == $defaultcountry) || $countrycode eq $country} selected{/if}>
@@ -208,9 +214,9 @@
                         {if $showTaxIdField}
                             <div class="col-sm-12">
                                 <div class="form-group prepend-icon">
-                                    <label for="inputTaxId" class="field-icon">
+                                    <label for="inputTaxId" class="field-icon">{if $template == 'kinsmen'}{lang key=\WHMCS\Billing\Tax\Vat::getLabel()}{else}
                                         <i class="fas fa-building"></i>
-                                    </label>
+                                    {/if}</label>
                                     <input type="text" name="tax_id" id="inputTaxId" class="field" placeholder="{lang key=\WHMCS\Billing\Tax\Vat::getLabel()} ({$LANG.orderForm.optional})" value="{$clientsdetails.tax_id}"{if $loggedin} readonly="readonly"{/if}>
                                 </div>
                             </div>
@@ -269,65 +275,65 @@
                     <div class="row{if $contact neq "addingnew"} hidden{/if}" id="domainRegistrantInputFields">
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCFirstName" class="field-icon">
+                                <label for="inputDCFirstName" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.firstName}{else}
                                     <i class="fas fa-user"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="domaincontactfirstname" id="inputDCFirstName" class="field" placeholder="{$LANG.orderForm.firstName}" value="{$domaincontact.firstname}">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCLastName" class="field-icon">
+                                <label for="inputDCLastName" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.lastName}{else}
                                     <i class="fas fa-user"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="domaincontactlastname" id="inputDCLastName" class="field" placeholder="{$LANG.orderForm.lastName}" value="{$domaincontact.lastname}">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCEmail" class="field-icon">
+                                <label for="inputDCEmail" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.emailAddress}{else}
                                     <i class="fas fa-envelope"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="email" name="domaincontactemail" id="inputDCEmail" class="field" placeholder="{$LANG.orderForm.emailAddress}" value="{$domaincontact.email}">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCPhone" class="field-icon">
+                                <label for="inputDCPhone" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.phoneNumber}{else}
                                     <i class="fas fa-phone"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="tel" name="domaincontactphonenumber" id="inputDCPhone" class="field" placeholder="{$LANG.orderForm.phoneNumber}" value="{$domaincontact.phonenumber}">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCCompanyName" class="field-icon">
+                                <label for="inputDCCompanyName" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.companyName}{else}
                                     <i class="fas fa-building"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="domaincontactcompanyname" id="inputDCCompanyName" class="field" placeholder="{$LANG.orderForm.companyName} ({$LANG.orderForm.optional})" value="{$domaincontact.companyname}">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCAddress1" class="field-icon">
+                                <label for="inputDCAddress1" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.streetAddress}{else}
                                     <i class="far fa-building"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="domaincontactaddress1" id="inputDCAddress1" class="field" placeholder="{$LANG.orderForm.streetAddress}" value="{$domaincontact.address1}">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCAddress2" class="field-icon">
+                                <label for="inputDCAddress2" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.streetAddress2}{else}
                                     <i class="fas fa-map-marker-alt"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="domaincontactaddress2" id="inputDCAddress2" class="field" placeholder="{$LANG.orderForm.streetAddress2}" value="{$domaincontact.address2}">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCCity" class="field-icon">
+                                <label for="inputDCCity" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.city}{else}
                                     <i class="far fa-building"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="domaincontactcity" id="inputDCCity" class="field" placeholder="{$LANG.orderForm.city}" value="{$domaincontact.city}">
                             </div>
                         </div>
@@ -341,17 +347,17 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCPostcode" class="field-icon">
+                                <label for="inputDCPostcode" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.postcode}{else}
                                     <i class="fas fa-certificate"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="text" name="domaincontactpostcode" id="inputDCPostcode" class="field" placeholder="{$LANG.orderForm.postcode}" value="{$domaincontact.postcode}">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group prepend-icon">
-                                <label for="inputDCCountry" class="field-icon" id="inputCountryIcon">
+                                <label for="inputDCCountry" class="field-icon" id="inputCountryIcon">{if $template == 'kinsmen'}{$LANG.orderForm.country}{else}
                                     <i class="fas fa-globe"></i>
-                                </label>
+                                {/if}</label>
                                 <select name="domaincontactcountry" id="inputDCCountry" class="field">
                                     {foreach $countries as $countrycode => $countrylabel}
                                         <option value="{$countrycode}"{if (!$domaincontact.country && $countrycode == $defaultcountry) || $countrycode eq $domaincontact.country} selected{/if}>
@@ -385,17 +391,17 @@
                             <div id="passwdFeedback" style="display: none;" class="alert alert-info text-center col-sm-12"></div>
                             <div class="col-sm-6">
                                 <div class="form-group prepend-icon">
-                                    <label for="inputNewPassword1" class="field-icon">
+                                    <label for="inputNewPassword1" class="field-icon">{if $template == 'kinsmen'}{$LANG.clientareapassword}{else}
                                         <i class="fas fa-lock"></i>
-                                    </label>
+                                    {/if}</label>
                                     <input type="password" name="password" id="inputNewPassword1" data-error-threshold="{$pwStrengthErrorThreshold}" data-warning-threshold="{$pwStrengthWarningThreshold}" class="field" placeholder="{$LANG.clientareapassword}"{if $remote_auth_prelinked} value="{$password}"{/if}>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group prepend-icon">
-                                    <label for="inputNewPassword2" class="field-icon">
+                                    <label for="inputNewPassword2" class="field-icon">{if $template == 'kinsmen'}{$LANG.clientareaconfirmpassword}{else}
                                         <i class="fas fa-lock"></i>
-                                    </label>
+                                    {/if}</label>
                                     <input type="password" name="password2" id="inputNewPassword2" class="field" placeholder="{$LANG.clientareaconfirmpassword}"{if $remote_auth_prelinked} value="{$password}"{/if}>
                                 </div>
                             </div>
@@ -428,9 +434,9 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group prepend-icon">
-                                        <label for="inputSecurityQAns" class="field-icon">
+                                        <label for="inputSecurityQAns" class="field-icon">{if $template == 'kinsmen'}{$LANG.clientareasecurityanswer}{else}
                                             <i class="fas fa-lock"></i>
-                                        </label>
+                                        {/if}</label>
                                         <input type="password" name="securityqans" id="inputSecurityQAns" class="field" placeholder="{$LANG.clientareasecurityanswer}">
                                     </div>
                                 </div>
@@ -456,6 +462,7 @@
                 </div>
 
                 {if $canUseCreditOnCheckout}
+                    {if $ctkWallet}<p class="ctk-wallet-hint">Số dư thanh toán gồm tài khoản chính và khuyến mãi. Hệ thống ưu tiên trừ khuyến mãi trước. <a href="{$WEB_ROOT}/wallet.php">Xem số dư</a></p>{/if}
                     <div id="applyCreditContainer" class="apply-credit-container" data-apply-credit="{$applyCredit}">
                         <p>{lang key='cart.availableCreditBalance' amount=$creditBalance}</p>
 
@@ -478,7 +485,7 @@
                     </div>
                 {/if}
                 <div id="paymentGatewaysContainer" class="form-group">
-                    <p class="small text-muted">{$LANG.orderForm.preferredPaymentMethod}</p>
+                    {if $template != 'kinsmen' || $gateways}<p class="small text-muted">{$LANG.orderForm.preferredPaymentMethod}</p>{/if}
 
                     <div class="text-center">
                         {foreach $gateways as $gateway}
@@ -495,6 +502,7 @@
                             </label>
                         {/foreach}
                     </div>
+                    {if $template == 'kinsmen' && !$gateways && (!$canUseCreditOnCheckout || !$applyCredit || $creditBalance->toNumeric() < $total->toNumeric())}<p class="checkout-payment-empty">{$LANG.portalCheckoutNoGateway} <a href="{$WEB_ROOT}/contact.php">{$LANG.getsupport}</a></p>{/if}
                 </div>
 
                 <div class="alert alert-danger text-center gateway-errors hidden"></div>
@@ -582,25 +590,25 @@
                     <div class="row" id="newCardInfo">
                         <div id="cardNumberContainer" class="col-sm-6 new-card-container">
                             <div class="form-group prepend-icon">
-                                <label for="inputCardNumber" class="field-icon">
+                                <label for="inputCardNumber" class="field-icon">{if $template == 'kinsmen'}{$LANG.orderForm.cardNumber}{else}
                                     <i class="fas fa-credit-card"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="tel" name="ccnumber" id="inputCardNumber" class="field cc-number-field" placeholder="{$LANG.orderForm.cardNumber}" autocomplete="cc-number">
                             </div>
                         </div>
                         <div class="col-sm-3 new-card-container">
                             <div class="form-group prepend-icon">
-                                <label for="inputCardExpiry" class="field-icon">
+                                <label for="inputCardExpiry" class="field-icon">{if $template == 'kinsmen'}{$LANG.creditcardcardexpires}{else}
                                     <i class="fas fa-calendar-alt"></i>
-                                </label>
+                                {/if}</label>
                                 <input type="tel" name="ccexpirydate" id="inputCardExpiry" class="field" placeholder="MM / YY{if $showccissuestart} ({$LANG.creditcardcardexpires}){/if}" autocomplete="cc-exp">
                             </div>
                         </div>
                         <div class="col-sm-3" id="cvv-field-container">
                             <div class="form-group prepend-icon">
-                                <label for="inputCardCVV" class="field-icon">
+                                <label for="inputCardCVV" class="field-icon">{if $template == 'kinsmen'}{$LANG.creditcardcvvnumbershort}{else}
                                     <i class="fas fa-barcode"></i>
-                                </label>
+                                {/if}</label>
                                 <div class="input-group">
                                     <input type="tel" name="cccvv" id="inputCardCVV" class="field" placeholder="{$LANG.creditcardcvvnumbershort}" autocomplete="cc-cvc">
                                     <span class="input-group-btn">
@@ -614,17 +622,17 @@
                         {if $showccissuestart}
                             <div class="col-sm-3 col-sm-offset-6 new-card-container">
                                 <div class="form-group prepend-icon">
-                                    <label for="inputCardStart" class="field-icon">
+                                    <label for="inputCardStart" class="field-icon">{if $template == 'kinsmen'}{$LANG.creditcardcardstart}{else}
                                         <i class="far fa-calendar-check"></i>
-                                    </label>
+                                    {/if}</label>
                                     <input type="tel" name="ccstartdate" id="inputCardStart" class="field" placeholder="MM / YY ({$LANG.creditcardcardstart})" autocomplete="cc-exp">
                                 </div>
                             </div>
                             <div class="col-sm-3 new-card-container">
                                 <div class="form-group prepend-icon">
-                                    <label for="inputCardIssue" class="field-icon">
+                                    <label for="inputCardIssue" class="field-icon">{if $template == 'kinsmen'}{$LANG.creditcardcardissuenum}{else}
                                         <i class="fas fa-asterisk"></i>
-                                    </label>
+                                    {/if}</label>
                                     <input type="tel" name="ccissuenum" id="inputCardIssue" class="field" placeholder="{$LANG.creditcardcardissuenum}">
                                 </div>
                             </div>
@@ -632,9 +640,9 @@
                         <div class="form-group new-card-container">
                             <div id="inputDescriptionContainer" class="col-md-6">
                                 <div class="prepend-icon">
-                                    <label for="inputDescription" class="field-icon">
+                                    <label for="inputDescription" class="field-icon">{if $template == 'kinsmen'}{$LANG.paymentMethods.descriptionInput}{else}
                                         <i class="fas fa-pencil"></i>
-                                    </label>
+                                    {/if}</label>
                                     <input type="text" class="field" id="inputDescription" name="ccdescription" autocomplete="off" value="" placeholder="{$LANG.paymentMethods.descriptionInput} {$LANG.paymentMethodsManage.optional}" />
                                 </div>
                             </div>

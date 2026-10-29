@@ -1,0 +1,55 @@
+/* Content feedback keeps the client navigation visible. */
+.portal-currency-note{display:flex;align-items:flex-start;gap:9px;background:#eff7ff;border:1px solid #d8e7f6;color:#54728f;border-radius:7px;padding:12px 15px;font-size:12px;line-height:1.7;margin:0 0 20px}.portal-currency-note>i{margin-top:4px}
+.client-content-loader{position:fixed;z-index:25;display:flex;justify-content:center;align-items:center;padding:24px;background:var(--ct-surface,#fff);color:var(--ct-brand,#1f6f54);box-sizing:border-box}
+.client-content-loader[hidden]{display:none!important}
+.client-loading-spinner{display:block;width:24px;height:24px;border:2px solid var(--ct-brandLight,#d4e7dc);border-top-color:var(--ct-brand,#1f6f54);border-radius:50%;animation:client-loading-spin .75s linear infinite;flex:none}
+@keyframes client-loading-spin{to{transform:rotate(360deg)}}
+/* Compact group selectors and a quieter pricing grid. */
+.portal-catalog{padding:28px 32px;border-color:#e1e7ee;box-shadow:0 3px 16px #253f6010}
+.catalog-discovery{padding-top:30px}.catalog-categories{gap:8px;padding-bottom:18px;border-bottom:1px solid #eaf0f5;margin-bottom:20px}
+.catalog-categories a{font-size:15px;font-weight:600;padding:8px 12px;border-radius:7px;gap:9px;color:#34465b!important}.catalog-categories a>i{font-size:18px}.catalog-categories a[aria-current=page]{color:#1475bd!important}
+.catalog-groups{display:flex;flex-wrap:wrap;gap:12px}
+.catalog-group{flex-direction:row;justify-content:flex-start;flex:0 1 auto;min-width:220px;max-width:320px;min-height:64px;gap:11px;text-align:left;padding:12px 16px;border-radius:8px;border-color:#dfe6ee;transition:border-color .15s,box-shadow .15s,background .15s}
+.catalog-group strong{text-transform:none;font-size:16px;font-weight:650;line-height:1.5;padding-right:20px;color:#293e55!important}.catalog-group-icon{width:32px;height:32px;flex:none;border-radius:7px;box-shadow:none;background:#edf6ff;border:0;font-size:17px}
+.catalog-group.selected{background:#f5faff;border-color:#71ade0;box-shadow:none}.catalog-group:hover{background:#f0f7fd;border-color:#82aecd;box-shadow:none}
+.catalog-group-check{width:16px;height:16px;right:9px;top:9px;padding:0;background:#1475bd;border-radius:50%;display:grid;place-items:center;font-size:9px}
+.catalog-plans-section{padding-top:32px}.catalog-plans-heading{margin-bottom:18px}.catalog-plans{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.catalog-plan{position:relative;background:#fff;border:1px solid #dde5ef;border-radius:12px;box-shadow:0 2px 5px #243d5c04;transition:box-shadow .18s,border-color .18s}
+.catalog-plan:hover{border-color:#7caccf;box-shadow:0 8px 24px #224d7810}.catalog-plan.featured{border-color:#1475bd;box-shadow:0 0 0 1px #1475bd20}
+.catalog-plan>header{display:flex;align-items:center;gap:12px;padding:23px 24px 0;background:transparent;border:0;min-height:60px;flex-wrap:wrap}
+.catalog-plan h3{font-size:18px!important;font-weight:650!important;color:#33465f!important;letter-spacing:-.25px;flex:1;min-width:0}
+.catalog-plan header>.plan-resource-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:8px;background:#eff5fb;color:#44749c;font-size:15px;flex:none;margin:0}
+.catalog-plan header>.plan-recommended{margin:0;font-size:10px;line-height:1.5;background:#eaf5ff;color:#12649f;padding:4px 8px;border-radius:5px}
+.catalog-plan-body{padding:18px 24px 24px}.catalog-plan-price{font-size:20px;font-weight:700;letter-spacing:-.4px;line-height:1.5;color:#173752;padding-bottom:20px;margin-bottom:18px;border-bottom:1px solid #edf1f6;overflow-wrap:anywhere}
+.catalog-plan-description{font-size:13px;line-height:1.7;margin-bottom:25px;color:#64758a}
+.catalog-plan-description li{position:relative;padding-left:20px;margin-bottom:9px}.catalog-plan-description li:before{content:'✓';position:absolute;left:0;top:1px;color:#5c8f7d;font-size:12px;font-weight:600}.catalog-plan-description strong{color:#3d5068}
+.catalog-plan-order{gap:12px}.catalog-plan-order select{height:42px;border-color:#d9e2ed;background:#f9fbfd;font-size:12px;padding:0 11px;border-radius:7px}
+.catalog-plan-order button{height:42px;border-radius:7px;font-size:13px}.catalog-price-note{font-size:11px}
+@media(max-width:1100px){.catalog-groups{grid-template-columns:repeat(3,minmax(0,1fr))}.catalog-plans{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.portal-catalog{padding:16px}.catalog-groups{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.catalog-group{min-height:86px;gap:10px;padding:13px}.catalog-group strong{font-size:12px;padding:0}.catalog-group-icon{width:31px;height:35px;border-radius:7px;font-size:16px}.catalog-categories{gap:4px}.catalog-categories a{font-size:12px;padding:8px}.catalog-plans{grid-template-columns:minmax(0,1fr);gap:16px}.catalog-plan>header{padding:21px 20px 0}.catalog-plan-body{padding:17px 20px 21px}.catalog-plan-price{font-size:21px}.catalog-plan-description{margin-bottom:22px}.client-content-loader{padding:18px;gap:11px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.client-loading-spinner{animation:none;border-right-color:var(--ct-brand,#1f6f54)}.catalog-plan,.catalog-group{transition:none}}
+/* Readable cycle choices, including native option menus. */
+body.admin-layout .catalog-plan-order select{font-size:15px!important;font-weight:600!important;color:#243d55!important;opacity:1;min-height:46px;padding:0 14px;background-color:#fff;line-height:1.5}
+body.admin-layout .catalog-plan-order select option{font-size:15px;font-weight:600;color:#243d55;background:#fff}
+body.admin-layout .catalog-plan-order select:disabled{color:#64748b!important;opacity:1;cursor:not-allowed}
+/* Service plans: named header, specification rows and one price selector. */
+.portal-catalog .catalog-plans{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.portal-catalog .catalog-plan{background:#f7fafc;border-color:#dce1e6;border-radius:9px;box-shadow:none}
+.portal-catalog .catalog-plan:hover,.portal-catalog .catalog-plan.featured{border-color:#32a2fa;box-shadow:none}
+.portal-catalog .catalog-plan>header{padding:18px 20px;background:#e4f2fc;border-bottom:1px solid #dce1e6;min-height:72px;gap:8px}
+.portal-catalog .catalog-plan h3{font-size:19px!important;color:#536176!important;font-weight:650!important;letter-spacing:0}
+.portal-catalog .catalog-plan-body{padding:22px 20px 20px}
+.portal-catalog .catalog-plan-description{font-size:15px;line-height:1.65;color:#596574;margin-bottom:24px}
+.portal-catalog .catalog-plan-description li{padding:0;margin:0 0 15px;overflow-wrap:anywhere}
+.portal-catalog .catalog-plan-description li:last-child{margin-bottom:0}
+.portal-catalog .catalog-plan-description li:before{display:none}
+.portal-catalog .catalog-plan-description strong{font-weight:700;color:#536176}
+.portal-catalog .catalog-plan-order{margin-top:auto;gap:12px}
+body.admin-layout .portal-catalog .catalog-plan-order select{background:#fff;min-height:46px;border-radius:5px;padding:0 12px;font-size:15px!important}
+body.admin-layout .portal-catalog .catalog-plan-order button{height:46px;border-radius:5px;background:#32a2fa!important;border-color:#32a2fa!important;font-size:16px;font-weight:600;color:#fff!important}
+body.admin-layout .portal-catalog .catalog-plan-order button:is(:hover,:focus,:active){background:#168bdf!important;border-color:#168bdf!important;color:#fff!important}
+body.admin-layout .portal-catalog .catalog-plan-order button:disabled{background:#a1adba!important;border-color:#a1adba!important}
+@media(min-width:1800px){.portal-catalog .catalog-plans{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:1199px){.portal-catalog .catalog-plans{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.portal-catalog .catalog-plans{grid-template-columns:minmax(0,1fr)}.portal-catalog .catalog-plan>header{min-height:64px}.portal-catalog .catalog-plan-description{font-size:15px}}
+@media(max-width:767px){.portal-catalog .catalog-group{flex:1 1 145px;min-width:0;max-width:100%;min-height:64px;padding:11px 12px;gap:9px}.portal-catalog .catalog-group strong{font-size:15px;padding-right:12px}.portal-catalog .catalog-group-icon{width:30px;height:30px;font-size:16px}.portal-catalog .catalog-categories a{font-size:14px;font-weight:600;padding:8px 10px}}

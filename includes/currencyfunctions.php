@@ -8,6 +8,12 @@
 
 function currencyUpdateRates(WHMCS\Scheduling\Task\TaskInterface $task = NULL)
 {
+    require_once ROOTDIR.'/includes/cloudytek/currency.php';
+    if (\Cloudytek\Currency::enabled()) {
+        $updated=\Cloudytek\Currency::refresh(true);
+        if($task)$task->output('updated')->write($updated?1:0);
+        return $updated?'USD/VND rates and secondary prices updated.':'Keeping the last verified exchange rate; check the currency status.';
+    }
     $stuff = curlCall(WHMCS\Utility\CurrencyExchange::EXCHANGE_RATE_FEED_URL, array("CURLOPT_SSL_VERIFYPEER" => true, "CURLOPT_SSL_VERIFYHOST" => 2));
     $stuff = explode("\n", $stuff);
     $exchrate = array();
@@ -49,7 +55,7 @@ function currencyUpdateRates(WHMCS\Scheduling\Task\TaskInterface $task = NULL)
         if ($coderate) {
             $codeRateRatio = $baserate / $coderate;
             if ($codeRateRatio) {
-                $exchangerate = round(1 / $codeRateRatio, 5);
+                $exchangerate = round(1 / $codeRateRatio, 12);
             }
         }
         if (0 < $exchangerate) {

@@ -1,0 +1,19 @@
+{
+  "url": "https://raw.githubusercontent.com/linode/linode-api-openapi/main/openapi.json",
+  "downloaded": "2026-10-14",
+  "sha256": "bb8daa30ee983e393e343cf05cf078fa7b27a9f9a5b12fd97a901116a8dfc792",
+  "info": {
+    "description": "Add a Cloud Computing instance so you can build, release, and scale applications faster with virtual machines.\n",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "title": "Akamai: Linode API",
+    "version": "4.229.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.linode.com"
+    }
+  ]
+}
