@@ -32,7 +32,9 @@ add_hook('ClientAreaFooterOutput', 2000, function($vars) {
     if (empty($vars['template']) || $vars['template'] !== 'kinsmen' || \WHMCS\Session::get('cid') || !is_file(ROOTDIR.'/assets/cloudytek-client/portal.js')) { return ''; }
     $uid = (int)\WHMCS\Session::get('uid');
     $page = isset($vars['templatefile']) ? $vars['templatefile'] : '';
-    $config = array('authenticated'=>(bool)$uid,'language'=>\Lang::getName()==='vietnamese'?'vi':'en','page'=>$page,'dashboard'=>$uid && $page==='clientareahome','data'=>null);
+    $publicPages = array('products','announcements','viewannouncement','knowledgebase','knowledgebasecat','knowledgebasearticle','contact','domain-search','downloads','download','serverstatus','networkissues','login','clientregister','password-reset-container');
+    $memberArea = $uid && empty($vars['inShoppingCart']) && !in_array($page,$publicPages,true);
+    $config = array('authenticated'=>(bool)$uid,'memberArea'=>(bool)$memberArea,'language'=>\Lang::getName()==='vietnamese'?'vi':'en','page'=>$page,'dashboard'=>$uid && $page==='clientareahome','data'=>null);
     if ($uid) {
         try { require_once ROOTDIR.'/includes/cloudytek/react-portal.php'; $config['data'] = \Cloudytek\ReactPortal\data(); }
         catch (Throwable $e) { error_log('Cloudytek React portal: '.$e->getMessage()); return ''; }

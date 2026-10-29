@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33-p1, created on 2026-10-29 13:51:09
+/* Smarty version 3.1.33-p1, created on 2026-10-29 14:57:15
   from 'C:\Users\Du Pham\Desktop\plan\WHMCS-7.8.0-decoded\templates\kinsmen\includes\head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33-p1',
-  'unifunc' => 'content_6ae2ecddafe271_03604687',
+  'unifunc' => 'content_6ae2fc5b378e78_09030338',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '19e8b4f08fe09ce6ce1676505a8d2f1d6142c070' => 
     array (
       0 => 'C:\\Users\\Du Pham\\Desktop\\plan\\WHMCS-7.8.0-decoded\\templates\\kinsmen\\includes\\head.tpl',
-      1 => 1793256401,
+      1 => 1793260580,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6ae2ecddafe271_03604687 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6ae2fc5b378e78_09030338 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Styling -->
 <link href="<?php echo $_smarty_tpl->tpl_vars['WEB_ROOT']->value;?>
 /assets/css/cloudytek-wallet.css?v=1" rel="stylesheet">
@@ -116,7 +116,7 @@ echo $_smarty_tpl->tpl_vars['captcha']->value->recaptcha->getSiteKey();
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['WEB_ROOT']->value;?>
 /templates/<?php echo $_smarty_tpl->tpl_vars['template']->value;?>
-/js/portal-experience.js?v=20261029-icon-loader-2" defer><?php echo '</script'; ?>
+/js/portal-experience.js?v=20261029-content-scroll-1" defer><?php echo '</script'; ?>
 >
 <link href="<?php echo $_smarty_tpl->tpl_vars['WEB_ROOT']->value;?>
 /templates/<?php echo $_smarty_tpl->tpl_vars['template']->value;?>

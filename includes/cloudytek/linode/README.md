@@ -6,7 +6,8 @@ Không dùng addon trong `modules/addons`, không phụ thuộc WGS, không sử
 
 - Admin: `http://127.0.0.1:8178/admin/cloudytek-linode.php` hoặc menu **Linode**.
 - Khách hàng: `linode.php?serviceid=<WHMCS service ID>`; nút **Manage cloud service** xuất hiện tại trang chi tiết dịch vụ đã liên kết.
-- Database đã có 5 bảng `ctk_linode_*`. Chưa cấu hình token, tài khoản thật hoặc bật provisioning trên sản phẩm nào.
+- Database đã có 5 bảng `ctk_linode_*`. Ngày 2026-10-29 đã nhập account `jpt-sandbox-nghiant` (ID 6) từ `linode_info.txt`: API v4, prefix `cloudytek`, Backup Price `0.0000` do file để trống. Token được mã hóa qua Vault, đã kiểm tra giải mã khớp. Account ở chế độ read-only; chưa cấu hình product mapping hay bật tự động provisioning.
+- Đã kiểm tra kết nối thật bằng GET `/profile`, `/linode/instances`, `/regions`, `/linode/types`, `/images`: cả 5 trả HTTP 200, profile khớp Username. Lần kiểm tra ghi nhận 13 instances, 33 regions, 75 types, 43 images; số lượng có thể thay đổi. Không tạo/sửa/xóa tài nguyên provider. Kết quả không chứa token nằm tại `WHMCS-7.8.0-runtime/logs/linode-configuration-result.json`.
 
 ## Phạm vi đã viết
 
@@ -58,8 +59,8 @@ Hook `AfterCronJob` cũng xử lý một batch; dedicated cron giúp giảm th�
 
 ## Giới hạn phạm vi và xác minh
 
-- Bao phủ catalogue ở lớp dispatch/API Explorer không có nghĩa mọi operation đã được nghiệm thu trên tài khoản Linode thật hoặc có form riêng. Snapshot hiện tại 4.229.1 có 539 operation; mỗi operation có `live_verified: false` trong `resources/coverage.json`.
-- Region, quota, beta access, scope / IAM và credential chuyên biệt quyết định thao tác có được provider cho phép hay không. Chưa có token để kiểm thử live; chưa mua hoặc tạo tài nguyên thật.
+- Bao phủ catalogue ở lớp dispatch/API Explorer không có nghĩa mọi operation đã được nghiệm thu trên tài khoản Linode thật hoặc có form riêng. Snapshot hiện tại 4.229.1 có 539 operation; các cờ `live_verified: false` trong `resources/coverage.json` chưa được cập nhật từ kiểm tra kết nối riêng nêu trên.
+- Region, quota, beta access, scope / IAM và credential chuyên biệt quyết định thao tác có được provider cho phép hay không. Đã xác minh 5 GET nêu trên; chưa mua hoặc tạo tài nguyên thật và chưa nghiệm thu các thao tác ghi.
 - Linode DNS API quản lý zone / record. Đăng ký và gia hạn tên miền cần registrar riêng. Dedicated CPU là máy ảo; API này không cấp bare-metal của nhà cung cấp khác.
 - Object Storage control plane nằm trong Linode API. Upload / download object, S3 signing và chính sách data plane ngoài các endpoint trong snapshot này cần S3 client riêng; chưa được triển khai ở đây.
 - OAuth authorization-code onboarding, tự refresh credential chuyên biệt, đồng bộ chi phí / usage thành hóa đơn, đầy đủ UI client theo từng dịch vụ và cấu hình ứng dụng WordPress / mail không nằm trong kiểm thử hoàn tất của bản code này.

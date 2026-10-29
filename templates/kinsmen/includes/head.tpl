@@ -40,7 +40,7 @@
 <link href="{$WEB_ROOT}/templates/{$template}/css/portal-public.css?v=20261015-2" rel="stylesheet">
 <link href="{$WEB_ROOT}/templates/{$template}/css/control-states.css?v=20261015-1" rel="stylesheet">
 <link href="{$WEB_ROOT}/templates/{$template}/css/portal-experience.css?v=20261029-icon-loader-2" rel="stylesheet">
-<script src="{$WEB_ROOT}/templates/{$template}/js/portal-experience.js?v=20261029-icon-loader-2" defer></script>
+<script src="{$WEB_ROOT}/templates/{$template}/js/portal-experience.js?v=20261029-content-scroll-1" defer></script>
 <link href="{$WEB_ROOT}/templates/{$template}/css/control-borders.css?v=20261015-1" rel="stylesheet">
 {if $templatefile == 'clientregister'}<link href="{$WEB_ROOT}/templates/{$template}/css/portal-register.css?v=20261015-1" rel="stylesheet"><script src="{$WEB_ROOT}/templates/{$template}/js/portal-register.js?v=20261015-1" defer></script>{/if}
 <link href="{$WEB_ROOT}/assets/css/cloudytek-controls.css?v=20261015-2" rel="stylesheet">

@@ -8,6 +8,11 @@
 
 <script type="text/javascript" src="{$BASE_PATH_JS}/StatesDropdown.js"></script>
 
+<section class="member-language-setting" aria-labelledby="member-language-title">
+    <h2 id="member-language-title">{if $portalLanguage == 'vietnamese'}Ngôn ngữ giao diện{else}Display language{/if}</h2>
+    {include file="$template/includes/portal-languages.tpl"}
+</section>
+
 <form method="post" action="?action=details" role="form">
 
     <div class="row">
