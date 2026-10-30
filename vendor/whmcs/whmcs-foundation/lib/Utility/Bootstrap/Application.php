@@ -63,17 +63,8 @@ class Application extends AbstractBootstrap
         }, "mysqlCompat" => function () {
             return new \WHMCS\Database\MysqlCompat(\DI::make("db")->getPdo());
         }, "license" => function () {
-            $app = \DI::make("app");
-            $config = $app->getApplicationConfig();
-            $localDemo = defined("WHMCS_LOCAL_DEMO") && WHMCS_LOCAL_DEMO
-                && PHP_SAPI === "cli-server"
-                && in_array(isset($_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : "", array("127.0.0.1", "::1"), true);
-            $licenseInstance = $localDemo ? new \WHMCS\LocalDemoLicense() : new \WHMCS\License();
-            $license = $licenseInstance->checkFile("a896faf2c31f2acd47b0eda0b3fd6070958f1161")->setSalt($app->get_config("Version"), $app->get_hash())->setLicenseKey($app->get_license_key())->setLocalKey($app->get_config("License"));
-            if ($config["use_internal_licensing_validation"]) {
-                $license->useInternalValidationMirror();
-            }
-            return $license;
+            // This source distribution runs without license keys or remote validation.
+            return new \WHMCS\StandaloneLicense();
         }, "lang" => function () {
             $language = \WHMCS\Language\ClientLanguage::factory(\WHMCS\Config\Setting::getValue("Language"), \WHMCS\Session::get("Language"), isset($_REQUEST["language"]) ? $_REQUEST["language"] : "", defined("CLIENTAREA"));
             global $_LANG;
